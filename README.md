@@ -30,7 +30,6 @@ Acties die AI kan doen:
 -    Wandelen
 -    Lopen
 -    Kijken
--    Neuken
 
 ---
 
@@ -46,3 +45,10 @@ Acties die AI kan doen:
 -    Belichting
 -    Geluid
 -    triggers
+
+---
+
+## TODO
+### Omgeving bouwen
+- Kean
+### 
