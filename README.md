@@ -32,11 +32,12 @@ Acties die AI kan doen:
 -    Kijken
 -    Neuken
 
+---
 
-VR componenten
-Ik? Wie ben ik? Welk personage in de vr omgeving?
+## VR componenten
+### Ik? Wie ben ik? Welk personage in de vr omgeving?
 -    Ik ben de overvaller en ik moet zo veel mogelijk stelen
-Omgeving
+### Omgeving
 -    Bank
 -    Te stelen voorwerpen
 -    Alarm systeem
