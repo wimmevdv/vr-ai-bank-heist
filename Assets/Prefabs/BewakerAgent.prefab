@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 530621266486813888}
   - component: {fileID: 1019916180880755854}
   - component: {fileID: 3497219428413369535}
-  - component: {fileID: 3601755996713917747}
   - component: {fileID: 850248559711386845}
+  - component: {fileID: 2311485601328672495}
   - component: {fileID: 4449683283201154128}
   m_Layer: 0
   m_Name: BewakerAgent
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -171,22 +171,6 @@ MonoBehaviour:
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
---- !u!114 &3601755996713917747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481585970449187377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
 --- !u!114 &850248559711386845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +186,36 @@ MonoBehaviour:
   DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
+--- !u!114 &2311485601328672495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481585970449187377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e6abea9a0e8ec4199f0c522d8fdf92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  patrolSpeed: 2
+  chaseSpeed: 4
+  rotationSpeed: 180
+  fieldSize: 30
+  gridSize: 10
+  spawnPoint: {fileID: 0}
+  timeStepPenalty: -0.001
+  wallHitPenalty: -0.05
+  idlePenalty: -0.005
+  newCellReward: 0.05
+  depositVisitReward: 0.3
+  enablePlayerDetection: 0
+  playerVisibleReward: 0.02
+  playerCaughtReward: 5
 --- !u!114 &4449683283201154128
 MonoBehaviour:
   m_ObjectHideFlags: 0
