@@ -1,0 +1,44 @@
+# --- Unity mappen die NOOIT in Git mogen ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# --- Visual Studio bestanden ---
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.db
+*.VC.db
+
+# --- VR / Meta / OS specifiek ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.apk
+*.aab
+
+# --- Asset Store & Packages ---
+# We negeren de gedownloade data, maar NIET het manifest
+/Assets/AssetStoreTools*
+/[Pp]ackages/*
+!/[Pp]ackages/manifest.json
+!/[Pp]ackages/packages-lock.json
+
+# --- Grote bestanden negeren (voorkomt push errors) ---
+*.zip
+*.tar
+*.7z
