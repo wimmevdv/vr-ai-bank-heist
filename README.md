@@ -29,18 +29,18 @@
 3.    Rondlopen, bewaken en reageren op triggers. 
 4.    AI moet speler kunnen pakken
 ### Hoe win / verlies
--    Win
+#### Win
 -    Speler wordt gepakt (mega reward)
 -    Reward voor zien van speler (klein)
 -    Reageren op triggeres (klein)
 -    Passeren langs waardevolle voorwerpen
--    Verlies
+#### Verlies
 -    Iets gestolen (medium)
 -    Stilstaan (klein)
 -    Alles gestolen (mega)
 -    Tijd om speler te nemen (mini)
 -    Tegen muur lopen (mini)
-Omgevingspunten
+#### Omgevingspunten
 -    Eigen positie
 -    Audio triggers
 -    Waar te stelen spullen liggen
