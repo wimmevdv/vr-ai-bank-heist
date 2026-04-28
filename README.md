@@ -24,7 +24,7 @@
 -    AI zijn doel in dit spel is dat hij de inhoud van de bank bewaakt en niemand mag het stelen. 
 ### Het trainen
 -    Wij gaan een AI trainen in stappen.
-1.    Er voor zorgen dat de AI langs de deposits gaat. En niet tegen muren lopen.
+1.    Er voor zorgen dat de AI langs de deposits gaat. En niet tegen muren lopen. En op plekken komen waar hij nog niet geweest is.
 2.    Er voor zorgen dat als er iets wordt getriggerd, dat hij ergens heen loopt zo snel mogelijk. 
 3.    Rondlopen, bewaken en reageren op triggers. 
 4.    AI moet speler kunnen pakken
@@ -33,7 +33,7 @@
 -    Speler wordt gepakt (mega reward)
 -    Reward voor zien van speler (klein)
 -    Reageren op triggeres (klein)
--    Passeren langs waardevolle voorwerpen
+-    Passeren langs waardevolle voorwerpen (klein)
 #### Verlies
 -    Iets gestolen (medium)
 -    Stilstaan (klein)
