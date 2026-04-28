@@ -1,6 +1,6 @@
 {
   "dependencies": {
-"com.atteneder.gltfast": {
+    "com.atteneder.gltfast": {
       "version": "https://github.com/atteneder/glTFast.git",
       "depth": 0,
       "source": "git",
@@ -25,11 +25,10 @@
         "com.unity.modules.imageconversion": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    
     },
     "com.unity.burst": {
       "version": "1.8.28",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -154,7 +153,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.6",
-      "depth": 3,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

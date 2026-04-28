@@ -38,11 +38,13 @@
   <Project Path="PPv2URPConverters.csproj" />
   <Project Path="Unity.XR.Hands.csproj" />
   <Project Path="Unity.InferenceEngine.Tokenization.csproj" />
-  <Project Path="UnityEditor.TestRunner.csproj" />
+  <Project Path="glTFast.Export.csproj" />
   <Project Path="Unity.ML-Agents.CommunicatorObjects.csproj" />
+  <Project Path="UnityEditor.TestRunner.csproj" />
   <Project Path="Unity.XR.MetaOpenXR.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />
   <Project Path="Unity.UnifiedRayTracing.Runtime.csproj" />
+  <Project Path="glTFast.csproj" />
   <Project Path="Unity.InferenceEngine.Editor.csproj" />
   <Project Path="Unity.TestTools.CodeCoverage.Editor.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
@@ -55,6 +57,7 @@
   <Project Path="Unity.TextMeshPro.Editor.csproj" />
   <Project Path="Unity.AppUI.Navigation.Editor.csproj" />
   <Project Path="Unity.XR.CompositionLayers.csproj" />
+  <Project Path="glTFast.Documentation.Examples.csproj" />
   <Project Path="Unity.XR.CompositionLayers.Editor.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj" />
@@ -64,6 +67,7 @@
   <Project Path="Unity.Performance.Profile-Analyzer.Editor.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
+  <Project Path="glTFast.Newtonsoft.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.007.csproj" />
   <Project Path="Unity.XR.Hands.Analytics.Editor.csproj" />
   <Project Path="Unity.ML-Agents.Editor.csproj" />
@@ -83,8 +87,10 @@
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Analytics.Hooks.Editor.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
+  <Project Path="glTFast.Editor.csproj" />
   <Project Path="Unity.XR.Management.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
+  <Project Path="glTFast.dots.csproj" />
   <Project Path="Unity.ML-Agents.Input.csproj" />
   <Project Path="Unity.XR.Hands.Editor.csproj" />
   <Project Path="UnityEditor.UI.Analytics.csproj" />
