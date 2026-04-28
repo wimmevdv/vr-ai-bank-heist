@@ -160,11 +160,7 @@ MonoBehaviour:
   m_spacewarpMotionVectorTextureFormat: 0
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
-  m_optimizeMultiviewRenderRegions: 0
-  m_multiviewRenderRegionsOptimizationMode: 0
-  m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 0
-  m_useOpenXRPredictedTime: 0
 --- !u!114 &-7242742975568499433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,7 +1108,6 @@ MonoBehaviour:
   customRuntimeLoaderName: 
   symmetricProjection: 0
   optimizeBufferDiscards: 1
-  multiviewRenderRegionsOptimizationMode: 0
 --- !u!114 &8188138556986101040
 MonoBehaviour:
   m_ObjectHideFlags: 0
