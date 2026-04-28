@@ -1,4 +1,23 @@
 # Heist and seek
+## Teamleden
+- Kean
+- Renzo
+- Wimme
+- Marwan
+
+## Logica van VR-simulatie
+- Infiltratie
+- Verkennen
+- Detectie
+- Stelen
+- Extratie
+
+## Meerwaarde AI
+- Door een AI te trainen zal je geen vast pad creeeren, de AI zal zich aanpassen aan wat jij doet, de herspeelbaarheid gaat dus omhoog.
+### Type AI Agent
+- Single Agent
+## Meerwaarde VR
+- Door de game in VR te maken kan je je echt inleven, en zit je meer in het spel waardoor de spanning bij het spelen van het spel omhoog gaat.
 ## AI componenten 
 ### Doel
 -    Als speler wil ik een bank overvallen zonder dat de bewaker (AI) mij vind. 
@@ -50,5 +69,8 @@ Acties die AI kan doen:
 
 ## TODO
 ### Omgeving bouwen
-- Kean
-### 
+### AI Trainen
+### Scripten van interactable objects
+- Kluis
+- Objecten die je kan oppaken
+- 
