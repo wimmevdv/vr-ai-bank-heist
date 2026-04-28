@@ -1,0 +1,11 @@
+Model Information:
+* title:	Heist - MC Union Bank
+* source:	https://sketchfab.com/3d-models/heist-mc-union-bank-10a21127e14d43adaf37f150fb3cafca
+* author:	SoftGrooveDesign (https://sketchfab.com/santirodero7)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Heist - MC Union Bank" (https://sketchfab.com/3d-models/heist-mc-union-bank-10a21127e14d43adaf37f150fb3cafca) by SoftGrooveDesign (https://sketchfab.com/santirodero7) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,5 +1,18 @@
 {
   "dependencies": {
+"com.atteneder.gltfast": {
+      "version": "https://github.com/atteneder/glTFast.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.8.24",
+        "com.unity.collections": "1.2.4"
+      },
+      "hash": "9ef142ca27d0072f59a48e97e095db0668514e3c"
+    },
     "com.unity.ai.inference": {
       "version": "2.6.1",
       "depth": 1,
@@ -12,6 +25,7 @@
         "com.unity.modules.imageconversion": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    
     },
     "com.unity.burst": {
       "version": "1.8.28",
@@ -25,7 +39,7 @@
     },
     "com.unity.collections": {
       "version": "2.6.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.8.23",
@@ -139,8 +153,13 @@
       }
     },
     "com.unity.nuget.mono-cecil": {
+<<<<<<< HEAD
       "version": "1.11.6",
       "depth": 3,
+=======
+      "version": "1.11.5",
+      "depth": 2,
+>>>>>>> cef7750e0dbcb68a5fb82e63bdd2e90276931651
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -226,7 +245,7 @@
     },
     "com.unity.test-framework.performance": {
       "version": "3.2.0",
-      "depth": 3,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.33",
