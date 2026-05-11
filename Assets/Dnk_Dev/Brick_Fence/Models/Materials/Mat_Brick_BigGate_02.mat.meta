@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bcdc3a5ee10ef634e9aee3bd81f52e75
+timeCreated: 1483865833
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Models/Materials/Mat_Brick_BigGate_02.mat
+  uploadId: 163209
