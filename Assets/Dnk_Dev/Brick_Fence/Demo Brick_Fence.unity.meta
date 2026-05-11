@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ee795083402a49a4ab0c9718138cc1bd
+timeCreated: 1485506288
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Demo Brick_Fence.unity
+  uploadId: 163209

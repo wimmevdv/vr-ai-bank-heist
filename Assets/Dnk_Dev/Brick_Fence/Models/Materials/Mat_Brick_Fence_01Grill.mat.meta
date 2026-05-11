@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ee61a593ddfca0d41811b813ac2d6f03
+timeCreated: 1483822474
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Models/Materials/Mat_Brick_Fence_01Grill.mat
+  uploadId: 163209

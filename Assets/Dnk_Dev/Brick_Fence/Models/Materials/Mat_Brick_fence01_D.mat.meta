@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec3e3c392bb65ed4eb0ad2585235a9a5
+timeCreated: 1483824180
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Models/Materials/Mat_Brick_fence01_D.mat
+  uploadId: 163209

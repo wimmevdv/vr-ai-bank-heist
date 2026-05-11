@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64cefbcd8a06eb0438d916f5ef8269b0
+timeCreated: 1483881075
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Prefab/P_Brick_BigGate_01.prefab
+  uploadId: 163209
