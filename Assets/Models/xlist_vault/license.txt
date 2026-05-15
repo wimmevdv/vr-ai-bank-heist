@@ -1,0 +1,11 @@
+Model Information:
+* title:	XList Vault
+* source:	https://sketchfab.com/3d-models/xlist-vault-a3be7371c5694c3b9f5d85184472c005
+* author:	XList (https://sketchfab.com/xlist)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "XList Vault" (https://sketchfab.com/3d-models/xlist-vault-a3be7371c5694c3b9f5d85184472c005) by XList (https://sketchfab.com/xlist) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
