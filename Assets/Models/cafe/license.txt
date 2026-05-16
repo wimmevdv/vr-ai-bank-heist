@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cafe
+* source:	https://sketchfab.com/3d-models/cafe-feb74ce83e44455e964e3a63a379fa9c
+* author:	LogarajMuthiah (https://sketchfab.com/p91036867)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cafe" (https://sketchfab.com/3d-models/cafe-feb74ce83e44455e964e3a63a379fa9c) by LogarajMuthiah (https://sketchfab.com/p91036867) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

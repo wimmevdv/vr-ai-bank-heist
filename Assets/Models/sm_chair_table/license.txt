@@ -1,0 +1,11 @@
+Model Information:
+* title:	SM_chair_table
+* source:	https://sketchfab.com/3d-models/sm-chair-table-b139954433f34ad7b75314d59721949f
+* author:	rickmaolly (https://sketchfab.com/rickmaolly)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SM_chair_table" (https://sketchfab.com/3d-models/sm-chair-table-b139954433f34ad7b75314d59721949f) by rickmaolly (https://sketchfab.com/rickmaolly) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

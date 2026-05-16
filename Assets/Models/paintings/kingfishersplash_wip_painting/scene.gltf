@@ -1,0 +1,444 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 6206,
+      "max": [
+        250.0,
+        200.0,
+        5.0
+      ],
+      "min": [
+        -250.0,
+        -200.0,
+        -5.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 74472,
+      "componentType": 5126,
+      "count": 6206,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 6206,
+      "max": [
+        0.8999999761581421,
+        1.0
+      ],
+      "min": [
+        0.10000000149011612,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 34800,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 148944,
+      "componentType": 5126,
+      "count": 7151,
+      "max": [
+        -62.70132827758789,
+        -1.5003923177719116,
+        7.2835822105407715
+      ],
+      "min": [
+        -93.4666519165039,
+        -90.71375274658203,
+        5.123591899871826
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 234756,
+      "componentType": 5126,
+      "count": 7151,
+      "max": [
+        0.9987673163414001,
+        0.9855120778083801,
+        0.999984860420227
+      ],
+      "min": [
+        -0.9674372673034668,
+        -0.9988950490951538,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 7151,
+      "max": [
+        0.6627451181411743,
+        0.6431372761726379,
+        0.6392157077789307,
+        1.0
+      ],
+      "min": [
+        0.0235294122248888,
+        0.01568627543747425,
+        0.0117647061124444,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 49648,
+      "componentType": 5126,
+      "count": 7151,
+      "max": [
+        0.3820500075817108,
+        0.9980400204658508
+      ],
+      "min": [
+        0.0019499999471008778,
+        0.0019499999471008778
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 139200,
+      "componentType": 5125,
+      "count": 39066,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 320568,
+      "componentType": 5126,
+      "count": 85,
+      "max": [
+        275.350830078125,
+        220.2185516357422,
+        14.769298553466797
+      ],
+      "min": [
+        -275.72198486328125,
+        -221.73489379882813,
+        -14.769298553466797
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 321588,
+      "componentType": 5126,
+      "count": 85,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 114416,
+      "componentType": 5126,
+      "count": 85,
+      "max": [
+        0.01568627543747425,
+        0.01568627543747425,
+        0.01568627543747425,
+        1.0
+      ],
+      "min": [
+        0.01568627543747425,
+        0.01568627543747425,
+        0.01568627543747425,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 106856,
+      "componentType": 5126,
+      "count": 85,
+      "max": [
+        1.0,
+        0.875
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 295464,
+      "componentType": 5125,
+      "count": 192,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Guido Salimbeni (https://sketchfab.com/3dsmithery)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/kingfishersplash-wip-painting-4146dbb12a7a45dfb08b78eafc6bc2f5",
+      "title": "KingFisherSplash Wip Painting"
+    },
+    "generator": "Sketchfab-12.66.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 296232,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 107536,
+      "byteOffset": 296232,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 322608,
+      "byteOffset": 403768,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 115776,
+      "byteOffset": 726376,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 842152,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/defaultMat_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/defaultMat_0_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/defaultMat_1_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "defaultMat",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "defaultMat_0",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "defaultMat_1",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 6,
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 7
+          },
+          "indices": 8,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_2",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 11,
+            "NORMAL": 10,
+            "POSITION": 9,
+            "TEXCOORD_0": 12
+          },
+          "indices": 13,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        -0.019908318296074867,
+        -0.9998018145561218,
+        -2.2200059891644349e-16,
+        0.0,
+        0.9998018145561218,
+        -0.019908318296074867,
+        2.176240702542576e-16,
+        0.0,
+        -2.220446049250313e-16,
+        -2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.568871259689331,
+        -0.20061185956001298,
+        0.7582683563232422,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        4,
+        6
+      ],
+      "name": "zbrush_concat.osgb.cleaner.gles"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "/sketchfab-data/processing/dfe678cdd7dc4579b553b164908bc226/preprocess/SubTool-0-11411543.OBJ"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_3"
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "/sketchfab-data/processing/dfe678cdd7dc4579b553b164908bc226/preprocess/SubTool-2-11411543.OBJ"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_5"
+    },
+    {
+      "children": [
+        7
+      ],
+      "name": "/sketchfab-data/processing/dfe678cdd7dc4579b553b164908bc226/preprocess/SubTool-1-11411543.OBJ"
+    },
+    {
+      "mesh": 2,
+      "name": "Object_7"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vending Machine Coca Cola
+* source:	https://sketchfab.com/3d-models/vending-machine-coca-cola-bf0b77b88ece4400965bcbde346a1c7c
+* author:	DoobiDooba (https://sketchfab.com/DoobiDooba)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vending Machine Coca Cola" (https://sketchfab.com/3d-models/vending-machine-coca-cola-bf0b77b88ece4400965bcbde346a1c7c) by DoobiDooba (https://sketchfab.com/DoobiDooba) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

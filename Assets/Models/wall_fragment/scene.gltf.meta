@@ -1,0 +1,196 @@
+fileFormatVersion: 2
+guid: fbf3b4ad08413384e8ff192556a94292
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\wall_fragment\scene.bin
+    assetPath: Assets\Models\wall_fragment\scene.bin
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V1_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V1_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V1_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V1_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V1_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V2_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V2_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V2_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V2_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V2_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V3_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V3_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V3_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V3_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_V3_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_V3_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_Vmetal_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_Vmetal_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_Vmetal_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_Vmetal_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_Vmetal_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_Vmetal_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_no_windows_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_no_windows_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_no_windows_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_no_windows_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Balcony_no_windows_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Balcony_no_windows_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Cables_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Cables_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Cables_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Cables_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Cables_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Cables_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Door_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Door_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Door_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Door_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Door_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Door_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Glass.001_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Glass.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Glass.001_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Glass.001_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Lightbulb_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Lightbulb_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Lightbulb_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Lightbulb_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Lightbulb_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Lightbulb_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\material_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\material_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\material_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\material_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\material_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\material_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_V2_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_V2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_V2_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_V2_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Plain_window_V2_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Plain_window_V2_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Raintube_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Raintube_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Raintube_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Raintube_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Raintube_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Raintube_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Roof_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Roof_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Roof_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Roof_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Roof_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Roof_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Tube_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Tube_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Tube_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Tube_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Tube_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Tube_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Wall_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Wall_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Wall_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Wall_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Wall_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Wall_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Win5_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Win5_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Win5_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Win5_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Win5_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Win5_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Window_PVC_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Window_PVC_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Window_PVC_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Window_PVC_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Window_PVC_normal.png
+    assetPath: Assets\Models\wall_fragment\textures\Window_PVC_normal.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Window_dirty_baseColor.png
+    assetPath: Assets\Models\wall_fragment\textures\Window_dirty_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\wall_fragment\textures\Window_dirty_metallicRoughness.png
+    assetPath: Assets\Models\wall_fragment\textures\Window_dirty_metallicRoughness.png
+  reportItems: []

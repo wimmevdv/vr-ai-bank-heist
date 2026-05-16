@@ -1,0 +1,11 @@
+Model Information:
+* title:	Water Cooler_8MB
+* source:	https://sketchfab.com/3d-models/water-cooler-8mb-9aef3e2a5d00481eb2864550bc781e7c
+* author:	Mehdi Shahsavan (https://sketchfab.com/ahmagh2e)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Water Cooler_8MB" (https://sketchfab.com/3d-models/water-cooler-8mb-9aef3e2a5d00481eb2864550bc781e7c) by Mehdi Shahsavan (https://sketchfab.com/ahmagh2e) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

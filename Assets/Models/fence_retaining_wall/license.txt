@@ -1,0 +1,11 @@
+Model Information:
+* title:	Fence_retaining_wall
+* source:	https://sketchfab.com/3d-models/fence-retaining-wall-b26ac6fb2f5441e09cc1d66594816bec
+* author:	Mehdi Shahsavan (https://sketchfab.com/ahmagh2e)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Fence_retaining_wall" (https://sketchfab.com/3d-models/fence-retaining-wall-b26ac6fb2f5441e09cc1d66594816bec) by Mehdi Shahsavan (https://sketchfab.com/ahmagh2e) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

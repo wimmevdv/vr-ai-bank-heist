@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 56156bc0dcdf2404c95c2e91602710a2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\scene.bin
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\scene.bin
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Acabad_Suelo_2_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Amarillo.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Amarillo.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Asiento_Banquitol_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Asiento_Banquitol_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Azul.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Azul.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\BoteCaffe_1_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\BoteCaffe_1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbhejz_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbhejz_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbhejz_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbhejz_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcbjfbu_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcboagg_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcboagg_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcboagg_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcboagg_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_metallicRoughness.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Donut_vcckafl_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Edit-Donnut_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Edit-Donnut_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Edit-helados_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Edit-helados_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\EnchufeBlanco_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\EnchufeBlanco_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\EnchufeNegro_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\EnchufeNegro_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Frigo_normal.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Frigo_normal.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_Papel.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_Papel.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_Vidrio.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_Vidrio.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_organico.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_organico.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_plastico_Blanco.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_plastico_Blanco.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_plastico_Negro.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Logo_plastico_Negro.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Maquina_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Maquina_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Marca_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Marca_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Marron.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Marron.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Mat_4_baseColor.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Mat_4_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Material.002_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Material.002_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\MicroOndas_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\MicroOndas_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Panel_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Panel_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\PantallaCaja_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\PantallaCaja_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_2_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_3.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Pegatinas_3.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\PlaticoNegro.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\PlaticoNegro.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Respaldo_normal.jpeg
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Respaldo_normal.jpeg
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Trampilla_Azul.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Trampilla_Azul.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Trampilla_Marron.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Trampilla_Marron.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Tramplla_Amarilla.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Tramplla_Amarilla.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Vaso_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Vaso_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\Verde.001_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\Verde.001_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\cafeteria_modular_einst_buck\textures\bote_baseColor.png
+    assetPath: Assets\Models\cafeteria_modular_einst_buck\textures\bote_baseColor.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_specular
+  - type: 2
+    code: 31
+    messages: []
