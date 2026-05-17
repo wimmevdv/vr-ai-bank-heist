@@ -1,0 +1,11 @@
+Model Information:
+* title:	Raqueta de ping pong
+* source:	https://sketchfab.com/3d-models/raqueta-de-ping-pong-2531d5a1d03f46e0a0dbc5d9fd1e416f
+* author:	GIYWBY (https://sketchfab.com/GIYWBY)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Raqueta de ping pong" (https://sketchfab.com/3d-models/raqueta-de-ping-pong-2531d5a1d03f46e0a0dbc5d9fd1e416f) by GIYWBY (https://sketchfab.com/GIYWBY) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

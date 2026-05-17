@@ -1,0 +1,11 @@
+Model Information:
+* title:	Office Sofa -25MB
+* source:	https://sketchfab.com/3d-models/office-sofa-25mb-43f927c7b2b2449ab924f4358a5e4340
+* author:	Mehdi Shahsavan (https://sketchfab.com/ahmagh2e)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Office Sofa -25MB" (https://sketchfab.com/3d-models/office-sofa-25mb-43f927c7b2b2449ab924f4358a5e4340) by Mehdi Shahsavan (https://sketchfab.com/ahmagh2e) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

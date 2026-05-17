@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wall Clock_6MB
+* source:	https://sketchfab.com/3d-models/wall-clock-6mb-b11becc7e2e24f679f8c68be8de06be4
+* author:	Mehdi Shahsavan (https://sketchfab.com/ahmagh2e)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wall Clock_6MB" (https://sketchfab.com/3d-models/wall-clock-6mb-b11becc7e2e24f679f8c68be8de06be4) by Mehdi Shahsavan (https://sketchfab.com/ahmagh2e) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

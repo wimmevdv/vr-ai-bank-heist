@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9831d3436a82a3b4bafaf9d4848a780d
+timeCreated: 1483880014
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Prefab/P_Brick_Fence_Column_01.prefab
+  uploadId: 163209

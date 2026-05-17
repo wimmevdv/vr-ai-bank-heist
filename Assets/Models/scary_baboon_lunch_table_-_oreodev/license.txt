@@ -1,0 +1,11 @@
+Model Information:
+* title:	Scary Baboon Lunch Table - OreoDev
+* source:	https://sketchfab.com/3d-models/scary-baboon-lunch-table-oreodev-c4cfd3345a6a46b8b1da8e207cc35be1
+* author:	OreoDev (https://sketchfab.com/OreoDev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Scary Baboon Lunch Table - OreoDev" (https://sketchfab.com/3d-models/scary-baboon-lunch-table-oreodev-c4cfd3345a6a46b8b1da8e207cc35be1) by OreoDev (https://sketchfab.com/OreoDev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

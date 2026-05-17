@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wall fragment
+* source:	https://sketchfab.com/3d-models/wall-fragment-0643beca4df74633a36b10914314d78d
+* author:	Cubovich (https://sketchfab.com/cube931)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wall fragment" (https://sketchfab.com/3d-models/wall-fragment-0643beca4df74633a36b10914314d78d) by Cubovich (https://sketchfab.com/cube931) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

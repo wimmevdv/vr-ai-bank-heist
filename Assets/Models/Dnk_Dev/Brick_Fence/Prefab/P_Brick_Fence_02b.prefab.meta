@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 25ba94a98b71b934fb8ec6f732f3b9a3
+timeCreated: 1483879704
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80062
+  packageName: Brick Fence
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Brick_Fence/Prefab/P_Brick_Fence_02b.prefab
+  uploadId: 163209
