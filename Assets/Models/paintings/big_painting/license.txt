@@ -1,0 +1,11 @@
+Model Information:
+* title:	Big painting
+* source:	https://sketchfab.com/3d-models/big-painting-a0dc9e4a84e646feae76545a54bb6c0f
+* author:	amapola.r (https://sketchfab.com/amapola.r)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Big painting" (https://sketchfab.com/3d-models/big-painting-a0dc9e4a84e646feae76545a54bb6c0f) by amapola.r (https://sketchfab.com/amapola.r) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
