@@ -10,6 +10,8 @@ TagManager:
   - Car
   - Wall
   - SoundEvent
+  - GuardingZone
+  - Room
   layers:
   - Default
   - TransparentFX

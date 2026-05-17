@@ -1,0 +1,29 @@
+{
+    "BewakerAgent": {
+        "checkpoints": [
+            {
+                "steps": 39704,
+                "file_path": "results\\Bewaker_Phase1_v10\\BewakerAgent\\BewakerAgent-39704.onnx",
+                "reward": 31.725001979619265,
+                "creation_time": 1778590964.11176,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_v10\\BewakerAgent\\BewakerAgent-39704.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 39704,
+            "file_path": "results\\Bewaker_Phase1_v10\\BewakerAgent.onnx",
+            "reward": 31.725001979619265,
+            "creation_time": 1778590964.11176,
+            "auxillary_file_paths": [
+                "results\\Bewaker_Phase1_v10\\BewakerAgent\\BewakerAgent-39704.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cpu"
+    }
+}
