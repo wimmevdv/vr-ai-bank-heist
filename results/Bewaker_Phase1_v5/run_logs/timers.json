@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1778588293",
+        "python_version": "3.9.25 (main, Nov  3 2025, 22:44:01) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\vande\\anaconda3\\envs\\mlagents2\\Scripts\\mlagents-learn config/BewakerAgent.yaml --run-id=Bewaker_Phase1_v5 --force",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cpu",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1778588333"
+    },
+    "total": 39.98894670000001,
+    "count": 1,
+    "self": 0.012588100000009206,
+    "children": {
+        "run_training.setup": {
+            "total": 0.1289821,
+            "count": 1,
+            "self": 0.1289821
+        },
+        "TrainerController.start_learning": {
+            "total": 39.847376499999996,
+            "count": 1,
+            "self": 0.000966399999995815,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 39.8463725,
+                    "count": 1,
+                    "self": 39.8463725
+                },
+                "trainer_threads": {
+                    "total": 1.4000000021496817e-06,
+                    "count": 1,
+                    "self": 1.4000000021496817e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 3.6199999996711085e-05,
+                    "count": 1,
+                    "self": 3.6199999996711085e-05
+                }
+            }
+        }
+    }
+}
