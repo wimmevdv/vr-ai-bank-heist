@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d1ee332230d570f4b8387f441614ad37
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 22061
+  packageName: Van
+  packageVersion: 1
+  assetPath: Assets/van/Materials/van_green.mat
+  uploadId: 22651

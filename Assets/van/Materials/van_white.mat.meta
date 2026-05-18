@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7a709c957d9eaa44b960336b71de91de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 22061
+  packageName: Van
+  packageVersion: 1
+  assetPath: Assets/van/Materials/van_white.mat
+  uploadId: 22651
