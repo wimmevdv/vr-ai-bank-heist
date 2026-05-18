@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables; // Required for XRI 3.x
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 /// <summary>
 /// Handles input verification on an XRSimpleInteractable button.
@@ -43,10 +43,8 @@ public class ExtractionButton : MonoBehaviour
     {
         if (HeistManager.Instance == null) return;
 
-        // Determine current safe state (safely falls back to false if reference is broken)
         bool isReady = safeZone != null && safeZone.IsPlayerInZone;
 
-        // Forward validation request to the master manager
         HeistManager.Instance.TryExecuteExtraction(isReady, errorAudio);
     }
 }

@@ -16,7 +16,9 @@ public class HeistManager : MonoBehaviour
     [Header("Economy & Objectives")]
     [SerializeField] private int currentScore = 0;
 
-    // Encapsulated properties for secure read-only access from other scripts
+    public int SecuredLootCount => securedLootCount;
+    public int TotalLootCount => totalLootCount;
+
     public int CurrentScore => currentScore;
     public float TimeRemaining => timeRemaining;
     public bool IsGameActive { get; private set; } = true;
@@ -86,7 +88,6 @@ public class HeistManager : MonoBehaviour
     {
         if (!IsGameActive) return;
 
-        // Condition 1: Is the player physically standing inside the escape vehicle/zone?
         if (!isPlayerInSafeZone)
         {
             Debug.LogWarning("[HEIST VALIDATION] Extraction denied: Player is outside the Safe Zone.");
@@ -94,7 +95,6 @@ public class HeistManager : MonoBehaviour
             return;
         }
 
-        // Condition 2: Has all loot from the scene been securely deposited into a DropZone?
         if (!AllLootSecured)
         {
             Debug.LogWarning("[HEIST VALIDATION] Extraction denied: Missing required loot objectives.");
@@ -102,7 +102,6 @@ public class HeistManager : MonoBehaviour
             return;
         }
 
-        // Success: All conditions validated successfully
         WinGame();
     }
 

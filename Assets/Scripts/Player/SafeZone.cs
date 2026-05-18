@@ -14,7 +14,6 @@ public class SafeZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the colliding entity represents the VR Player layer
         if (other.CompareTag("Player"))
         {
             IsPlayerInZone = true;
