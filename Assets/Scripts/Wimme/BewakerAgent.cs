@@ -4,31 +4,25 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Bewaker-agent voor Heist and Seek.
-/// FASE 1: leer rondlopen, muren vermijden, hele veld verkennen, deposits ontdekken en bewaken.
+/// FASE 1: leer rondlopen, deposits ontdekken en bewaken.
 ///
-/// Reward-systeem:
-///   - New cell (klein): kleine reward per nieuwe gridcel, dwingt rondlopen
-///   - New room (medium): reward per nieuwe kamer (eenmalig per episode)
-///   - First deposit visit (groot): reward 1e keer dat een deposit gevonden wordt
-///   - Patrol cooldown (medium): herhaalbezoek aan deposits, met cooldown
-///   - All deposits found (mega): bonus als alle deposits ontdekt zijn deze episode
-///   - Deposit line-of-sight (achtergrond): zachte reward voor in-zicht houden van deposits
+/// CRITICAL CHANGE: bewaker krijgt observatie over dichtste niet-bezochte deposit.
+/// Zo weet hij waar te gaan (zoals Obelix zijn doel ziet).
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class GuardAgent : Agent
 {
     [Header("Movement")]
     [SerializeField] private float patrolSpeed = 4f;
-    [SerializeField] private float chaseSpeed = 6f;        // fase 4
+    [SerializeField] private float chaseSpeed = 6f;
     [SerializeField] private float rotationSpeed = 240f;
 
     [Header("Field Settings")]
-    [Tooltip("Lengte/breedte van het speelveld in units. Pas aan zodat het geel gizmo-kader gelijk valt met de bank.")]
     [SerializeField] private float fieldSize = 30f;
-    [Tooltip("Aantal cellen per as voor verkenning-reward (totaal = gridSize x gridSize).")]
     [SerializeField] private int gridSize = 10;
 
     [Header("Spawn")]
@@ -49,13 +43,9 @@ public class GuardAgent : Agent
     [SerializeField] private float newRoomReward = 0.5f;
 
     [Header("Rewards - Deposits")]
-    [Tooltip("Reward eerste keer dat een deposit gevonden wordt (per episode).")]
     [SerializeField] private float firstDepositVisitReward = 1.0f;
-    [Tooltip("Reward bij herhaalbezoek aan deposit, met cooldown.")]
     [SerializeField] private float depositPatrolReward = 0.5f;
-    [Tooltip("Hoe lang voor dezelfde deposit weer patrol-reward geeft (seconden).")]
     [SerializeField] private float depositCooldown = 8f;
-    [Tooltip("Bonus als alle deposits in de scene gevonden zijn deze episode.")]
     [SerializeField] private float allDepositsFoundBonus = 2.0f;
 
     [Header("Deposit Line-of-Sight Reward")]
@@ -74,15 +64,18 @@ public class GuardAgent : Agent
     [SerializeField] private bool disableTimePenaltyInHeuristic = true;
     [SerializeField] private bool drawGridGizmo = true;
     [SerializeField] private bool drawVisionGizmo = true;
+    [Tooltip("Toont lijn naar dichtste niet-bezochte deposit (debug).")]
+    [SerializeField] private bool drawNearestDepositGizmo = true;
 
     // ---------- Internal state ----------
     private Rigidbody rb;
     private bool[,] visitedCells;
     private HashSet<int> visitedRooms;
-    private HashSet<int> discoveredDeposits;       // Deposits die deze episode al voor eerste keer bezocht zijn
-    private Dictionary<int, float> depositLastVisitTime;  // Cooldown timer per deposit
-    private int totalDepositsInScene;              // Totaal aantal deposits in scene
-    private bool allDepositsBonusGiven;            // Voorkomt dubbele bonus
+    private HashSet<int> discoveredDeposits;
+    private Dictionary<int, float> depositLastVisitTime;
+    private List<Transform> depositTransforms;  // Cache van alle deposits in dit environment
+    private int totalDepositsInScene;
+    private bool allDepositsBonusGiven;
     private float idleTimer;
     private Vector3 lastPosition;
     private Vector3 startPositionLocal;
@@ -91,6 +84,8 @@ public class GuardAgent : Agent
     // Debug overlay state
     private float lastRewardGained;
     private string lastRewardSource = "—";
+    private Vector3 lastNearestDepositPos;
+    private bool hasNearestDeposit;
 
     public override void Initialize()
     {
@@ -103,9 +98,23 @@ public class GuardAgent : Agent
         visitedRooms = new HashSet<int>();
         discoveredDeposits = new HashSet<int>();
 
-        // Tel deposits in de scene (voor de "all found" bonus)
-        totalDepositsInScene = GameObject.FindGameObjectsWithTag("Deposit").Length;
-        Debug.Log($"GuardAgent: {totalDepositsInScene} deposits gevonden in scene.");
+        // Cache deposits IN dit environment (zelfde parent), niet globaal!
+        // Belangrijk voor parallel training: elke environment heeft eigen deposits.
+        depositTransforms = new List<Transform>();
+        Transform searchRoot = transform.parent != null ? transform.parent : transform.root;
+        CollectDepositsRecursive(searchRoot, depositTransforms);
+        totalDepositsInScene = depositTransforms.Count;
+
+        Debug.Log($"GuardAgent: {totalDepositsInScene} deposits gevonden in dit environment.");
+    }
+
+    private void CollectDepositsRecursive(Transform parent, List<Transform> list)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.CompareTag("Deposit")) list.Add(child);
+            CollectDepositsRecursive(child, list);
+        }
     }
 
     public override void OnEpisodeBegin()
@@ -136,7 +145,6 @@ public class GuardAgent : Agent
         {
             transform.localPosition = startPositionLocal;
             transform.localRotation = startRotationLocal;
-            Debug.LogWarning("GuardAgent: geen spawn points ingesteld, gebruik start-positie.");
         }
 
         // Reset trackers
@@ -147,10 +155,12 @@ public class GuardAgent : Agent
         allDepositsBonusGiven = false;
         idleTimer = 0f;
         lastPosition = transform.position;
+        hasNearestDeposit = false;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        // === Eigen positie en rotatie (4 floats) ===
         float halfField = fieldSize / 2f;
         sensor.AddObservation(transform.localPosition.x / halfField);
         sensor.AddObservation(transform.localPosition.z / halfField);
@@ -158,7 +168,77 @@ public class GuardAgent : Agent
         float yRot = transform.eulerAngles.y * Mathf.Deg2Rad;
         sensor.AddObservation(Mathf.Sin(yRot));
         sensor.AddObservation(Mathf.Cos(yRot));
-        // Total = 4. Behavior Parameters Vector Observation Space Size = 4
+
+        // === Richting naar dichtste niet-bezochte deposit (3 floats) ===
+        Transform nearest = FindNearestUnvisitedDeposit();
+        if (nearest != null)
+        {
+            hasNearestDeposit = true;
+            lastNearestDepositPos = nearest.position;
+
+            Vector3 worldDelta = nearest.position - transform.position;
+            // Project naar local space van bewaker (links/rechts, voor/achter)
+            Vector3 localDelta = transform.InverseTransformDirection(worldDelta);
+            float dist = worldDelta.magnitude;
+
+            sensor.AddObservation(Mathf.Clamp(localDelta.x / fieldSize, -1f, 1f));
+            sensor.AddObservation(Mathf.Clamp(localDelta.z / fieldSize, -1f, 1f));
+            sensor.AddObservation(Mathf.Clamp(dist / fieldSize, 0f, 1f));
+        }
+        else
+        {
+            hasNearestDeposit = false;
+            sensor.AddObservation(0f);
+            sensor.AddObservation(0f);
+            sensor.AddObservation(1f);  // 1 = "geen" (= ver weg)
+        }
+
+        // === Progress (1 float) ===
+        sensor.AddObservation(totalDepositsInScene > 0
+            ? (float)discoveredDeposits.Count / totalDepositsInScene
+            : 0f);
+
+        // TOTAAL: 4 + 3 + 1 = 8 observations
+        // Zet Vector Observation Space Size in Behavior Parameters op 8!
+    }
+
+    private Transform FindNearestUnvisitedDeposit()
+    {
+        if (depositTransforms == null || depositTransforms.Count == 0) return null;
+
+        Transform nearest = null;
+        float minDist = float.MaxValue;
+
+        foreach (var dep in depositTransforms)
+        {
+            if (dep == null) continue;
+            int id = dep.GetInstanceID();
+            if (discoveredDeposits.Contains(id)) continue;  // Sla bezochte over
+
+            float d = (dep.position - transform.position).sqrMagnitude;
+            if (d < minDist)
+            {
+                minDist = d;
+                nearest = dep;
+            }
+        }
+
+        // Als alle bezocht zijn: kies dichtste in het algemeen (voor patrol)
+        if (nearest == null)
+        {
+            foreach (var dep in depositTransforms)
+            {
+                if (dep == null) continue;
+                float d = (dep.position - transform.position).sqrMagnitude;
+                if (d < minDist)
+                {
+                    minDist = d;
+                    nearest = dep;
+                }
+            }
+        }
+
+        return nearest;
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -209,7 +289,7 @@ public class GuardAgent : Agent
         {
             idleTimer += Time.deltaTime;
             if (idleTimer > 1.5f)
-                AddReward(idlePenalty);  // stil in overlay
+                AddReward(idlePenalty);
         }
         else
         {
@@ -237,7 +317,7 @@ public class GuardAgent : Agent
 
             if (HasLineOfSight(transform.position, col.transform.position))
             {
-                AddReward(depositVisionReward);  // stil in overlay
+                AddReward(depositVisionReward);
                 return;
             }
         }
@@ -270,7 +350,6 @@ public class GuardAgent : Agent
 
     private void OnTriggerEnter(Collider other)
     {
-        // ---------- Room: eenmalig per episode ----------
         if (other.CompareTag("Room"))
         {
             int id = other.GetInstanceID();
@@ -281,19 +360,16 @@ public class GuardAgent : Agent
             }
         }
 
-        // ---------- Deposit: first visit + patrol ----------
         if (other.CompareTag("Deposit"))
         {
             int id = other.GetInstanceID();
 
             if (!discoveredDeposits.Contains(id))
             {
-                // Eerste ontdekking deze episode
                 discoveredDeposits.Add(id);
                 depositLastVisitTime[id] = Time.time;
                 AddRewardWithDebug(firstDepositVisitReward, $"FIRST deposit '{other.name}'");
 
-                // Alle deposits gevonden?
                 if (!allDepositsBonusGiven &&
                     totalDepositsInScene > 0 &&
                     discoveredDeposits.Count >= totalDepositsInScene)
@@ -304,7 +380,6 @@ public class GuardAgent : Agent
             }
             else
             {
-                // Herhaalbezoek - check cooldown
                 float now = Time.time;
                 if (now - depositLastVisitTime[id] >= depositCooldown)
                 {
@@ -314,7 +389,6 @@ public class GuardAgent : Agent
             }
         }
 
-        // ---------- Player (fase 4) ----------
         if (enablePlayerDetection && other.CompareTag("Player"))
         {
             AddRewardWithDebug(playerCaughtReward, "PLAYER CAUGHT");
@@ -412,11 +486,6 @@ public class GuardAgent : Agent
                     if (spawnPoints[i] == null) continue;
                     Gizmos.color = new Color(0f, 1f, 0f, 0.9f);
                     Gizmos.DrawSphere(spawnPoints[i].position, 0.4f);
-                    Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
-                    Gizmos.DrawWireCube(
-                        spawnPoints[i].position,
-                        new Vector3(spawnPositionJitter * 2f, 0.2f, spawnPositionJitter * 2f)
-                    );
                 }
             }
         }
@@ -432,6 +501,14 @@ public class GuardAgent : Agent
             Gizmos.DrawLine(origin, origin + leftDir);
             Gizmos.DrawLine(origin, origin + rightDir);
             Gizmos.DrawLine(origin + leftDir, origin + rightDir);
+        }
+
+        // Lijn naar dichtste niet-bezochte deposit (magenta)
+        if (drawNearestDepositGizmo && Application.isPlaying && hasNearestDeposit)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawLine(transform.position, lastNearestDepositPos);
+            Gizmos.DrawWireSphere(lastNearestDepositPos, 0.5f);
         }
     }
 }
