@@ -1,0 +1,65 @@
+{
+    "BewakerAgent": {
+        "checkpoints": [
+            {
+                "steps": 2199966,
+                "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2199966.onnx",
+                "reward": null,
+                "creation_time": 1779224825.560406,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2199966.pt"
+                ]
+            },
+            {
+                "steps": 2399998,
+                "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2399998.onnx",
+                "reward": null,
+                "creation_time": 1779225366.6303797,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2399998.pt"
+                ]
+            },
+            {
+                "steps": 2599982,
+                "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2599982.onnx",
+                "reward": null,
+                "creation_time": 1779225923.1764207,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2599982.pt"
+                ]
+            },
+            {
+                "steps": 2799966,
+                "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2799966.onnx",
+                "reward": null,
+                "creation_time": 1779226420.7277837,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2799966.pt"
+                ]
+            },
+            {
+                "steps": 2954622,
+                "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2954622.onnx",
+                "reward": null,
+                "creation_time": 1779226932.9704158,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2954622.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2954622,
+            "file_path": "results\\Bewaker_Phase1_V20\\BewakerAgent.onnx",
+            "reward": null,
+            "creation_time": 1779226932.9704158,
+            "auxillary_file_paths": [
+                "results\\Bewaker_Phase1_V20\\BewakerAgent\\BewakerAgent-2954622.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cpu"
+    }
+}

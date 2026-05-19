@@ -7,23 +7,32 @@ using System.Collections.Generic;
 
 /// <summary>
 /// Bewaker-agent voor Heist and Seek.
-/// FASE 1: leer rondlopen, deposits ontdekken en bewaken.
+/// FASE 1: leer navigeren en alle deposits afgaan (patrouille).
 ///
-/// ANTI-CAMPING: patrouille-reward vereist roteren tussen deposits.
-/// LoS-reward alleen tijdens beweging (geen reward voor staren).
-/// PARALLEL: slechts 1 agent toont overlay om het scherm leesbaar te houden.
+/// DESIGN: patrouille = een ketting van Obelix-problemen. De omgeving kiest
+/// telkens EEN doel-deposit; de agent observeert enkel de richting daarheen
+/// (plus de Ray Perception Sensor voor muren/deposits). Bij aankomst volgt
+/// meteen een ander doel.
+///
+/// ANTI WALL-HUGGING: de afstand-shaping is altijd actief tijdens vrije
+/// beweging (bootstrap), MAAR wordt uitgezet zolang de agent fysiek tegen een
+/// muur duwt; daar krijgt hij bovendien een kleine continue straf per stap.
+/// Zo verdwijnt het lokale optimum "tegen de muur in rechte lijn dichtbij"
+/// zonder het leersignaal in open ruimte te slopen.
+///
+/// UITBREIDBAAR (fase 2): een sound cue is gewoon een tijdelijk doel met
+/// voorrang — overschrijf het huidige doel, dezelfde machinerie werkt door.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class GuardAgent : Agent
 {
     [Header("Movement")]
-    [SerializeField] private float patrolSpeed = 4f;
-    [SerializeField] private float chaseSpeed = 6f;
-    [SerializeField] private float rotationSpeed = 240f;
+    [SerializeField] private float patrolSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 180f;
 
     [Header("Field Settings")]
-    [SerializeField] private float fieldSize = 30f;
-    [SerializeField] private int gridSize = 10;
+    [Tooltip("Gebruikt om observaties te normaliseren. ~grootte van de bank.")]
+    [SerializeField] private float fieldSize = 100f;
 
     [Header("Spawn")]
     [SerializeField] private Transform[] spawnPoints;
@@ -31,74 +40,47 @@ public class GuardAgent : Agent
     [SerializeField] private float spawnPositionJitter = 0.5f;
 
     [Header("Episode")]
-    [SerializeField] private int maxStepsPerEpisode = 2000;
+    [Tooltip("Aanrader: ~5000. Lange episodes + sparse reward leren traag.")]
+    [SerializeField] private int maxStepsPerEpisode = 5000;
 
-    [Header("Rewards - Penalties")]
-    [SerializeField] private float timeStepPenalty = -0.0002f;
-    [SerializeField] private float wallHitPenalty = -0.02f;
-    [SerializeField] private float idlePenalty = -0.005f;
-
-    [Header("Rewards - Exploration")]
-    [SerializeField] private float newCellReward = 0.15f;
-    [SerializeField] private float newRoomReward = 0.5f;
-
-    [Header("Rewards - Deposits")]
-    [SerializeField] private float firstDepositVisitReward = 1.0f;
-    [SerializeField] private float depositPatrolReward = 0.5f;
-    [Tooltip("Cooldown per deposit (sec). Wordt sowieso afgedwongen.")]
-    [SerializeField] private float depositCooldown = 15f;
-    [SerializeField] private float allDepositsFoundBonus = 2.0f;
-
-    [Header("Anti-Camping - Rotation Queue")]
-    [Tooltip("Aantal ANDERE deposits dat de bewaker moet aandoen voor dezelfde weer telt. 0 = uit, 2 = moet 2 andere bezoeken eerst.")]
-    [SerializeField] private int patrolRotationSize = 2;
-    [Tooltip("Penalty voor opnieuw triggeren van een deposit in rotation queue. 0 = geen straf, alleen geen reward.")]
-    [SerializeField] private float campingPenalty = -0.05f;
-
-    [Header("Deposit Line-of-Sight Reward")]
-    [SerializeField] private bool enableDepositVisionReward = true;
-    [Tooltip("Reward per frame als deposit in zicht ÉN bewaker beweegt.")]
-    [SerializeField] private float depositVisionReward = 0.0005f;
-    [SerializeField] private float depositVisionRange = 12f;
-    [SerializeField] private float depositVisionHalfAngle = 60f;
-    [Tooltip("Minimale snelheid om LoS-reward te krijgen. Voorkomt staren-en-cashen.")]
-    [SerializeField] private float minSpeedForVisionReward = 1.5f;
-
-    [Header("Rewards: Fase 4 (nog niet activeren)")]
-    [SerializeField] private bool enablePlayerDetection = false;
-    [SerializeField] private float playerVisibleReward = 0.02f;
-    [SerializeField] private float playerCaughtReward = 5f;
+    [Header("Rewards")]
+    [Tooltip("Reward bij het bereiken van het toegewezen doel-deposit.")]
+    [SerializeField] private float reachReward = 1.0f;
+    [Tooltip("Straf per beslissing. Ontmoedigt treuzelen/stilstaan.")]
+    [SerializeField] private float timeStepPenalty = -0.0005f;
+    [Tooltip("Eenmalige tik op het moment dat hij een muur raakt.")]
+    [SerializeField] private float wallHitPenalty = -0.05f;
+    [Tooltip("Continue straf elke stap zolang hij tegen een muur duwt. " +
+             "Botst rechtstreeks tegen de shaping op; opdraaien als hij blijft hangen.")]
+    [SerializeField] private float wallStayPenaltyPerStep = -0.01f;
+    [Tooltip("Veilige potential-based shaping: (vorigeAfstand - nieuweAfstand) * scale. " +
+             "Telescopeert, dus niet te farmen door heen-en-weer te bewegen. " +
+             "Uitgezet zolang hij een muur raakt (geen reward voor muur-hugging).")]
+    [SerializeField] private float distanceShapingScale = 0.05f;
 
     [Header("Debug")]
     [SerializeField] private bool showDebugOverlay = true;
     [SerializeField] private bool disableTimePenaltyInHeuristic = true;
-    [SerializeField] private bool drawGridGizmo = true;
-    [SerializeField] private bool drawVisionGizmo = true;
-    [SerializeField] private bool drawNearestDepositGizmo = true;
+    [SerializeField] private bool drawGizmos = true;
 
     // ---------- Static: één agent claimt de overlay tijdens parallel training ----------
     private static GuardAgent s_overlayOwner;
 
     // ---------- Internal state ----------
     private Rigidbody rb;
-    private bool[,] visitedCells;
-    private HashSet<int> visitedRooms;
-    private HashSet<int> discoveredDeposits;
-    private Dictionary<int, float> depositLastVisitTime;
-    private Queue<int> recentlyVisitedDeposits;
     private List<Transform> depositTransforms;
-    private int totalDepositsInScene;
-    private bool allDepositsBonusGiven;
-    private float idleTimer;
-    private Vector3 lastPosition;
+    private Transform currentTarget;
+    private int currentTargetId;
+    private float prevDistanceToTarget;
+    private int wallContacts;
     private Vector3 startPositionLocal;
     private Quaternion startRotationLocal;
+
+    private bool TouchingWall => wallContacts > 0;
 
     // Debug overlay state
     private float lastRewardGained;
     private string lastRewardSource = "—";
-    private Vector3 lastNearestDepositPos;
-    private bool hasNearestDeposit;
 
     public override void Initialize()
     {
@@ -107,17 +89,11 @@ public class GuardAgent : Agent
         startPositionLocal = transform.localPosition;
         startRotationLocal = transform.localRotation;
 
-        depositLastVisitTime = new Dictionary<int, float>();
-        recentlyVisitedDeposits = new Queue<int>();
-        visitedRooms = new HashSet<int>();
-        discoveredDeposits = new HashSet<int>();
-
         depositTransforms = new List<Transform>();
         Transform searchRoot = transform.parent != null ? transform.parent : transform.root;
         CollectDepositsRecursive(searchRoot, depositTransforms);
-        totalDepositsInScene = depositTransforms.Count;
 
-        Debug.Log($"GuardAgent: {totalDepositsInScene} deposits gevonden in dit environment.");
+        Debug.Log($"GuardAgent: {depositTransforms.Count} deposits gevonden in dit environment.");
     }
 
     private void CollectDepositsRecursive(Transform parent, List<Transform> list)
@@ -131,7 +107,6 @@ public class GuardAgent : Agent
 
     private void OnDestroy()
     {
-        // Release overlay-eigenaarschap zodat een andere agent het kan overnemen
         if (s_overlayOwner == this) s_overlayOwner = null;
     }
 
@@ -141,6 +116,7 @@ public class GuardAgent : Agent
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        wallContacts = 0;
 
         if (spawnPoints != null && spawnPoints.Length > 0)
         {
@@ -164,34 +140,44 @@ public class GuardAgent : Agent
             transform.localRotation = startRotationLocal;
         }
 
-        visitedCells = new bool[gridSize, gridSize];
-        visitedRooms.Clear();
-        discoveredDeposits.Clear();
-        depositLastVisitTime.Clear();
-        recentlyVisitedDeposits.Clear();
-        allDepositsBonusGiven = false;
-        idleTimer = 0f;
-        lastPosition = transform.position;
-        hasNearestDeposit = false;
+        AssignNewTarget(avoidCurrent: false);
+    }
+
+    /// <summary>
+    /// Kies een willekeurig deposit als doel. Reset de shaping-referentie zodat
+    /// de afstandssprong bij een doelwissel geen valse straf/reward geeft.
+    /// </summary>
+    private void AssignNewTarget(bool avoidCurrent)
+    {
+        if (depositTransforms == null || depositTransforms.Count == 0)
+        {
+            currentTarget = null;
+            currentTargetId = 0;
+            prevDistanceToTarget = 0f;
+            return;
+        }
+
+        Transform chosen;
+        if (depositTransforms.Count == 1 || !avoidCurrent || currentTarget == null)
+        {
+            chosen = depositTransforms[Random.Range(0, depositTransforms.Count)];
+        }
+        else
+        {
+            do { chosen = depositTransforms[Random.Range(0, depositTransforms.Count)]; }
+            while (chosen == currentTarget);
+        }
+
+        currentTarget = chosen;
+        currentTargetId = chosen.GetInstanceID();
+        prevDistanceToTarget = Vector3.Distance(transform.position, chosen.position);
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        float halfField = fieldSize / 2f;
-        sensor.AddObservation(transform.localPosition.x / halfField);
-        sensor.AddObservation(transform.localPosition.z / halfField);
-
-        float yRot = transform.eulerAngles.y * Mathf.Deg2Rad;
-        sensor.AddObservation(Mathf.Sin(yRot));
-        sensor.AddObservation(Mathf.Cos(yRot));
-
-        Transform nearest = FindNearestTargetDeposit();
-        if (nearest != null)
+        if (currentTarget != null)
         {
-            hasNearestDeposit = true;
-            lastNearestDepositPos = nearest.position;
-
-            Vector3 worldDelta = nearest.position - transform.position;
+            Vector3 worldDelta = currentTarget.position - transform.position;
             Vector3 localDelta = transform.InverseTransformDirection(worldDelta);
             float dist = worldDelta.magnitude;
 
@@ -201,53 +187,16 @@ public class GuardAgent : Agent
         }
         else
         {
-            hasNearestDeposit = false;
             sensor.AddObservation(0f);
             sensor.AddObservation(0f);
             sensor.AddObservation(1f);
         }
 
-        sensor.AddObservation(totalDepositsInScene > 0
-            ? (float)discoveredDeposits.Count / totalDepositsInScene
-            : 0f);
+        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+        sensor.AddObservation(Mathf.Clamp(localVel.x / patrolSpeed, -1f, 1f));
+        sensor.AddObservation(Mathf.Clamp(localVel.z / patrolSpeed, -1f, 1f));
 
-        // TOTAAL: 8 observations
-    }
-
-    private Transform FindNearestTargetDeposit()
-    {
-        if (depositTransforms == null || depositTransforms.Count == 0) return null;
-
-        Transform nearest = null;
-        float minDist = float.MaxValue;
-
-        foreach (var dep in depositTransforms)
-        {
-            if (dep == null) continue;
-            if (discoveredDeposits.Contains(dep.GetInstanceID())) continue;
-
-            float d = (dep.position - transform.position).sqrMagnitude;
-            if (d < minDist) { minDist = d; nearest = dep; }
-        }
-        if (nearest != null) return nearest;
-
-        foreach (var dep in depositTransforms)
-        {
-            if (dep == null) continue;
-            if (recentlyVisitedDeposits.Contains(dep.GetInstanceID())) continue;
-
-            float d = (dep.position - transform.position).sqrMagnitude;
-            if (d < minDist) { minDist = d; nearest = dep; }
-        }
-        if (nearest != null) return nearest;
-
-        foreach (var dep in depositTransforms)
-        {
-            if (dep == null) continue;
-            float d = (dep.position - transform.position).sqrMagnitude;
-            if (d < minDist) { minDist = d; nearest = dep; }
-        }
-        return nearest;
+        // TOTAAL: 5 observations (Behavior Parameters > Space Size = 5)
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -255,9 +204,7 @@ public class GuardAgent : Agent
         float move = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
         float turn = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f);
 
-        float currentSpeed = (enablePlayerDetection && CanSeePlayer()) ? chaseSpeed : patrolSpeed;
-
-        Vector3 moveStep = transform.forward * move * currentSpeed * Time.deltaTime;
+        Vector3 moveStep = transform.forward * move * patrolSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + moveStep);
 
         float turnStep = turn * rotationSpeed * Time.deltaTime;
@@ -266,176 +213,56 @@ public class GuardAgent : Agent
         bool isHeuristic = GetComponent<Unity.MLAgents.Policies.BehaviorParameters>().BehaviorType
                           == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly;
         if (!(isHeuristic && disableTimePenaltyInHeuristic))
-        {
             AddReward(timeStepPenalty);
-        }
 
-        TrackCellVisit();
-        TrackIdle();
-        TrackDepositVisibility();
+        if (TouchingWall)
+            AddReward(wallStayPenaltyPerStep);
 
-        if (enablePlayerDetection && CanSeePlayer())
-            AddRewardWithDebug(playerVisibleReward, "player visible");
+        ApplyDistanceShaping();
     }
 
-    private void TrackCellVisit()
+    /// <summary>
+    /// Potential-based shaping op het huidige doel. Som telescopeert: naar het
+    /// doel toe en weer weg = netto nul, dus niet exploiteerbaar door wiebelen.
+    /// Uitgezet zolang hij een muur raakt — daar zou de rechte-lijn-gradiënt
+    /// hem alleen maar harder tegen de muur duwen. prevDistance loopt wel door,
+    /// zodat er geen reward-sprong is als hij loskomt.
+    /// </summary>
+    private void ApplyDistanceShaping()
     {
-        float halfField = fieldSize / 2f;
-        int x = Mathf.FloorToInt((transform.localPosition.x + halfField) / fieldSize * gridSize);
-        int z = Mathf.FloorToInt((transform.localPosition.z + halfField) / fieldSize * gridSize);
+        if (currentTarget == null || distanceShapingScale == 0f) return;
 
-        if (x >= 0 && x < gridSize && z >= 0 && z < gridSize && !visitedCells[x, z])
-        {
-            visitedCells[x, z] = true;
-            AddRewardWithDebug(newCellReward, $"new cell [{x},{z}]");
-        }
-    }
+        float newDist = Vector3.Distance(transform.position, currentTarget.position);
+        float delta = prevDistanceToTarget - newDist;
+        prevDistanceToTarget = newDist;
 
-    private void TrackIdle()
-    {
-        float distMoved = Vector3.Distance(transform.position, lastPosition);
-        if (distMoved < 0.05f)
-        {
-            idleTimer += Time.deltaTime;
-            if (idleTimer > 1.5f)
-                AddReward(idlePenalty);
-        }
-        else
-        {
-            idleTimer = 0f;
-            lastPosition = transform.position;
-        }
-    }
-
-    private void TrackDepositVisibility()
-    {
-        if (!enableDepositVisionReward) return;
-        if (rb.linearVelocity.magnitude < minSpeedForVisionReward) return;
-
-        Collider[] nearby = Physics.OverlapSphere(transform.position, depositVisionRange);
-        foreach (var col in nearby)
-        {
-            if (!col.CompareTag("Deposit")) continue;
-
-            Vector3 toDeposit = col.transform.position - transform.position;
-            float dist = toDeposit.magnitude;
-            if (dist < 0.01f) continue;
-            Vector3 dir = toDeposit / dist;
-
-            float angle = Vector3.Angle(transform.forward, dir);
-            if (angle > depositVisionHalfAngle) continue;
-
-            if (HasLineOfSight(transform.position, col.transform.position))
-            {
-                AddReward(depositVisionReward);
-                return;
-            }
-        }
-    }
-
-    private bool HasLineOfSight(Vector3 from, Vector3 to)
-    {
-        Vector3 direction = to - from;
-        float distance = direction.magnitude;
-        RaycastHit[] hits = Physics.RaycastAll(from, direction.normalized, distance);
-        foreach (var h in hits)
-        {
-            if (h.collider.CompareTag("Wall")) return false;
-        }
-        return true;
-    }
-
-    private bool CanSeePlayer()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 15f))
-            return hit.collider.CompareTag("Player");
-        return false;
+        if (!TouchingWall && delta != 0f)
+            AddReward(delta * distanceShapingScale);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
+        {
+            wallContacts++;
             AddRewardWithDebug(wallHitPenalty, "wall hit");
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+            wallContacts = Mathf.Max(0, wallContacts - 1);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Room"))
-        {
-            int rid = other.GetInstanceID();
-            if (!visitedRooms.Contains(rid))
-            {
-                visitedRooms.Add(rid);
-                AddRewardWithDebug(newRoomReward, $"new room '{other.name}'");
-            }
-        }
+        if (!other.CompareTag("Deposit")) return;
+        if (currentTarget == null) return;
+        if (other.transform.GetInstanceID() != currentTargetId) return;
 
-        if (other.CompareTag("Deposit"))
-        {
-            HandleDepositTrigger(other);
-        }
-
-        if (enablePlayerDetection && other.CompareTag("Player"))
-        {
-            AddRewardWithDebug(playerCaughtReward, "PLAYER CAUGHT");
-            EndEpisode();
-        }
-    }
-
-    private void HandleDepositTrigger(Collider other)
-    {
-        int id = other.GetInstanceID();
-
-        if (!discoveredDeposits.Contains(id))
-        {
-            discoveredDeposits.Add(id);
-            depositLastVisitTime[id] = Time.time;
-            RegisterPatrolVisit(id);
-            AddRewardWithDebug(firstDepositVisitReward, $"FIRST '{other.name}'");
-
-            if (!allDepositsBonusGiven &&
-                totalDepositsInScene > 0 &&
-                discoveredDeposits.Count >= totalDepositsInScene)
-            {
-                allDepositsBonusGiven = true;
-                AddRewardWithDebug(allDepositsFoundBonus, "ALL DEPOSITS FOUND!");
-            }
-            return;
-        }
-
-        if (patrolRotationSize > 0 && recentlyVisitedDeposits.Contains(id))
-        {
-            if (campingPenalty != 0f)
-                AddRewardWithDebug(campingPenalty, $"camping '{other.name}'");
-            return;
-        }
-
-        if (depositLastVisitTime.ContainsKey(id) &&
-            Time.time - depositLastVisitTime[id] < depositCooldown)
-        {
-            return;
-        }
-
-        depositLastVisitTime[id] = Time.time;
-        RegisterPatrolVisit(id);
-        AddRewardWithDebug(depositPatrolReward, $"patrol '{other.name}'");
-    }
-
-    private void RegisterPatrolVisit(int depositId)
-    {
-        if (patrolRotationSize <= 0) return;
-
-        if (recentlyVisitedDeposits.Contains(depositId))
-        {
-            var temp = new Queue<int>();
-            foreach (var i in recentlyVisitedDeposits)
-                if (i != depositId) temp.Enqueue(i);
-            recentlyVisitedDeposits = temp;
-        }
-
-        recentlyVisitedDeposits.Enqueue(depositId);
-        while (recentlyVisitedDeposits.Count > patrolRotationSize)
-            recentlyVisitedDeposits.Dequeue();
+        AddRewardWithDebug(reachReward, $"REACHED '{other.name}'");
+        AssignNewTarget(avoidCurrent: true);
     }
 
     private void AddRewardWithDebug(float amount, string source)
@@ -467,7 +294,6 @@ public class GuardAgent : Agent
     {
         if (!showDebugOverlay) return;
 
-        // Slechts één agent toont overlay tijdens parallel training
         if (s_overlayOwner == null) s_overlayOwner = this;
         if (s_overlayOwner != this) return;
 
@@ -481,17 +307,19 @@ public class GuardAgent : Agent
 
         GUI.Label(new Rect(20, 15, 360, 20), $"Step: {StepCount} / {MaxStep}", style);
         GUI.Label(new Rect(20, 35, 360, 20), $"Cumulative reward: {GetCumulativeReward():F3}", style);
-        GUI.Label(new Rect(20, 55, 360, 20),
-            $"Rooms: {visitedRooms?.Count ?? 0}  |  Deposits: {discoveredDeposits?.Count ?? 0}/{totalDepositsInScene}",
-            style);
+
+        string targetName = currentTarget != null ? currentTarget.name : "—";
+        float targetDist = currentTarget != null
+            ? Vector3.Distance(transform.position, currentTarget.position)
+            : 0f;
+        GUI.Label(new Rect(20, 55, 360, 20), $"Target: {targetName}  (d={targetDist:F1})", style);
         GUI.Label(new Rect(20, 75, 360, 20),
-            $"Rotation queue: [{string.Join(",", recentlyVisitedDeposits ?? new Queue<int>())}]",
+            $"Tegen muur: {(TouchingWall ? "JA (shaping uit + straf)" : "nee (shaping aan)")}",
             style);
 
         Color rewardColor = lastRewardGained >= 0
             ? new Color(0.4f, 1f, 0.4f, 1f)
             : new Color(1f, 0.4f, 0.4f, 1f);
-
         GUIStyle rewardStyle = new GUIStyle(style);
         rewardStyle.normal.textColor = rewardColor;
 
@@ -500,64 +328,32 @@ public class GuardAgent : Agent
 
         style.fontSize = 11;
         style.normal.textColor = new Color(0.7f, 0.7f, 0.7f, 1f);
-        GUI.Label(new Rect(20, 155, 360, 20), "Overlay: agent 1 van " + FindObjectsOfType<GuardAgent>().Length, style);
+        GUI.Label(new Rect(20, 155, 360, 20),
+            "Overlay: 1 van " + FindObjectsOfType<GuardAgent>().Length, style);
         GUI.Label(new Rect(20, 175, 360, 20), "WASD = bewegen | Esc om af te sluiten", style);
     }
 
     void OnDrawGizmos()
     {
-        if (drawGridGizmo)
+        if (!drawGizmos) return;
+
+        Vector3 center = transform.parent != null ? transform.parent.position : Vector3.zero;
+        Gizmos.color = new Color(1f, 1f, 0f, 0.4f);
+        Gizmos.DrawWireCube(center + Vector3.up * 0.1f, new Vector3(fieldSize, 0.1f, fieldSize));
+
+        if (spawnPoints != null)
         {
-            Vector3 center = transform.parent != null ? transform.parent.position : Vector3.zero;
-            float halfField = fieldSize / 2f;
-
-            Gizmos.color = new Color(1f, 1f, 0f, 0.8f);
-            Gizmos.DrawWireCube(center + Vector3.up * 0.1f, new Vector3(fieldSize, 0.1f, fieldSize));
-
-            Gizmos.color = new Color(0f, 1f, 1f, 0.25f);
-            float cellSize = fieldSize / gridSize;
-            for (int i = 0; i <= gridSize; i++)
-            {
-                float pos = -halfField + i * cellSize;
-                Gizmos.DrawLine(
-                    center + new Vector3(pos, 0.1f, -halfField),
-                    center + new Vector3(pos, 0.1f, halfField)
-                );
-                Gizmos.DrawLine(
-                    center + new Vector3(-halfField, 0.1f, pos),
-                    center + new Vector3(halfField, 0.1f, pos)
-                );
-            }
-
-            if (spawnPoints != null)
-            {
-                for (int i = 0; i < spawnPoints.Length; i++)
-                {
-                    if (spawnPoints[i] == null) continue;
-                    Gizmos.color = new Color(0f, 1f, 0f, 0.9f);
-                    Gizmos.DrawSphere(spawnPoints[i].position, 0.4f);
-                }
-            }
+            Gizmos.color = new Color(0f, 1f, 0f, 0.9f);
+            foreach (var sp in spawnPoints)
+                if (sp != null) Gizmos.DrawSphere(sp.position, 0.4f);
         }
 
-        if (drawVisionGizmo && enableDepositVisionReward && Application.isPlaying)
+        if (Application.isPlaying && currentTarget != null)
         {
-            Gizmos.color = new Color(1f, 0.5f, 0f, 0.7f);
-            Vector3 origin = transform.position;
-            Quaternion leftRot = Quaternion.AngleAxis(-depositVisionHalfAngle, Vector3.up);
-            Quaternion rightRot = Quaternion.AngleAxis(depositVisionHalfAngle, Vector3.up);
-            Vector3 leftDir = leftRot * transform.forward * depositVisionRange;
-            Vector3 rightDir = rightRot * transform.forward * depositVisionRange;
-            Gizmos.DrawLine(origin, origin + leftDir);
-            Gizmos.DrawLine(origin, origin + rightDir);
-            Gizmos.DrawLine(origin + leftDir, origin + rightDir);
-        }
-
-        if (drawNearestDepositGizmo && Application.isPlaying && hasNearestDeposit)
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(transform.position, lastNearestDepositPos);
-            Gizmos.DrawWireSphere(lastNearestDepositPos, 0.5f);
+            // Groen = shaping aan, rood = tegen muur (shaping uit + straf)
+            Gizmos.color = TouchingWall ? Color.red : Color.green;
+            Gizmos.DrawLine(transform.position, currentTarget.position);
+            Gizmos.DrawWireSphere(currentTarget.position, 0.5f);
         }
     }
 }
