@@ -2,22 +2,31 @@
     "BewakerAgent": {
         "checkpoints": [
             {
-                "steps": 38710,
-                "file_path": "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-38710.onnx",
-                "reward": 0.25000013038516045,
-                "creation_time": 1778589357.7156944,
+                "steps": 499936,
+                "file_path": "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-499936.onnx",
+                "reward": null,
+                "creation_time": 1779041616.4355695,
                 "auxillary_file_paths": [
-                    "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-38710.pt"
+                    "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-499936.pt"
+                ]
+            },
+            {
+                "steps": 500192,
+                "file_path": "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-500192.onnx",
+                "reward": null,
+                "creation_time": 1779041616.497343,
+                "auxillary_file_paths": [
+                    "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-500192.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 38710,
+            "steps": 500192,
             "file_path": "results\\Bewaker_Phase1_v6\\BewakerAgent.onnx",
-            "reward": 0.25000013038516045,
-            "creation_time": 1778589357.7156944,
+            "reward": null,
+            "creation_time": 1779041616.497343,
             "auxillary_file_paths": [
-                "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-38710.pt"
+                "results\\Bewaker_Phase1_v6\\BewakerAgent\\BewakerAgent-500192.pt"
             ]
         }
     },
