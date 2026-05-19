@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac1d7b0422f16594e9703318c929a520
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 22061
+  packageName: Van
+  packageVersion: 1
+  assetPath: Assets/van/Materials/van_yellow.mat
+  uploadId: 22651

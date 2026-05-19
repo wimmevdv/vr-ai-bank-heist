@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a4d8dc44d3d3b8049926dc6a9097124a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 22061
+  packageName: Van
+  packageVersion: 1
+  assetPath: Assets/van/Materials/van_red.mat
+  uploadId: 22651

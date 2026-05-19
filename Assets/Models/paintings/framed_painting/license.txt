@@ -1,0 +1,11 @@
+Model Information:
+* title:	Framed Painting
+* source:	https://sketchfab.com/3d-models/framed-painting-e1076991cf694fcdabec76119730e70b
+* author:	Seth Santos (https://sketchfab.com/Seth7Santos)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Framed Painting" (https://sketchfab.com/3d-models/framed-painting-e1076991cf694fcdabec76119730e70b) by Seth Santos (https://sketchfab.com/Seth7Santos) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
