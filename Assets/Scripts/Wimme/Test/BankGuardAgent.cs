@@ -67,7 +67,11 @@ namespace Wimme.Test
             {
                 if (env.guardSpawn != null)
                 {
-                    transform.position = env.guardSpawn.position;
+                    // Lift by half the BoxCollider height so the agent's feet land on
+                    // the GuardSpawn marker (and the collider doesn't half-sink into
+                    // the floor). Keeps the agent stable across single-floor and
+                    // multi-floor scenes — user just drops GuardSpawn at floor level.
+                    transform.position = env.guardSpawn.position + Vector3.up;
                     transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
                 }
                 env.BeginEpisode(

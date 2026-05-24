@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Wimme.Test
 {
@@ -24,6 +25,12 @@ namespace Wimme.Test
 
         [Header("Distractor sources")]
         public Transform[] distractorPoints;
+
+        [Header("Domain randomization")]
+        [Tooltip("If true, reposition every active deposit to a random NavMesh point inside randomizeBounds each episode. Forces the policy to rely on perception instead of memorizing fixed slot locations.")]
+        public bool randomizeDepositPositions = true;
+        [Tooltip("World-space bounds within which random NavMesh samples are drawn. Set this to encompass your playable area (e.g. the whole bank interior).")]
+        public Bounds randomizeBounds = new Bounds(Vector3.zero, new Vector3(80f, 4f, 80f));
 
         // ----- Runtime state -----
         public List<DepositState> deposits { get; private set; } = new List<DepositState>();
@@ -71,6 +78,16 @@ namespace Wimme.Test
                 d.alarmEndsAt = 0f;
                 bool active = i < activeDepositCount;
                 if (d.t != null) d.t.gameObject.SetActive(active);
+
+                // Domain randomization: warp active deposit to a random NavMesh point
+                // each episode so the policy can't memorize fixed positions. Falls
+                // back to keeping the slot's original position if no valid sample
+                // is found in a few tries.
+                if (active && randomizeDepositPositions && d.t != null)
+                {
+                    if (TrySampleNavMeshPoint(out var pos))
+                        d.t.position = pos + Vector3.up * 0.25f;
+                }
             }
 
             // Random alarm: pick at most one deposit to alarm partway through
@@ -162,6 +179,24 @@ namespace Wimme.Test
             {
                 if (d.t == depositT) { d.stolen = true; if (guard != null) guard.OnItemStolen(d); break; }
             }
+        }
+
+        private bool TrySampleNavMeshPoint(out Vector3 result)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Vector3 sample = randomizeBounds.center + new Vector3(
+                    Random.Range(-randomizeBounds.extents.x, randomizeBounds.extents.x),
+                    Random.Range(-randomizeBounds.extents.y, randomizeBounds.extents.y),
+                    Random.Range(-randomizeBounds.extents.z, randomizeBounds.extents.z));
+                if (NavMesh.SamplePosition(sample, out var hit, 5f, NavMesh.AllAreas))
+                {
+                    result = hit.position;
+                    return true;
+                }
+            }
+            result = Vector3.zero;
+            return false;
         }
     }
 }

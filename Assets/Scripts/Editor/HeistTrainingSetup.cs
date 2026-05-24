@@ -108,12 +108,15 @@ namespace Wimme.EditorTools
             bc.size = new Vector3(1f, 2f, 1f);
             bc.isTrigger = false;
 
-            // Rigidbody — freeze Y position + X/Z rotation to keep upright on ground
+            // Rigidbody — keep upright (freeze X/Z rotation) but LEAVE Y free so the
+            // agent can climb stairs / drop into the basement under gravity. In a
+            // single-floor arena freezing Y was fine; for kean_scene with stairs it
+            // would lock the agent on one floor forever.
             var rb = go.AddComponent<Rigidbody>();
-            rb.constraints = RigidbodyConstraints.FreezePositionY |
-                              RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             rb.useGravity = true;
             rb.interpolation = RigidbodyInterpolation.Interpolate;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
             // BehaviorParameters
             var bp = go.AddComponent<BehaviorParameters>();
@@ -146,24 +149,30 @@ namespace Wimme.EditorTools
 
         private static ScriptedThief CreateScriptedThief(Transform parent)
         {
-            var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            // Capsule primitive — auto-adds CapsuleCollider with the right shape.
+            // Capsule visual + trigger collider matches the prefab the v3/v4 policies
+            // were trained against: the agent's OnTriggerEnter fires on overlap.
+            var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             go.name = "ScriptedThief";
             go.transform.SetParent(parent);
             go.transform.position = new Vector3(0f, 0f, -3f);
-            go.transform.localScale = new Vector3(0.8f, 1.8f, 0.8f);
             go.tag = "Player";
 
             var renderer = go.GetComponent<MeshRenderer>();
             renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Models/red.mat");
 
-            var bc = go.GetComponent<BoxCollider>();
-            bc.size = Vector3.one;
-            bc.isTrigger = false;
+            var cc = go.GetComponent<CapsuleCollider>();
+            cc.isTrigger = true;
+            cc.radius = 0.5f;
+            cc.height = 2f;
+            cc.center = Vector3.zero;
 
             var nav = go.AddComponent<NavMeshAgent>();
             nav.radius = 0.4f;
             nav.height = 1.8f;
             nav.speed = 3.5f;
+            nav.acceleration = 8f;
+            nav.angularSpeed = 360f;
 
             var thief = go.AddComponent<ScriptedThief>();
             return thief;
