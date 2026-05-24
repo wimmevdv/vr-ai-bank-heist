@@ -43,3 +43,23 @@ desktop.ini
 *.zip
 *.tar
 *.7z
+
+# --- ML-Agents training artifacts (NOOIT pushen, te groot + lokaal) ---
+# Note: Wimme's results/Bewaker_Phase1_V16..V20 zijn al getrackt op remote
+# en blijven daar. Deze regel voorkomt NIEUWE results-mappen.
+/training.log
+/training.err
+/training_smoketest.log
+/training_smoketest.err
+/build.log
+Assets/ML-Agents/Timers/
+
+# --- Marwan's local-only result dirs (BankGuard_Curr_v*) ---
+/results/BankGuard_Curr_v1/
+/results/BankGuard_Curr_v2/
+/results/BankGuard_Curr_v3/
+/results/BankGuard_Curr_v4/
+
+# --- Debug / scratch prefab backups ---
+Assets/Prefabs/Training/EnvRoot.prefab.may21_broken
+Assets/Prefabs/Training/EnvRoot.prefab.may21_broken.meta
