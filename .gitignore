@@ -6,6 +6,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+.claude
 
 # --- Visual Studio bestanden ---
 .vs/
@@ -42,4 +43,3 @@ desktop.ini
 *.zip
 *.tar
 *.7z
-.claude
