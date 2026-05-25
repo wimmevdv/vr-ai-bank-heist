@@ -63,8 +63,6 @@ namespace Wimme.Test
         {
             ReadCurriculumParams();
 
-            verticalVelocity = 0f;
-
             if (env != null)
             {
                 if (env.guardSpawn != null)
