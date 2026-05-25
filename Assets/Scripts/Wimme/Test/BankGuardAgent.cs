@@ -6,7 +6,7 @@ using Unity.MLAgents.Sensors;
 
 namespace Wimme.Test
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(CharacterController))]
     public class BankGuardAgent : Agent
     {
         // ---------- Movement ----------
@@ -23,17 +23,18 @@ namespace Wimme.Test
         // ---------- Refs ----------
         [SerializeField] private HeistEnvController env;
 
-        // ---------- Reward weights (Plan C — pure carrot, continuous proximity shaping) ----------
+        // ---------- Reward weights (v5b — high catch reward + proximity dead zone) ----------
         [SerializeField] private float w_progress         = 0.03f;
         [SerializeField] private float w_reachDeposit     = 0.1f;
         [SerializeField] private float w_investigateNoise = 0.5f;
         [SerializeField] private float w_seePlayer        = 0.05f;
-        [SerializeField] private float w_catchPlayer      = 15.0f;
-        [SerializeField] private float w_thiefProximity   = 0.05f;  // continuous: 0.05 * exp(-dist/proxScale)
+        [SerializeField] private float w_catchPlayer      = 100.0f;
+        [SerializeField] private float w_thiefProximity   = 0.05f;
         [SerializeField] private float w_thiefProxScale   = 5.0f;
-        [SerializeField] private float w_itemStolen       = 0.0f;   // OFF: don't punish, only reward chase
+        [SerializeField] private float w_thiefProxDeadZone = 2.0f;
+        [SerializeField] private float w_itemStolen       = 0.0f;
         [SerializeField] private float w_episodeLost      = 0.0f;
-        [SerializeField] private float w_wallHit          = 0.0f;   // OFF: random policy bumps walls a lot
+        [SerializeField] private float w_wallHit          = 0.0f;
         [SerializeField] private float w_timeStep         = -0.001f;
 
         // ---------- Curriculum toggles (driven by Academy EnvironmentParameters) ----------
@@ -44,7 +45,8 @@ namespace Wimme.Test
         private float shapingEnabled   = 1f;
 
         // ---------- Internal ----------
-        private Rigidbody rb;
+        private CharacterController cc;
+        private float verticalVelocity;
         private float pendingMove;
         private float pendingTurn;
         private float prevDistanceToTarget;
@@ -52,7 +54,9 @@ namespace Wimme.Test
 
         public override void Initialize()
         {
-            rb = GetComponent<Rigidbody>();
+            cc = GetComponent<CharacterController>();
+            cc.stepOffset = 0.75f;
+            cc.slopeLimit = 60f;
             MaxStep = maxStepsPerEpisode;
         }
 
@@ -67,12 +71,12 @@ namespace Wimme.Test
             {
                 if (env.guardSpawn != null)
                 {
-                    // Lift by half the BoxCollider height so the agent's feet land on
-                    // the GuardSpawn marker (and the collider doesn't half-sink into
-                    // the floor). Keeps the agent stable across single-floor and
-                    // multi-floor scenes — user just drops GuardSpawn at floor level.
+                    // CharacterController blocks direct position changes while enabled.
+                    cc.enabled = false;
                     transform.position = env.guardSpawn.position + Vector3.up;
                     transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                    cc.enabled = true;
+                    verticalVelocity = 0f;
                 }
                 env.BeginEpisode(
                     activeDepositCount: Mathf.Clamp((int)numDepositsParam, 1, env.deposits.Count),
@@ -119,7 +123,7 @@ namespace Wimme.Test
             float yaw = transform.eulerAngles.y * Mathf.Deg2Rad;
             sensor.AddObservation(Mathf.Sin(yaw));
             sensor.AddObservation(Mathf.Cos(yaw));
-            Vector3 v = rb != null ? rb.linearVelocity / Mathf.Max(patrolSpeed, 0.01f) : Vector3.zero;
+            Vector3 v = cc != null ? cc.velocity / Mathf.Max(patrolSpeed, 0.01f) : Vector3.zero;
             sensor.AddObservation(Mathf.Clamp(v.x, -1f, 1f));
             sensor.AddObservation(Mathf.Clamp(v.z, -1f, 1f));
 
@@ -169,14 +173,15 @@ namespace Wimme.Test
 
             if (TrySeePlayer(out _, out _)) AddReward(w_seePlayer);
 
-            // Continuous proximity-to-thief bonus — gives the policy a smooth gradient
-            // signal even when the thief is out of sight. Random policy drifting close
-            // collects small reward → learns "be near thief" → eventually learns "look
-            // at thief" (see bonus) → "catch thief" (+15 jackpot).
+            // Proximity-to-thief bonus with DEAD ZONE: rewards approach but NOT
+            // lingering at catching distance. Inside the dead zone (< 2m) the ONLY
+            // positive reward is the big catch bonus (+100). This prevents the policy
+            // from learning "follow forever" instead of "commit to catch".
             if (thiefEnabled > 0.5f && env != null && env.thief != null && env.thief.gameObject.activeSelf)
             {
                 float dThief = Vector3.Distance(transform.position, env.thief.transform.position);
-                AddReward(w_thiefProximity * Mathf.Exp(-dThief / Mathf.Max(w_thiefProxScale, 0.01f)));
+                if (dThief > w_thiefProxDeadZone)
+                    AddReward(w_thiefProximity * Mathf.Exp(-dThief / Mathf.Max(w_thiefProxScale, 0.01f)));
             }
 
             // Noise investigation reward
@@ -193,28 +198,24 @@ namespace Wimme.Test
 
         void FixedUpdate()
         {
-            if (rb == null) return;
+            if (cc == null) return;
             float speed = (thiefEnabled > 0.5f && TrySeePlayer(out _, out _)) ? chaseSpeed : patrolSpeed;
 
-            // Project forward onto the ground plane so we can climb ramps.
-            // Cast down from slightly above the feet to find the surface normal.
-            Vector3 desiredDir = transform.forward;
-            Vector3 castOrigin = transform.position + Vector3.up * 0.1f;
-            if (Physics.Raycast(castOrigin, Vector3.down, out RaycastHit hit,
-                                2.0f, ~0, QueryTriggerInteraction.Ignore))
-            {
-                Vector3 projected = Vector3.ProjectOnPlane(transform.forward, hit.normal);
-                if (projected.sqrMagnitude > 1e-4f)
-                    desiredDir = projected.normalized;
-            }
+            // CharacterController handles steps (stepOffset=0.75) and slopes
+            // (slopeLimit=60) automatically — no ground-projection raycast needed.
+            Vector3 move = transform.forward * pendingMove * speed;
 
-            // Drive horizontal velocity; preserve Y so gravity / ramp slide can act.
-            Vector3 desiredVel = desiredDir * pendingMove * speed;
-            Vector3 v = rb.linearVelocity;
-            rb.linearVelocity = new Vector3(desiredVel.x, v.y, desiredVel.z);
+            // Manual gravity — CharacterController doesn't apply physics gravity.
+            if (cc.isGrounded)
+                verticalVelocity = -2f; // small downward keeps grounded flag stable
+            else
+                verticalVelocity += Physics.gravity.y * Time.fixedDeltaTime;
 
-            Quaternion turn = Quaternion.Euler(0f, pendingTurn * rotationSpeed * Time.fixedDeltaTime, 0f);
-            rb.MoveRotation(rb.rotation * turn);
+            move.y = verticalVelocity;
+            cc.Move(move * Time.fixedDeltaTime);
+
+            // Rotation
+            transform.Rotate(0f, pendingTurn * rotationSpeed * Time.fixedDeltaTime, 0f);
         }
 
         private float DistanceToPriorityTarget()

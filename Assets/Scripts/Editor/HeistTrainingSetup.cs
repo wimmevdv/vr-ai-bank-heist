@@ -103,20 +103,18 @@ namespace Wimme.EditorTools
             var renderer = go.GetComponent<MeshRenderer>();
             renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Models/bleu.mat");
 
-            // Replace built-in BoxCollider (set isTrigger=false for normal physics body)
-            var bc = go.GetComponent<BoxCollider>();
-            bc.size = new Vector3(1f, 2f, 1f);
-            bc.isTrigger = false;
+            // BoxCollider removed — CharacterController has its own built-in capsule collider.
 
-            // Rigidbody — keep upright (freeze X/Z rotation) but LEAVE Y free so the
-            // agent can climb stairs / drop into the basement under gravity. In a
-            // single-floor arena freezing Y was fine; for kean_scene with stairs it
-            // would lock the agent on one floor forever.
-            var rb = go.AddComponent<Rigidbody>();
-            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-            rb.useGravity = true;
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            // CharacterController — built-in step climbing (stepOffset=0.75) handles
+            // stairs automatically without ramp colliders. Replaces Rigidbody.
+            Object.DestroyImmediate(go.GetComponent<BoxCollider>()); // CC has its own capsule
+            var cc = go.AddComponent<CharacterController>();
+            cc.height = 2f;
+            cc.radius = 0.4f;
+            cc.center = new Vector3(0f, 1f, 0f); // feet at transform.position
+            cc.stepOffset = 0.75f;
+            cc.slopeLimit = 60f;
+            cc.skinWidth = 0.08f;
 
             // BehaviorParameters
             var bp = go.AddComponent<BehaviorParameters>();
