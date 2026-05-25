@@ -51,6 +51,7 @@ namespace Wimme.Test
         private float pendingTurn;
         private float prevDistanceToTarget;
         private Vector3 lastInvestigatedNoisePos;
+        private int idleSteps;
 
         public override void Initialize()
         {
@@ -64,8 +65,7 @@ namespace Wimme.Test
         {
             ReadCurriculumParams();
 
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            verticalVelocity = 0f;
 
             if (env != null)
             {
@@ -159,6 +159,16 @@ namespace Wimme.Test
             pendingTurn = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f);
 
             AddReward(w_timeStep);
+
+            // Movement reward: discourage camping, encourage active patrol.
+            float speed = cc != null ? cc.velocity.magnitude : 0f;
+            if (speed > 0.5f)
+                AddReward(0.005f);
+            else
+                idleSteps++;
+            if (speed > 0.5f) idleSteps = 0;
+            if (idleSteps > 100)
+                AddReward(-0.01f);
 
             if (shapingEnabled > 0.5f)
             {
