@@ -6,7 +6,7 @@ using Unity.MLAgents.Sensors;
 
 namespace Wimme.Test
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Rigidbody))]
     public class BankGuardAgent : Agent
     {
         // ---------- Movement ----------
@@ -45,8 +45,7 @@ namespace Wimme.Test
         private float shapingEnabled   = 1f;
 
         // ---------- Internal ----------
-        private CharacterController cc;
-        private float verticalVelocity;
+        private Rigidbody rb;
         private float pendingMove;
         private float pendingTurn;
         private float prevDistanceToTarget;
@@ -55,9 +54,8 @@ namespace Wimme.Test
 
         public override void Initialize()
         {
-            cc = GetComponent<CharacterController>();
-            cc.stepOffset = 0.75f;
-            cc.slopeLimit = 60f;
+            rb = GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             MaxStep = maxStepsPerEpisode;
         }
 
@@ -71,12 +69,10 @@ namespace Wimme.Test
             {
                 if (env.guardSpawn != null)
                 {
-                    // CharacterController blocks direct position changes while enabled.
-                    cc.enabled = false;
                     transform.position = env.guardSpawn.position + Vector3.up;
                     transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-                    cc.enabled = true;
-                    verticalVelocity = 0f;
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
                 }
                 env.BeginEpisode(
                     activeDepositCount: Mathf.Clamp((int)numDepositsParam, 1, env.deposits.Count),
@@ -123,7 +119,7 @@ namespace Wimme.Test
             float yaw = transform.eulerAngles.y * Mathf.Deg2Rad;
             sensor.AddObservation(Mathf.Sin(yaw));
             sensor.AddObservation(Mathf.Cos(yaw));
-            Vector3 v = cc != null ? cc.velocity / Mathf.Max(patrolSpeed, 0.01f) : Vector3.zero;
+            Vector3 v = rb != null ? rb.linearVelocity / Mathf.Max(patrolSpeed, 0.01f) : Vector3.zero;
             sensor.AddObservation(Mathf.Clamp(v.x, -1f, 1f));
             sensor.AddObservation(Mathf.Clamp(v.z, -1f, 1f));
 
@@ -161,7 +157,7 @@ namespace Wimme.Test
             AddReward(w_timeStep);
 
             // Movement reward: discourage camping, encourage active patrol.
-            float speed = cc != null ? cc.velocity.magnitude : 0f;
+            float speed = rb != null ? rb.linearVelocity.magnitude : 0f;
             if (speed > 0.5f)
                 AddReward(0.005f);
             else
@@ -208,24 +204,25 @@ namespace Wimme.Test
 
         void FixedUpdate()
         {
-            if (cc == null) return;
+            if (rb == null) return;
             float speed = (thiefEnabled > 0.5f && TrySeePlayer(out _, out _)) ? chaseSpeed : patrolSpeed;
 
-            // CharacterController handles steps (stepOffset=0.75) and slopes
-            // (slopeLimit=60) automatically — no ground-projection raycast needed.
-            Vector3 move = transform.forward * pendingMove * speed;
+            Vector3 desiredDir = transform.forward;
+            Vector3 castOrigin = transform.position + Vector3.up * 0.1f;
+            if (Physics.Raycast(castOrigin, Vector3.down, out RaycastHit hit,
+                                2.0f, ~0, QueryTriggerInteraction.Ignore))
+            {
+                Vector3 projected = Vector3.ProjectOnPlane(transform.forward, hit.normal);
+                if (projected.sqrMagnitude > 1e-4f)
+                    desiredDir = projected.normalized;
+            }
 
-            // Manual gravity — CharacterController doesn't apply physics gravity.
-            if (cc.isGrounded)
-                verticalVelocity = -2f; // small downward keeps grounded flag stable
-            else
-                verticalVelocity += Physics.gravity.y * Time.fixedDeltaTime;
+            Vector3 desiredVel = desiredDir * pendingMove * speed;
+            Vector3 v = rb.linearVelocity;
+            rb.linearVelocity = new Vector3(desiredVel.x, v.y, desiredVel.z);
 
-            move.y = verticalVelocity;
-            cc.Move(move * Time.fixedDeltaTime);
-
-            // Rotation
-            transform.Rotate(0f, pendingTurn * rotationSpeed * Time.fixedDeltaTime, 0f);
+            Quaternion turn = Quaternion.Euler(0f, pendingTurn * rotationSpeed * Time.fixedDeltaTime, 0f);
+            rb.MoveRotation(rb.rotation * turn);
         }
 
         private float DistanceToPriorityTarget()

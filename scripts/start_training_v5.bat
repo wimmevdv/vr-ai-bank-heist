@@ -12,7 +12,7 @@ python scripts\launch_training_v3.py ^
     --env=C:\VR\Builds\VR_project.exe ^
     --no-graphics ^
     --num-envs=1 ^
-    --timeout-wait=300 ^
+    --timeout-wait=600 ^
     --force ^
     > training.log 2> training.err
 
