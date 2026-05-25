@@ -21,7 +21,11 @@ namespace Wimme.Test
 
         void Start()
         {
-            // Auto-find or create camera
+            // Disable ALL other cameras so only the thief POV is visible
+            foreach (var cam in FindObjectsByType<Camera>(FindObjectsSortMode.None))
+                cam.gameObject.SetActive(false);
+
+            // Create first-person camera at eye height, looking straight ahead
             if (playerCamera == null)
             {
                 var camGo = new GameObject("ThiefCamera");
