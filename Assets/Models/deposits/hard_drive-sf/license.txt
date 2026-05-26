@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hard Drive-SF
+* source:	https://sketchfab.com/3d-models/hard-drive-sf-e03abb1edf7a42d69f99ae5aa7a852c0
+* author:	johnrock (https://sketchfab.com/johnrock)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hard Drive-SF" (https://sketchfab.com/3d-models/hard-drive-sf-e03abb1edf7a42d69f99ae5aa7a852c0) by johnrock (https://sketchfab.com/johnrock) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

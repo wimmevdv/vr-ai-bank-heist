@@ -1,0 +1,796 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        13.141595840454102,
+        7.541757583618164,
+        0.028658688068389893
+      ],
+      "min": [
+        13.1031494140625,
+        7.495248317718506,
+        0.026164697483181953
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1536,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0.9999975562095642,
+        0.9999990463256836,
+        1.0
+      ],
+      "min": [
+        -0.9999994039535522,
+        -0.9999990463256836,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        1.5810894966125488,
+        0.3147231936454773
+      ],
+      "min": [
+        -1.5810894966125488,
+        -0.3147231936454773
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 324,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3072,
+      "componentType": 5126,
+      "count": 2436,
+      "max": [
+        13.171355247497559,
+        8.111353874206543,
+        0.05232939496636391
+      ],
+      "min": [
+        12.202523231506348,
+        7.46059513092041,
+        0.003786596469581127
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 32304,
+      "componentType": 5126,
+      "count": 2436,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1024,
+      "componentType": 5126,
+      "count": 2436,
+      "max": [
+        0.48441600799560547,
+        1.6833332777023315
+      ],
+      "min": [
+        -0.48441600799560547,
+        -0.3215879201889038
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1296,
+      "componentType": 5125,
+      "count": 6504,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 61536,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        13.1106595993042,
+        8.085725784301758,
+        0.01038461271673441
+      ],
+      "min": [
+        12.263218879699707,
+        7.614105224609375,
+        -2.910952728862881e-14
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 62400,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        0.7027887105941772,
+        0.9877535104751587,
+        1.0
+      ],
+      "min": [
+        -0.702787458896637,
+        -0.9877465963363647,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 20512,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        0.42372047901153564,
+        0.005256690084934235
+      ],
+      "min": [
+        -0.42372047901153564,
+        -0.005256690084934235
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 27312,
+      "componentType": 5125,
+      "count": 120,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 63264,
+      "componentType": 5126,
+      "count": 434,
+      "max": [
+        13.168074607849121,
+        8.085725784301758,
+        0.03218792378902435
+      ],
+      "min": [
+        12.205803871154785,
+        7.468875408172607,
+        0.03129101172089577
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 68472,
+      "componentType": 5126,
+      "count": 434,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999998211860657,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 21088,
+      "componentType": 5126,
+      "count": 434,
+      "max": [
+        0.48113515973091125,
+        0.3159506320953369
+      ],
+      "min": [
+        -0.48113515973091125,
+        -0.3159506320953369
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 27792,
+      "componentType": 5125,
+      "count": 1176,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 73680,
+      "componentType": 5126,
+      "count": 2728,
+      "max": [
+        13.168074607849121,
+        8.105019569396973,
+        0.05099067464470863
+      ],
+      "min": [
+        12.205803871154785,
+        7.468405246734619,
+        0.026164697483181953
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 106416,
+      "componentType": 5126,
+      "count": 2728,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 24560,
+      "componentType": 5126,
+      "count": 2728,
+      "max": [
+        2.481135129928589,
+        0.318698912858963
+      ],
+      "min": [
+        -2.481135129928589,
+        -0.318698912858963
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 32496,
+      "componentType": 5125,
+      "count": 5460,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 139152,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        13.161911010742188,
+        8.079164505004883,
+        0.037297572940588
+      ],
+      "min": [
+        12.212366104125977,
+        7.480279922485352,
+        0.03218792378902435
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 139440,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.9999999403953552,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9999999403953552,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 46384,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.47477251291275024,
+        0.29944226145744324
+      ],
+      "min": [
+        -0.47477251291275024,
+        -0.29944226145744324
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 54336,
+      "componentType": 5125,
+      "count": 36,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "T3D3 (https://sketchfab.com/T3D3_admin)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/dell-xps-13-plus-closed-12edf9415ccd4683afd8884aa88b40e0",
+      "title": "Dell XPS 13 Plus (Closed)"
+    },
+    "generator": "Sketchfab-14.98.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 54480,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 46576,
+      "byteOffset": 54480,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 139728,
+      "byteOffset": 101056,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 240784,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_texture_transform",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_transmission",
+    "KHR_materials_specular"
+  ],
+  "images": [
+    {
+      "uri": "textures/T3D3_ElectricalFixtures_DellXPS13Plus_Glass_baseColor.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Sticker",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Chassis",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.23455058216100522,
+          0.21586050011389923,
+          0.21586050011389923,
+          1.0
+        ],
+        "metallicFactor": 0.85,
+        "roughnessFactor": 0.4
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Rubber",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    },
+    {
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "extensions": {
+          "KHR_texture_transform": {
+            "offset": [
+              0.5,
+              0.52
+            ],
+            "scale": [
+              1.0500000000000003,
+              1.6999999999999997
+            ]
+          }
+        },
+        "index": 0
+      },
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 3.0
+        },
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0
+        },
+        "KHR_materials_transmission": {
+          "transmissionFactor": 0.0
+        }
+      },
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Glass",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "extensions": {
+            "KHR_texture_transform": {
+              "offset": [
+                0.5,
+                0.52
+              ],
+              "scale": [
+                1.0500000000000003,
+                1.6999999999999997
+              ]
+            }
+          },
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    },
+    {
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 0.85
+        }
+      },
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Other",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.030713443732993628,
+          0.028426039504420793,
+          0.028426039504420793,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.85
+      }
+    },
+    {
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "extensions": {
+          "KHR_texture_transform": {
+            "offset": [
+              0.5,
+              0.52
+            ],
+            "scale": [
+              1.0500000000000003,
+              1.6999999999999997
+            ]
+          }
+        },
+        "index": 0
+      },
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 10.0
+        },
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 0.0
+        }
+      },
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Screen",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "extensions": {
+            "KHR_texture_transform": {
+              "offset": [
+                0.5,
+                0.52
+              ],
+              "scale": [
+                1.0500000000000003,
+                1.6999999999999997
+              ]
+            }
+          },
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Sticker_T3D3_ElectricalFixtures_DellXPS13Plus_Sticker_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Chassis_T3D3_ElectricalFixtures_DellXPS13Plus_Chassis_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Rubber_T3D3_ElectricalFixtures_DellXPS13Plus_Rubber_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Glass_T3D3_ElectricalFixtures_DellXPS13Plus_Glass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Other_T3D3_ElectricalFixtures_DellXPS13Plus_Other_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 17,
+            "POSITION": 16,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Screen_T3D3_ElectricalFixtures_DellXPS13Plus_Screen_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 21,
+            "POSITION": 20,
+            "TEXCOORD_0": 22
+          },
+          "indices": 23,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -5.053215392444312e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        -5.053215392444312e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.30480000376701355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.30480000376701355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.30480000376701355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "ec0c6caee17d40108083813e2ccc4f44.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Sticker"
+    },
+    {
+      "mesh": 0,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Sticker_T3D3_ElectricalFixtures_DellXPS13Plus_Sticker_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Chassis"
+    },
+    {
+      "mesh": 1,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Chassis_T3D3_ElectricalFixtures_DellXPS13Plus_Chassis_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Rubber"
+    },
+    {
+      "mesh": 2,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Rubber_T3D3_ElectricalFixtures_DellXPS13Plus_Rubber_0"
+    },
+    {
+      "children": [
+        10
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Glass"
+    },
+    {
+      "mesh": 3,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Glass_T3D3_ElectricalFixtures_DellXPS13Plus_Glass_0"
+    },
+    {
+      "children": [
+        12
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Other"
+    },
+    {
+      "mesh": 4,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Other_T3D3_ElectricalFixtures_DellXPS13Plus_Other_0"
+    },
+    {
+      "children": [
+        14
+      ],
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Screen"
+    },
+    {
+      "mesh": 5,
+      "name": "T3D3_ElectricalFixtures_DellXPS13Plus_Screen_T3D3_ElectricalFixtures_DellXPS13Plus_Screen_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 33071,
+      "wrapT": 33071
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

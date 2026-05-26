@@ -1,0 +1,316 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.050035566091537476,
+        0.050360020250082016,
+        0.08340360969305038
+      ],
+      "min": [
+        -0.05442655459046364,
+        -0.0624355711042881,
+        -0.0006033852696418762
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 57468,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.9995836615562439,
+        0.9998036623001099,
+        1.0
+      ],
+      "min": [
+        -0.9995856881141663,
+        -0.9997531771659851,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.9999765157699585,
+        0.9998937845230103,
+        0.9999987483024597,
+        1.0
+      ],
+      "min": [
+        -0.9999844431877136,
+        -0.9999976754188538,
+        -0.9999861121177673,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.9886091351509094,
+        0.9865461587905884
+      ],
+      "min": [
+        0.019765406847000122,
+        0.009586509317159653
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 38312,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.9886091351509094,
+        0.9865461587905884
+      ],
+      "min": [
+        0.019765406847000122,
+        0.009586509317159653
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 76624,
+      "componentType": 5126,
+      "count": 4789,
+      "max": [
+        0.9886091351509094,
+        0.9865461587905884
+      ],
+      "min": [
+        0.019765406847000122,
+        0.009586509317159653
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 23844,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Glowbox 3D (https://sketchfab.com/glowbox3d)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bag-of-money-833e0a53433d4dc785644416b5edd32d",
+      "title": "Bag of Money 💰"
+    },
+    "generator": "Sketchfab-16.8.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 95376,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 114936,
+      "byteOffset": 95376,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 114936,
+      "byteOffset": 210312,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 76624,
+      "byteOffset": 325248,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 401872,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/MoneyBag_baseColor.png"
+    },
+    {
+      "uri": "textures/MoneyBag_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/MoneyBag_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MoneyBag",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sphere_MoneyBag_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4,
+            "TEXCOORD_2": 5
+          },
+          "indices": 6,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "70fa1d2b4c4b4aebb0f68d1177d1abf3.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        17.924902871206584,
+        5.551115123125783e-15,
+        98.38037333257998,
+        0.0,
+        98.38037333257867,
+        -1.6292067983592062e-05,
+        -17.924902871206367,
+        0.0,
+        1.6028197280526513e-05,
+        99.99999999999869,
+        -2.9203373941300015e-06,
+        0.0,
+        1.6046448614304154e-09,
+        -0.09276717901229858,
+        6.433213517453851e-09,
+        1.0
+      ],
+      "name": "Sphere"
+    },
+    {
+      "mesh": 0,
+      "name": "Sphere_MoneyBag_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

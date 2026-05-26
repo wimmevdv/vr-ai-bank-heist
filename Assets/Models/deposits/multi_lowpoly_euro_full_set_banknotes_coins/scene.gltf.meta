@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: b7e30389f3ad52745a3d2bbbbc24cc94
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\scene.bin
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\scene.bin
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Euro__Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Euro__Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\2_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Cent_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Cent_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Cent_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Cent_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\1_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\200_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\200_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\200_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\200_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_EURO_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_EURO_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_EURO_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\5_EURO_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_EuroFront_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_EuroFront_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\10_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\20_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\50_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Front_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Front_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Back_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Front.001_baseColor.jpeg
+    assetPath: Assets\Models\deposits\multi_lowpoly_euro_full_set_banknotes_coins\textures\100_Euro_Front.001_baseColor.jpeg
+  reportItems: []

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lowpoly Laptop (Closed)
+* source:	https://sketchfab.com/3d-models/lowpoly-laptop-closed-eeef6b210bf448bba80723d0783939a9
+* author:	CG Buzz (https://sketchfab.com/Tapan_S)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lowpoly Laptop (Closed)" (https://sketchfab.com/3d-models/lowpoly-laptop-closed-eeef6b210bf448bba80723d0783939a9) by CG Buzz (https://sketchfab.com/Tapan_S) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

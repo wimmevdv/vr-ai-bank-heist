@@ -1,0 +1,526 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 58,
+      "max": [
+        0.1511320173740387,
+        0.14222773909568787,
+        0.21029290556907654
+      ],
+      "min": [
+        -0.2267976701259613,
+        -0.17173710465431213,
+        0.06136712804436684
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 696,
+      "componentType": 5126,
+      "count": 58,
+      "max": [
+        0.9655061960220337,
+        0.8012878894805908,
+        0.9965664148330688
+      ],
+      "min": [
+        -0.9655063152313232,
+        -0.8012879490852356,
+        -0.9965664148330688
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 58,
+      "max": [
+        0.9997744560241699,
+        0.034697793424129486,
+        0.9751796722412109,
+        1.0
+      ],
+      "min": [
+        0.21867980062961578,
+        -0.13413399457931519,
+        -0.7237764596939087,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 58,
+      "max": [
+        0.8184967041015625,
+        0.683868408203125
+      ],
+      "min": [
+        0.1815032958984375,
+        0.1529388427734375
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 464,
+      "componentType": 5126,
+      "count": 58,
+      "max": [
+        0.8184967041015625,
+        0.683868408203125
+      ],
+      "min": [
+        0.1815032958984375,
+        0.1529388427734375
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 162,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1392,
+      "componentType": 5126,
+      "count": 712,
+      "max": [
+        0.1491788923740387,
+        0.17152461409568787,
+        0.25082024931907654
+      ],
+      "min": [
+        -0.2311922013759613,
+        -0.17466679215431213,
+        0.03402337804436684
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 9936,
+      "componentType": 5126,
+      "count": 712,
+      "max": [
+        0.9443308115005493,
+        0.999969482421875,
+        0.999374508857727
+      ],
+      "min": [
+        -0.9443320035934448,
+        -0.9999696016311646,
+        -0.9993745684623718
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 928,
+      "componentType": 5126,
+      "count": 712,
+      "max": [
+        1.415802001953125,
+        1.0
+      ],
+      "min": [
+        -0.2388763427734375,
+        7.62939453125e-05
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 648,
+      "componentType": 5125,
+      "count": 2268,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 18480,
+      "componentType": 5126,
+      "count": 1302,
+      "max": [
+        0.3562101423740387,
+        0.27455195784568787,
+        0.24544915556907654
+      ],
+      "min": [
+        -0.3195711076259613,
+        -0.30406132340431213,
+        -0.35513678193092346
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 34104,
+      "componentType": 5126,
+      "count": 1302,
+      "max": [
+        0.9987061023712158,
+        0.9991163611412048,
+        0.9999924302101135
+      ],
+      "min": [
+        -0.998704731464386,
+        -0.9991157650947571,
+        -0.9999924302101135
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 928,
+      "componentType": 5126,
+      "count": 1302,
+      "max": [
+        0.999994158744812,
+        0.9963017106056213,
+        0.6663228273391724,
+        1.0
+      ],
+      "min": [
+        -0.9997760653495789,
+        -0.9986333250999451,
+        -0.6617605090141296,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 6624,
+      "componentType": 5126,
+      "count": 1302,
+      "max": [
+        0.99639892578125,
+        0.9683990478515625
+      ],
+      "min": [
+        0.003204345703125,
+        0.0240936279296875
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 17040,
+      "componentType": 5126,
+      "count": 1302,
+      "max": [
+        0.99639892578125,
+        0.9683990478515625
+      ],
+      "min": [
+        0.003204345703125,
+        0.0240936279296875
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 9720,
+      "componentType": 5125,
+      "count": 7182,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "streetpharmacy (https://sketchfab.com/streetpharmacy)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/cash-sack-c0831bf5c46848eebc868dfbfcf23009",
+      "title": "Cash Sack"
+    },
+    "generator": "Sketchfab-16.28.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 38448,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 27456,
+      "byteOffset": 38448,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 49728,
+      "byteOffset": 65904,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 21760,
+      "byteOffset": 115632,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 137392,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/cash_pile_baseColor.png"
+    },
+    {
+      "uri": "textures/cash_pile_normal.png"
+    },
+    {
+      "uri": "textures/20_dollar_baseColor.png"
+    },
+    {
+      "uri": "textures/binbag2_baseColor.png"
+    },
+    {
+      "uri": "textures/binbag2_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "cash_pile",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "20_dollar",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "binbag2",
+      "normalTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cash Sack _cash_pile_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cash Sack _20_dollar_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cash Sack _binbag2_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 13,
+            "TEXCOORD_1": 14
+          },
+          "indices": 15,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Cash Sack.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6
+      ],
+      "matrix": [
+        -99.99999999999241,
+        1.2246465878873718e-14,
+        3.8941437775530106e-05,
+        0.0,
+        3.894143777553e-05,
+        7.549789982075339e-06,
+        99.99999999999213,
+        0.0,
+        -2.9277502948264183e-12,
+        99.9999999999997,
+        -7.549789970973109e-06,
+        0.0,
+        0.0,
+        34.48068618774414,
+        0.0,
+        1.0
+      ],
+      "name": "Cash Sack "
+    },
+    {
+      "mesh": 0,
+      "name": "Cash Sack _cash_pile_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Cash Sack _20_dollar_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Cash Sack _binbag2_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    }
+  ]
+}

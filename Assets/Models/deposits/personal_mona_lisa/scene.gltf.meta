@@ -1,0 +1,67 @@
+fileFormatVersion: 2
+guid: e372d9ed4bc16904188df740ab8776a1
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\deposits\personal_mona_lisa\scene.bin
+    assetPath: Assets\Models\deposits\personal_mona_lisa\scene.bin
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Gold_baseColor.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Gold_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Gold_metallicRoughness.png
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Gold_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Gold_normal.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Gold_normal.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Obverse_baseColor.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Obverse_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Reverse_baseColor.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Reverse_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Reverse_metallicRoughness.png
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Mona_Lisa_Reverse_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_baseColor.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_metallicRoughness.png
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_normal.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_normal.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_baseColor.png
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_metallicRoughness.png
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_normal.jpeg
+    assetPath: Assets\Models\deposits\personal_mona_lisa\textures\Wood_Floor_normal.jpeg
+  reportItems: []

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chalice made of gold
+* source:	https://sketchfab.com/3d-models/chalice-made-of-gold-10ab0817519343ecb21748b0a8e3542e
+* author:	SebastianSosnowski (https://sketchfab.com/SebastianSosnowski)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chalice made of gold" (https://sketchfab.com/3d-models/chalice-made-of-gold-10ab0817519343ecb21748b0a8e3542e) by SebastianSosnowski (https://sketchfab.com/SebastianSosnowski) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

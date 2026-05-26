@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dell XPS 13 Plus (Closed)
+* source:	https://sketchfab.com/3d-models/dell-xps-13-plus-closed-12edf9415ccd4683afd8884aa88b40e0
+* author:	T3D3 (https://sketchfab.com/T3D3_admin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dell XPS 13 Plus (Closed)" (https://sketchfab.com/3d-models/dell-xps-13-plus-closed-12edf9415ccd4683afd8884aa88b40e0) by T3D3 (https://sketchfab.com/T3D3_admin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Steel table
+* source:	https://sketchfab.com/3d-models/steel-table-17fe99be82d74c25a058159c6e9744a6
+* author:	yoyo83710 (https://sketchfab.com/yoyo83710)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Steel table" (https://sketchfab.com/3d-models/steel-table-17fe99be82d74c25a058159c6e9744a6) by yoyo83710 (https://sketchfab.com/yoyo83710) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

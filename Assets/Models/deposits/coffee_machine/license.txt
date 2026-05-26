@@ -1,0 +1,11 @@
+Model Information:
+* title:	Coffee machine
+* source:	https://sketchfab.com/3d-models/coffee-machine-a6e19d641a2642b4b9ddb68b0c5f3c56
+* author:	DailyArt (https://sketchfab.com/D.art)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Coffee machine" (https://sketchfab.com/3d-models/coffee-machine-a6e19d641a2642b4b9ddb68b0c5f3c56) by DailyArt (https://sketchfab.com/D.art) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

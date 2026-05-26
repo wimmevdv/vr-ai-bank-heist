@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ipad Air4
+* source:	https://sketchfab.com/3d-models/ipad-air4-d8032df3d8c0455394ea527ef4ddaef5
+* author:	ChillLitoStudio (https://sketchfab.com/ChillLitoStudio)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ipad Air4" (https://sketchfab.com/3d-models/ipad-air4-d8032df3d8c0455394ea527ef4ddaef5) by ChillLitoStudio (https://sketchfab.com/ChillLitoStudio) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

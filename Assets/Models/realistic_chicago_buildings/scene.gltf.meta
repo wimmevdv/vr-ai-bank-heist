@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: a5a24abe3c050c240a923c9846eb9664
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\realistic_chicago_buildings\scene.bin
+    assetPath: Assets\Models\realistic_chicago_buildings\scene.bin
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Sidewalks_baseColor.jpeg
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Sidewalks_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Sidewalks_metallicRoughness.png
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Sidewalks_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\BLACK_BUILD_baseColor.jpeg
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\BLACK_BUILD_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\BLACK_BUILD_metallicRoughness.png
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\BLACK_BUILD_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Bricks_baseColor.png
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Bricks_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Bulbs_baseColor.png
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Bulbs_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Building_baseColor.jpeg
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Building_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\realistic_chicago_buildings\textures\Building_metallicRoughness.png
+    assetPath: Assets\Models\realistic_chicago_buildings\textures\Building_metallicRoughness.png
+  reportItems: []

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Necklace b
+* source:	https://sketchfab.com/3d-models/necklace-b-40509546dc084521a0d4e7da5dd9bfe6
+* author:	shah_max (https://sketchfab.com/shah_max)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Necklace b" (https://sketchfab.com/3d-models/necklace-b-40509546dc084521a0d4e7da5dd9bfe6) by shah_max (https://sketchfab.com/shah_max) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

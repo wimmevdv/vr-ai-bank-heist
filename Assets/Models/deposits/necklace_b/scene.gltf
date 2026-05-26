@@ -1,0 +1,1400 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 336,
+      "max": [
+        0.7643769383430481,
+        -0.3341124355792999,
+        5.670793056488037
+      ],
+      "min": [
+        -0.7643769383430481,
+        -1.4241957664489746,
+        -4.54653787612915
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 4032,
+      "componentType": 5126,
+      "count": 336,
+      "max": [
+        0.901068389415741,
+        0.9106816053390503,
+        0.8300759792327881
+      ],
+      "min": [
+        -0.901068389415741,
+        -0.9106816053390503,
+        -0.8300755023956299
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 336,
+      "max": [
+        0.7129326462745667,
+        0.9428812265396118
+      ],
+      "min": [
+        0.11120393127202988,
+        0.18515604734420776
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 336,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 8064,
+      "componentType": 5126,
+      "count": 64506,
+      "max": [
+        12.800524711608887,
+        0.17678005993366241,
+        21.285358428955078
+      ],
+      "min": [
+        -12.800524711608887,
+        -0.7681017518043518,
+        6.4959564208984375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 782136,
+      "componentType": 5126,
+      "count": 64506,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 64506,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999999403953552,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2688,
+      "componentType": 5126,
+      "count": 64506,
+      "max": [
+        0.9970904588699341,
+        0.9957690834999084
+      ],
+      "min": [
+        0.13568423688411713,
+        0.13835154473781586
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1344,
+      "componentType": 5125,
+      "count": 364176,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1556208,
+      "componentType": 5126,
+      "count": 5772,
+      "max": [
+        3.581115484237671,
+        -0.26587727665901184,
+        -0.476489394903183
+      ],
+      "min": [
+        -3.58111572265625,
+        -0.7174344062805176,
+        -7.201193809509277
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1625472,
+      "componentType": 5126,
+      "count": 5772,
+      "max": [
+        0.9988211989402771,
+        1.0,
+        0.9999945163726807
+      ],
+      "min": [
+        -0.9990329742431641,
+        -1.0,
+        -0.999966025352478
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1032096,
+      "componentType": 5126,
+      "count": 5772,
+      "max": [
+        0.9039350152015686,
+        0.9997842907905579,
+        0.9984513521194458,
+        1.0
+      ],
+      "min": [
+        -0.9995512366294861,
+        -0.9997754693031311,
+        -0.9997350573539734,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 518736,
+      "componentType": 5126,
+      "count": 5772,
+      "max": [
+        0.6556710600852966,
+        0.6825418472290039
+      ],
+      "min": [
+        0.0010000000474974513,
+        0.0010000000474974513
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1458048,
+      "componentType": 5125,
+      "count": 28416,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1694736,
+      "componentType": 5126,
+      "count": 17200,
+      "max": [
+        3.845508098602295,
+        -0.21243475377559662,
+        6.12929630279541
+      ],
+      "min": [
+        -3.9137444496154785,
+        -1.1255240440368652,
+        -14.877674102783203
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1901136,
+      "componentType": 5126,
+      "count": 17200,
+      "max": [
+        0.9979051947593689,
+        1.0,
+        0.9979055523872375
+      ],
+      "min": [
+        -0.9979047775268555,
+        -1.0,
+        -0.9979071021080017
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1124448,
+      "componentType": 5126,
+      "count": 17200,
+      "max": [
+        0.9814923405647278,
+        0.997892439365387,
+        0.9776748418807983,
+        1.0
+      ],
+      "min": [
+        -0.9814823865890503,
+        -0.9978925585746765,
+        -0.9770752191543579,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 564912,
+      "componentType": 5126,
+      "count": 17200,
+      "max": [
+        0.9987203478813171,
+        0.9973316192626953
+      ],
+      "min": [
+        0.0973864197731018,
+        0.07195572555065155
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1571712,
+      "componentType": 5125,
+      "count": 86400,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2107536,
+      "componentType": 5126,
+      "count": 7686,
+      "max": [
+        1.3938816785812378,
+        -0.4067145586013794,
+        6.336706161499023
+      ],
+      "min": [
+        -1.3938816785812378,
+        -1.0044491291046143,
+        -4.873899459838867
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2199768,
+      "componentType": 5126,
+      "count": 7686,
+      "max": [
+        1.0,
+        0.9999906420707703,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999906420707703,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1399648,
+      "componentType": 5126,
+      "count": 7686,
+      "max": [
+        1.0,
+        0.043293796479701996,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.03683700039982796,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 702512,
+      "componentType": 5126,
+      "count": 7686,
+      "max": [
+        0.9001948833465576,
+        0.884397566318512
+      ],
+      "min": [
+        0.41729694604873657,
+        0.31917959451675415
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1917312,
+      "componentType": 5125,
+      "count": 43200,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2292000,
+      "componentType": 5126,
+      "count": 1348,
+      "max": [
+        4.355959415435791,
+        1.4400000054592965e-06,
+        6.553286552429199
+      ],
+      "min": [
+        -4.4463887214660645,
+        -0.9172200560569763,
+        -15.621299743652344
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2308176,
+      "componentType": 5126,
+      "count": 1348,
+      "max": [
+        0.9999971985816956,
+        1.0,
+        0.9999991655349731
+      ],
+      "min": [
+        -0.9996545910835266,
+        -0.9999998211860657,
+        -0.9999989867210388
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1522624,
+      "componentType": 5126,
+      "count": 1348,
+      "max": [
+        1.0,
+        0.9305844902992249,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999800324440002,
+        -0.9999998807907104,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 764000,
+      "componentType": 5126,
+      "count": 1348,
+      "max": [
+        0.988457977771759,
+        0.7229442596435547
+      ],
+      "min": [
+        0.23718470335006714,
+        0.0010000000474974513
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2090112,
+      "componentType": 5125,
+      "count": 5952,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2324352,
+      "componentType": 5126,
+      "count": 4575,
+      "max": [
+        0.511810839176178,
+        0.11469545215368271,
+        3.6219265460968018
+      ],
+      "min": [
+        -0.5118111968040466,
+        -1.3419973850250244,
+        -10.247247695922852
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2379252,
+      "componentType": 5126,
+      "count": 4575,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1544192,
+      "componentType": 5126,
+      "count": 4575,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 774784,
+      "componentType": 5126,
+      "count": 4575,
+      "max": [
+        0.91910320520401,
+        0.9970254302024841
+      ],
+      "min": [
+        0.0010000000474974513,
+        0.13835154473781586
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2113920,
+      "componentType": 5125,
+      "count": 25920,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2434152,
+      "componentType": 5126,
+      "count": 29353,
+      "max": [
+        7.111581802368164,
+        -0.4041331708431244,
+        1.6744250059127808
+      ],
+      "min": [
+        -7.111582279205322,
+        -0.7978386878967285,
+        -9.288677215576172
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2786388,
+      "componentType": 5126,
+      "count": 29353,
+      "max": [
+        0.9999892711639404,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9999893307685852,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 1617392,
+      "componentType": 5126,
+      "count": 29353,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 811384,
+      "componentType": 5126,
+      "count": 29353,
+      "max": [
+        0.9972624182701111,
+        0.9760975241661072
+      ],
+      "min": [
+        0.0010000000474974513,
+        0.0010000000474974513
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2217600,
+      "componentType": 5125,
+      "count": 148608,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3138624,
+      "componentType": 5126,
+      "count": 1825,
+      "max": [
+        2.2597827911376953,
+        -0.43817049264907837,
+        -1.2529597282409668
+      ],
+      "min": [
+        -2.2597830295562744,
+        -0.8675523996353149,
+        -5.772525787353516
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3160524,
+      "componentType": 5126,
+      "count": 1825,
+      "max": [
+        1.0,
+        0.9999935030937195,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999935030937195,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 2087040,
+      "componentType": 5126,
+      "count": 1825,
+      "max": [
+        0.9999935030937195,
+        0.9999927878379822,
+        0.9999934434890747,
+        1.0
+      ],
+      "min": [
+        -0.9999935030937195,
+        -1.0,
+        -0.9999935030937195,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1046208,
+      "componentType": 5126,
+      "count": 1825,
+      "max": [
+        0.13476143777370453,
+        0.8190715909004211
+      ],
+      "min": [
+        0.0010000000474974513,
+        0.6853101849555969
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2812032,
+      "componentType": 5125,
+      "count": 10368,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3182424,
+      "componentType": 5126,
+      "count": 7075,
+      "max": [
+        4.964787483215332,
+        10.838139533996582,
+        0.5038774013519287
+      ],
+      "min": [
+        -14.51034164428711,
+        -42.75857925415039,
+        -1.6578235626220703
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3267324,
+      "componentType": 5126,
+      "count": 7075,
+      "max": [
+        0.9808608889579773,
+        0.9808608293533325,
+        1.0
+      ],
+      "min": [
+        -0.9808608889579773,
+        -0.9808608293533325,
+        -0.6416614055633545
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1060808,
+      "componentType": 5126,
+      "count": 7075,
+      "max": [
+        0.9990000128746033,
+        0.9948441982269287
+      ],
+      "min": [
+        0.11120393127202988,
+        0.05058354511857033
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2853504,
+      "componentType": 5125,
+      "count": 8400,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "shah_max (https://sketchfab.com/shah_max)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/necklace-b-40509546dc084521a0d4e7da5dd9bfe6",
+      "title": "Necklace b"
+    },
+    "generator": "Sketchfab-16.45.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2887104,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1117408,
+      "byteOffset": 2887104,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3352224,
+      "byteOffset": 4004512,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2116240,
+      "byteOffset": 7356736,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 9472976,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_transmission"
+  ],
+  "images": [
+    {
+      "uri": "textures/material_baseColor.png"
+    },
+    {
+      "uri": "textures/material_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/material_transmission.png"
+    },
+    {
+      "uri": "textures/Gold_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/Gold_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Gold_normal.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1.0,
+          "transmissionTexture": {
+            "index": 2
+          }
+        }
+      },
+      "name": "material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0829832855899271,
+          0.2933602704115451,
+          0.6353845464144192,
+          1.0
+        ],
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Gold",
+      "normalTexture": {
+        "index": 5
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Big Gem_L_Gem_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "chain_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TANGENT": 6,
+            "TEXCOORD_0": 7
+          },
+          "indices": 8,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Flower_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 10,
+            "POSITION": 9,
+            "TANGENT": 11,
+            "TEXCOORD_0": 12
+          },
+          "indices": 13,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "gem bases_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 15,
+            "POSITION": 14,
+            "TANGENT": 16,
+            "TEXCOORD_0": 17
+          },
+          "indices": 18,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "outer rings_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 20,
+            "POSITION": 19,
+            "TANGENT": 21,
+            "TEXCOORD_0": 22
+          },
+          "indices": 23,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Plate_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 25,
+            "POSITION": 24,
+            "TANGENT": 26,
+            "TEXCOORD_0": 27
+          },
+          "indices": 28,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "rings_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 30,
+            "POSITION": 29,
+            "TANGENT": 31,
+            "TEXCOORD_0": 32
+          },
+          "indices": 33,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "sun rays_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 35,
+            "POSITION": 34,
+            "TANGENT": 36,
+            "TEXCOORD_0": 37
+          },
+          "indices": 38,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "iner ring_L_Gold_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 40,
+            "POSITION": 39,
+            "TANGENT": 41,
+            "TEXCOORD_0": 42
+          },
+          "indices": 43,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "small gem_L_Gem_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 45,
+            "POSITION": 44,
+            "TEXCOORD_0": 46
+          },
+          "indices": 47,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.02539999969303608,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.02539999969303608,
+        0.0,
+        0.0,
+        -0.02539999969303608,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "29038d3544aa47a78d525589f82f8b3c.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19,
+        21
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Big Gem_L"
+    },
+    {
+      "mesh": 0,
+      "name": "Big Gem_L_Gem_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "chain_L"
+    },
+    {
+      "mesh": 1,
+      "name": "chain_L_Gold_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Flower_L"
+    },
+    {
+      "mesh": 2,
+      "name": "Flower_L_Gold_0"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "gem bases_L"
+    },
+    {
+      "mesh": 3,
+      "name": "gem bases_L_Gold_0"
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "outer rings_L"
+    },
+    {
+      "mesh": 4,
+      "name": "outer rings_L_Gold_0"
+    },
+    {
+      "children": [
+        14
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Plate_L"
+    },
+    {
+      "mesh": 5,
+      "name": "Plate_L_Gold_0"
+    },
+    {
+      "children": [
+        16
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "rings_L"
+    },
+    {
+      "mesh": 6,
+      "name": "rings_L_Gold_0"
+    },
+    {
+      "children": [
+        18
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "sun rays_L"
+    },
+    {
+      "mesh": 7,
+      "name": "sun rays_L_Gold_0"
+    },
+    {
+      "children": [
+        20
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "iner ring_L"
+    },
+    {
+      "mesh": 8,
+      "name": "iner ring_L_Gold_0"
+    },
+    {
+      "children": [
+        22
+      ],
+      "matrix": [
+        0.3937009871006012,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3937009871005446,
+        -2.1119768868493762e-07,
+        0.0,
+        0.0,
+        2.1119768868493762e-07,
+        0.3937009871005446,
+        0.0,
+        0.0,
+        1.0371835231781006,
+        0.8807588219642639,
+        1.0
+      ],
+      "name": "small gem_L"
+    },
+    {
+      "children": [
+        23
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        4.686117172241211,
+        2.207080841064453,
+        0.2774413824081421,
+        1.0
+      ],
+      "name": "Object_22"
+    },
+    {
+      "mesh": 9,
+      "name": "small gem_L_Gem_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cash bundle
+* source:	https://sketchfab.com/3d-models/cash-bundle-19c1558f1bbb403b943f338a9a70da89
+* author:	Dekrayzis (https://sketchfab.com/Vincent.Corleone)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cash bundle" (https://sketchfab.com/3d-models/cash-bundle-19c1558f1bbb403b943f338a9a70da89) by Dekrayzis (https://sketchfab.com/Vincent.Corleone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Road_ Block
+* source:	https://sketchfab.com/3d-models/road--block-97291aaabdc74d2fb24b79c878fe4bff
+* author:	bikravnis (https://sketchfab.com/bikravnis)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Road_ Block" (https://sketchfab.com/3d-models/road--block-97291aaabdc74d2fb24b79c878fe4bff) by bikravnis (https://sketchfab.com/bikravnis) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

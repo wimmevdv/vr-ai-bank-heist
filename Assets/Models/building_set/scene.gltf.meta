@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 30e07cce7af6f6f449ae7f85a6811748
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\building_set\scene.bin
+    assetPath: Assets\Models\building_set\scene.bin
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat.1_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat.1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat.1_normal.png
+    assetPath: Assets\Models\building_set\textures\Mat.1_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\material_baseColor.png
+    assetPath: Assets\Models\building_set\textures\material_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\material_normal.png
+    assetPath: Assets\Models\building_set\textures\material_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_0_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_0_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_0_normal.png
+    assetPath: Assets\Models\building_set\textures\Mat_0_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_1_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_2_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_2_normal.png
+    assetPath: Assets\Models\building_set\textures\Mat_2_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_3_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_3_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_4_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_4_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_5_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_5_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_5_normal.png
+    assetPath: Assets\Models\building_set\textures\Mat_5_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_6_baseColor.jpeg
+    assetPath: Assets\Models\building_set\textures\Mat_6_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_7_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_7_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_9_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_9_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_10_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_10_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_10_normal.png
+    assetPath: Assets\Models\building_set\textures\Mat_10_normal.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_11_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_11_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_12_baseColor.jpeg
+    assetPath: Assets\Models\building_set\textures\Mat_12_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_13_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_13_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_14_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_14_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_15_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_15_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_16_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_16_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_17_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_17_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_18_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_18_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_20_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_20_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\6cc06b33.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\6cc06b33.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\6698144e.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\6698144e.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_22_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_22_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\64851714.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\64851714.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_23_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_23_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\fc9645a5.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\fc9645a5.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\91228a79.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\91228a79.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_24_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_24_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\f273f245.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\f273f245.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat.1.6_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat.1.6_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\234264e5.dds_baseColor.png
+    assetPath: Assets\Models\building_set\textures\234264e5.dds_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\walls2_baseColor.png
+    assetPath: Assets\Models\building_set\textures\walls2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_25_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_25_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\floor_baseColor.png
+    assetPath: Assets\Models\building_set\textures\floor_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_26_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_26_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_27_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_27_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_28_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_28_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_29_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_29_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_30_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_30_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\building_set\textures\Mat_31_baseColor.png
+    assetPath: Assets\Models\building_set\textures\Mat_31_baseColor.png
+  reportItems: []

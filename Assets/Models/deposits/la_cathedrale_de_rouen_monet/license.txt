@@ -1,0 +1,11 @@
+Model Information:
+* title:	La cathédrale de Rouen, Monet
+* source:	https://sketchfab.com/3d-models/la-cathedrale-de-rouen-monet-7a03823aa82047b8bf6d53c870b11dcb
+* author:	AnDeNan (https://sketchfab.com/saladeen)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "La cathédrale de Rouen, Monet" (https://sketchfab.com/3d-models/la-cathedrale-de-rouen-monet-7a03823aa82047b8bf6d53c870b11dcb) by AnDeNan (https://sketchfab.com/saladeen) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

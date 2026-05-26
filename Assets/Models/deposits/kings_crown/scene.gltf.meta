@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: a7ecc96d4ca18dd46a7629e99d6a3de2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\deposits\kings_crown\scene.bin
+    assetPath: Assets\Models\deposits\kings_crown\scene.bin
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BseTower_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\BseTower_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BseTower_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BseTower_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BseTower_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BseTower_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseMetal_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseMetal_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseMetal_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseMetal_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseMetal_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseMetal_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\GemsCenterBottom_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\GemsCenterBottom_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\GemsCenterBottom_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\GemsCenterBottom_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseFreska_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseFreska_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseFreska_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseFreska_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseFreska_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseFreska_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Ruby_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\Ruby_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Ruby_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Ruby_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Ruby_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Ruby_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Material_023_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\Material_023_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Material_023_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Material_023_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Material_023_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Material_023_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseRing_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseRing_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseRing_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseRing_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseRing_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseRing_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems1_top1_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems1_top1_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems1_top1_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems1_top1_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems2_top2_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems2_top2_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems2_top2_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems2_top2_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems3_top3_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems3_top3_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems3_top3_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems3_top3_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems3_top3_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems3_top3_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems4_top4_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems4_top4_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems4_top4_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems4_top4_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems4_top4_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems4_top4_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\GemsTop_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\GemsTop_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\GemsTop_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\GemsTop_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\GemsTop_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\GemsTop_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\Gems5_Bottom_top1_normal.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseCloth_baseColor.jpeg
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseCloth_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseCloth_metallicRoughness.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseCloth_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Models\deposits\kings_crown\textures\BaseCloth_normal.png
+    assetPath: Assets\Models\deposits\kings_crown\textures\BaseCloth_normal.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_specular
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
+  - type: 2
+    code: 31
+    messages: []
