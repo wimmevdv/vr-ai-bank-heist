@@ -12,7 +12,11 @@ namespace Wimme.Test
         public Transform dropOffZone;
         public BankGuardAgent guard;
         public ScriptedThief thief;
+        [Tooltip("Drag the VR player (XR Origin root) here for live play. Leave empty for training with ScriptedThief.")]
+        public Transform vrPlayer;
         public Transform[] depositSlots;
+
+        public Transform thiefTarget => vrPlayer != null ? vrPlayer : (thief != null ? thief.transform : null);
 
         [Header("Episode")]
         public float episodeSeconds = 60f;
@@ -99,9 +103,8 @@ namespace Wimme.Test
                 RegisterNoise(deposits[idx].t.position, 1f);
             }
 
-            // Reset thief — random NavMesh spawn if randomization is on,
-            // otherwise pick from the fixed thiefSpawns array.
-            if (thief != null)
+            // Reset thief — skip when a VR player is assigned (real human controls position).
+            if (vrPlayer == null && thief != null)
             {
                 thief.gameObject.SetActive(thiefEnabled);
                 if (thiefEnabled)
