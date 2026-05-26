@@ -99,14 +99,26 @@ namespace Wimme.Test
                 RegisterNoise(deposits[idx].t.position, 1f);
             }
 
-            // Reset thief
+            // Reset thief — random NavMesh spawn if randomization is on,
+            // otherwise pick from the fixed thiefSpawns array.
             if (thief != null)
             {
                 thief.gameObject.SetActive(thiefEnabled);
-                if (thiefEnabled && thiefSpawns != null && thiefSpawns.Length > 0)
+                if (thiefEnabled)
                 {
-                    var s = thiefSpawns[Random.Range(0, thiefSpawns.Length)];
-                    thief.ResetAt(s.position, this);
+                    Vector3 spawnPos = Vector3.zero;
+                    bool found = false;
+                    if (randomizeDepositPositions && TrySampleNavMeshPoint(out var rndPos))
+                    {
+                        spawnPos = rndPos;
+                        found = true;
+                    }
+                    if (!found && thiefSpawns != null && thiefSpawns.Length > 0)
+                    {
+                        spawnPos = thiefSpawns[Random.Range(0, thiefSpawns.Length)].position;
+                        found = true;
+                    }
+                    if (found) thief.ResetAt(spawnPos, this);
                 }
             }
         }
