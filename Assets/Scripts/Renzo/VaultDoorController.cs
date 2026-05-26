@@ -1,92 +1,42 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(HingeJoint))]
 public class VaultDoorController : MonoBehaviour
 {
-    [Header("Hinge")]
-    [Tooltip("Lokale positie van het scharnier op de deur (rand waar de deur draait).")]
+    [Header("Scharnier (lokale as)")]
+    [Tooltip("Lokaal punt waarrond de deur draait (op de scharnierrand).")]
     public Vector3 hingeAnchor = new Vector3(-0.5f, 0f, 0f);
 
-    [Tooltip("As waarrond de deur draait. (0,1,0) = Y-as, deur blijft op zelfde hoogte.")]
+    [Tooltip("Lokale as waarrond de deur draait. (0,1,0) = Y-as.")]
     public Vector3 hingeAxis = new Vector3(0f, 1f, 0f);
 
-    [Header("Openings limieten (graden)")]
-    public float minAngle = 0f;
-    public float maxAngle = 100f;
-
-    [Header("Fysica")]
-    public float mass = 40f;
-    public float angularDrag = 2f;
-
     [Header("Auto-open (na keycard scan)")]
-    [Tooltip("Doel hoek waar de deur automatisch naartoe draait.")]
+    [Tooltip("Hoek (graden) waar de deur naartoe draait t.o.v. de start-rotatie.")]
     public float autoOpenAngle = 95f;
 
-    [Tooltip("Kracht waarmee de motor de deur opent.")]
-    public float motorForce = 200f;
+    [Tooltip("Snelheid waarmee de deur opendraait (graden/sec).")]
+    public float openSpeed = 30f;
 
-    [Tooltip("Snelheid waarmee de motor draait (graden/sec).")]
-    public float motorSpeed = 40f;
-
-    [Tooltip("Optionele veer om deur dicht te houden voor scan. 0 = uit.")]
-    public float closedSpringForce = 0f;
-    public float closedSpringDamper = 1f;
+    [Tooltip("Optionele vertraging voor het openen begint (sec).")]
+    public float openDelay = 0f;
 
     private Rigidbody rb;
     private HingeJoint hinge;
     private bool isOpening = false;
+    private Quaternion closedLocalRotation;
 
-    void Reset() { Configure(); }
-    void Awake() { Configure(); }
-
-    void Configure()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         hinge = GetComponent<HingeJoint>();
+        closedLocalRotation = transform.localRotation;
 
-        rb.mass = mass;
-        rb.angularDamping = angularDrag;
-        rb.useGravity = false;
-        rb.isKinematic = false;
-        rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        rb.constraints = RigidbodyConstraints.FreezePositionY;
-
-        hinge.anchor = hingeAnchor;
-        hinge.axis = hingeAxis;
-        hinge.useLimits = true;
-
-        var limits = hinge.limits;
-        limits.min = Mathf.Min(minAngle, maxAngle);
-        limits.max = Mathf.Max(minAngle, maxAngle);
-        limits.bounciness = 0f;
-        hinge.limits = limits;
-
-        if (closedSpringForce > 0f)
+        if (rb != null)
         {
-            hinge.useSpring = true;
-            var spring = hinge.spring;
-            spring.spring = closedSpringForce;
-            spring.damper = closedSpringDamper;
-            spring.targetPosition = 0f;
-            hinge.spring = spring;
-        }
-        else
-        {
-            hinge.useSpring = false;
-        }
-
-        hinge.useMotor = false;
-
-        var grab = GetComponent<XRGrabInteractable>();
-        if (grab != null)
-        {
-            grab.movementType = XRBaseInteractable.MovementType.VelocityTracking;
-            grab.throwOnDetach = false;
-            grab.trackPosition = true;
-            grab.trackRotation = true;
+            rb.useGravity = false;
+            rb.isKinematic = true;
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
         }
     }
 
@@ -94,33 +44,41 @@ public class VaultDoorController : MonoBehaviour
     {
         if (isOpening) return;
         isOpening = true;
-
-        hinge.useSpring = false;
-
-        bool openPositive = autoOpenAngle >= 0f;
-        float targetSpeed = openPositive ? motorSpeed : -motorSpeed;
-
-        var motor = hinge.motor;
-        motor.force = motorForce;
-        motor.targetVelocity = targetSpeed;
-        motor.freeSpin = false;
-        hinge.motor = motor;
-        hinge.useMotor = true;
+        StartCoroutine(OpenRoutine());
     }
 
-    void FixedUpdate()
+    private IEnumerator OpenRoutine()
     {
-        if (!isOpening) return;
+        if (openDelay > 0f) yield return new WaitForSeconds(openDelay);
 
-        float current = hinge.angle;
-        bool reached = (autoOpenAngle >= 0f && current >= autoOpenAngle - 1f)
-                    || (autoOpenAngle < 0f && current <= autoOpenAngle + 1f);
+        if (hinge != null) hinge.useMotor = false;
+        if (rb != null) rb.isKinematic = true;
 
-        if (reached)
+        Vector3 axisLocal = hingeAxis.sqrMagnitude > 0f ? hingeAxis.normalized : Vector3.up;
+        Vector3 pivotWorld = transform.TransformPoint(hingeAnchor);
+        Vector3 axisWorld = transform.TransformDirection(axisLocal);
+
+        float rotated = 0f;
+        float target = autoOpenAngle;
+        float dir = Mathf.Sign(target);
+        float absTarget = Mathf.Abs(target);
+
+        while (rotated < absTarget)
         {
-            var motor = hinge.motor;
-            motor.targetVelocity = 0f;
-            hinge.motor = motor;
+            float step = openSpeed * Time.deltaTime;
+            if (rotated + step > absTarget) step = absTarget - rotated;
+
+            transform.RotateAround(pivotWorld, axisWorld, step * dir);
+            rotated += step;
+            yield return null;
         }
+    }
+
+    [ContextMenu("Reset to Closed")]
+    public void ResetToClosed()
+    {
+        StopAllCoroutines();
+        transform.localRotation = closedLocalRotation;
+        isOpening = false;
     }
 }
