@@ -7,10 +7,17 @@ using UnityEngine;
 /// een controller (polshorloge-stijl).
 ///
 /// Horloge-gedrag: het paneel is alleen zichtbaar als de speler met de
-/// pols naar zijn gezicht draait. Dat gebeurt door de hoek te meten
-/// tussen de canvas-normal (transform.forward — de richting waarin de
-/// tekst leesbaar is) en de richting naar de hoofd-camera. Boven een
-/// drempel fadet hij in, eronder fadet hij uit.
+/// pols naar zijn gezicht draait. De zichtbaarheidscheck gebruikt de
+/// oorspronkelijke (in de Inspector ingestelde) localRotation als
+/// referentie voor "waar zou de wijzerplaat-normal staan zonder
+/// billboarding" — zo blijft de check correct ongeacht hoe de hand
+/// kantelt.
+///
+/// Billboarding: de wereldrotatie wordt in LateUpdate overschreven zodat
+/// het Canvas altijd recht naar de hoofd-camera kijkt met Vector3.up als
+/// up-vector. Position erft nog steeds van de parent (de controller),
+/// dus het paneeltje volgt de hand zoals een horloge. Maar de tekst
+/// staat altijd horizontaal leesbaar.
 /// </summary>
 [RequireComponent(typeof(CanvasGroup))]
 public class HeistHUD : MonoBehaviour
@@ -47,12 +54,25 @@ public class HeistHUD : MonoBehaviour
              "vanaf de overkant van de kamer.")]
     [SerializeField] private float maxDistance = 1.0f;
 
+    [Tooltip("Zet uit als je het Canvas NIET wil laten billboarden naar de " +
+             "camera (bv. om de oude pols-vaste oriëntatie te debuggen).")]
+    [SerializeField] private bool billboardToCamera = true;
+
     private CanvasGroup canvasGroup;
+    private Quaternion originalLocalRotation;
+    private bool hasOriginalRotation;
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // start onzichtbaar
+
+        // Onthoud de oriëntatie die in de Inspector is gezet — dit is onze
+        // referentie voor "naar welke kant kijkt de horloge-wijzerplaat
+        // logischerwijs". We gebruiken dit later voor de zichtbaarheidscheck,
+        // omdat na billboarding transform.forward niet meer hand-gerelateerd is.
+        originalLocalRotation = transform.localRotation;
+        hasOriginalRotation = true;
 
         if (headCamera == null && Camera.main != null)
             headCamera = Camera.main.transform;
@@ -62,6 +82,26 @@ public class HeistHUD : MonoBehaviour
     {
         UpdateText();
         UpdateVisibility();
+    }
+
+    /// <summary>
+    /// Billboarding in LateUpdate i.p.v. Update: in XR wordt de controller-
+    /// transform door het XR-systeem geüpdatet ergens tussen Update en
+    /// LateUpdate. Als we hier eerder zouden schrijven, zou de XR-pose-update
+    /// onze rotatie overschrijven en zou het Canvas opnieuw met de hand
+    /// meekantelen — precies wat we proberen te voorkomen.
+    /// </summary>
+    private void LateUpdate()
+    {
+        if (!billboardToCamera) return;
+        if (headCamera == null) return;
+
+        Vector3 fromCamera = transform.position - headCamera.position;
+        if (fromCamera.sqrMagnitude < 0.0001f) return; // camera staat op exact dezelfde plek
+
+        // forward = van camera naar canvas → canvas-voorkant kijkt naar camera
+        // up = Vector3.up → tekst staat altijd horizontaal in de wereld
+        transform.rotation = Quaternion.LookRotation(fromCamera, Vector3.up);
     }
 
     private void UpdateText()
@@ -89,8 +129,6 @@ public class HeistHUD : MonoBehaviour
 
     private void UpdateVisibility()
     {
-        // Geen camera-referentie (gebeurt soms 1 frame na scene-load in VR) →
-        // probeer hem opnieuw te pakken, anders gewoon vol zichtbaar tonen.
         if (headCamera == null)
         {
             if (Camera.main != null) headCamera = Camera.main.transform;
@@ -107,9 +145,19 @@ public class HeistHUD : MonoBehaviour
         }
         else
         {
-            // transform.forward = de canvas-normal (de richting waar de tekst
-            // naartoe "wijst"). Dot ≈ 1 → canvas wijst recht naar camera.
-            float dot = Vector3.Dot(transform.forward, toCamera.normalized);
+            // Bereken wat de canvas-forward ZOU zijn als we niet billboardden.
+            // Dat is de richting waarin de "horloge-wijzerplaat" volgens de
+            // Inspector-instelling kijkt, meegedraaid met de parent (controller).
+            // Op die manier blijft de zichtbaarheidscheck pols-gebaseerd, ook al
+            // is de zichtbare rotatie billboard-gebaseerd.
+            Quaternion handBasedRotation = hasOriginalRotation
+                ? (transform.parent != null
+                    ? transform.parent.rotation * originalLocalRotation
+                    : originalLocalRotation)
+                : transform.rotation;
+            Vector3 handBasedForward = handBasedRotation * Vector3.forward;
+
+            float dot = Vector3.Dot(handBasedForward, toCamera.normalized);
             float minDot = Mathf.Cos(visibleAngleDegrees * Mathf.Deg2Rad);
             shouldShow = dot >= minDot;
         }
