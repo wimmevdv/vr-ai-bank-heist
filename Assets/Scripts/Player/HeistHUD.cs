@@ -43,7 +43,7 @@ public class HeistHUD : MonoBehaviour
     [Tooltip("Hoek (graden) tussen pols-canvas en kijkrichting waaronder hij " +
              "nog zichtbaar is. Kleiner = strenger (moet recht ervoor kijken). " +
              "60° is een prettige sweet-spot voor een horloge.")]
-    [Range(15f, 90f)]
+    [Range(15f, 180f)]
     [SerializeField] private float visibleAngleDegrees = 60f;
 
     [Tooltip("Hoe snel hij fade-in/out doet. Hoger = snapt sneller.")]
