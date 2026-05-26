@@ -31,6 +31,11 @@ namespace Wimme.Test
         [SerializeField] private float w_wallHit          = 0.0f;
         [SerializeField] private float w_timeStep         = -0.001f;
 
+        [Header("V7 features (requires retrain)")]
+        [Tooltip("Enable vertical awareness + last-known-position tracking. Adds 4 observations (total 17). Requires retraining — leave OFF to use v5b models.")]
+        [SerializeField] private bool enableV7Observations = false;
+        [SerializeField] private float lastKnownMemorySeconds = 10f;
+
         private float numDepositsParam, audioEnabled, alarmsEnabled, thiefEnabled, shapingEnabled = 1f;
         private Rigidbody rb;
         private float smoothedMove, smoothedTurn;
@@ -38,6 +43,10 @@ namespace Wimme.Test
         private float prevDistanceToTarget;
         private Vector3 lastInvestigatedNoisePos;
         private int idleSteps;
+
+        private Vector3 lastKnownPlayerPos;
+        private float lastKnownPlayerTime;
+        private bool hasLastKnownPos;
 
         public override void Initialize()
         {
@@ -66,6 +75,8 @@ namespace Wimme.Test
                     thiefEnabled > 0.5f, audioEnabled > 0.5f, alarmsEnabled > 0.5f);
 
             lastInvestigatedNoisePos = Vector3.positiveInfinity;
+            hasLastKnownPos = false;
+            lastKnownPlayerPos = Vector3.zero;
             prevDistanceToTarget = DistanceToPriorityTarget();
         }
 
@@ -111,8 +122,35 @@ namespace Wimme.Test
             sensor.AddObservation(Mathf.Clamp(pLocal.z / half, -1f, 1f));
             sensor.AddObservation(Mathf.Clamp(pDist / worldSize, 0f, 1f));
 
+            if (see)
+            {
+                lastKnownPlayerPos = env.thiefTarget.position;
+                lastKnownPlayerTime = Time.time;
+                hasLastKnownPos = true;
+            }
+
             sensor.AddObservation(env != null ? Mathf.Clamp01(env.timeLeft / Mathf.Max(env.episodeSeconds, 0.01f)) : 0f);
-            // TOTAL: 13
+            // base: 13
+
+            if (enableV7Observations)
+            {
+                sensor.AddObservation(Mathf.Clamp(pLocal.y / half, -1f, 1f));
+
+                bool lkValid = hasLastKnownPos && !see && (Time.time - lastKnownPlayerTime) < lastKnownMemorySeconds;
+                sensor.AddObservation(lkValid ? 1f : 0f);
+                if (lkValid)
+                {
+                    Vector3 lkLocal = transform.InverseTransformDirection(lastKnownPlayerPos - transform.position);
+                    sensor.AddObservation(Mathf.Clamp(lkLocal.x / half, -1f, 1f));
+                    sensor.AddObservation(Mathf.Clamp(lkLocal.z / half, -1f, 1f));
+                }
+                else
+                {
+                    sensor.AddObservation(0f);
+                    sensor.AddObservation(0f);
+                }
+                // v7 total: 17
+            }
         }
 
         public override void OnActionReceived(ActionBuffers actions)
@@ -136,9 +174,10 @@ namespace Wimme.Test
 
             if (TrySeePlayer(out _, out _)) AddReward(w_seePlayer);
 
-            if (thiefEnabled > 0.5f && env != null && env.thief != null && env.thief.gameObject.activeSelf)
+            var tt = env != null ? env.thiefTarget : null;
+            if (thiefEnabled > 0.5f && tt != null && tt.gameObject.activeSelf)
             {
-                float dT = Vector3.Distance(transform.position, env.thief.transform.position);
+                float dT = Vector3.Distance(transform.position, tt.position);
                 if (dT > w_thiefProxDeadZone)
                     AddReward(w_thiefProximity * Mathf.Exp(-dT / Mathf.Max(w_thiefProxScale, 0.01f)));
             }
@@ -151,6 +190,17 @@ namespace Wimme.Test
                     AddReward(w_investigateNoise * env.lastNoise.loudness);
                     lastInvestigatedNoisePos = env.lastNoise.position;
                 }
+            }
+
+            if (enableV7Observations && hasLastKnownPos && !TrySeePlayer(out _, out _))
+            {
+                float age = Time.time - lastKnownPlayerTime;
+                if (age < lastKnownMemorySeconds)
+                {
+                    float dLk = Vector3.Distance(transform.position, lastKnownPlayerPos);
+                    if (dLk < 3f) { AddReward(0.3f); hasLastKnownPos = false; }
+                }
+                else { hasLastKnownPos = false; }
             }
         }
 
@@ -182,8 +232,11 @@ namespace Wimme.Test
         private float DistanceToPriorityTarget()
         {
             if (env == null) return float.PositiveInfinity;
-            if (thiefEnabled > 0.5f && env.thief != null && env.thief.gameObject.activeSelf
+            var tt = env.thiefTarget;
+            if (thiefEnabled > 0.5f && tt != null && tt.gameObject.activeSelf
                 && TrySeePlayer(out _, out float td)) return td;
+            if (enableV7Observations && hasLastKnownPos && (Time.time - lastKnownPlayerTime) < lastKnownMemorySeconds)
+                return Vector3.Distance(transform.position, lastKnownPlayerPos);
             if (audioEnabled > 0.5f && env.lastNoise != null && env.lastNoise.valid)
             {
                 float age = Time.time - env.lastNoise.timeEmitted;
@@ -199,14 +252,15 @@ namespace Wimme.Test
         private bool TrySeePlayer(out Vector3 localPos, out float dist)
         {
             localPos = Vector3.zero; dist = worldSize;
-            if (env == null || env.thief == null || !env.thief.gameObject.activeSelf) return false;
-            Vector3 toThief = env.thief.transform.position - transform.position;
+            var tt = env != null ? env.thiefTarget : null;
+            if (tt == null || !tt.gameObject.activeSelf) return false;
+            Vector3 toThief = tt.position - transform.position;
             dist = toThief.magnitude; localPos = transform.InverseTransformDirection(toThief);
             if (dist > 20f) return false;
             if (Vector3.Angle(transform.forward, toThief) > 75f) return false;
             if (Physics.Raycast(transform.position, toThief.normalized, out RaycastHit hit, dist + 0.1f))
             {
-                if (hit.transform == env.thief.transform) return true;
+                if (hit.transform == tt) return true;
                 if (hit.collider.CompareTag("Wall")) return false;
             }
             return false;
@@ -219,7 +273,8 @@ namespace Wimme.Test
                     if (d.t == other.transform && !d.stolen && d.t.gameObject.activeSelf)
                     { AddReward(w_reachDeposit + (d.alarmed ? 0.5f : 0f)); d.alarmed = false; prevDistanceToTarget = DistanceToPriorityTarget(); break; }
 
-            if (env != null && env.thief != null && other.transform == env.thief.transform)
+            var tt = env != null ? env.thiefTarget : null;
+            if (tt != null && other.transform == tt)
             { AddReward(w_catchPlayer); env.EndEpisode(HeistEnvController.GuardOutcome.Caught); }
         }
 

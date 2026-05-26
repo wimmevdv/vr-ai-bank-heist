@@ -23,7 +23,7 @@ namespace Wimme.EditorTools
 
             var opts = new BuildPlayerOptions
             {
-                scenes = new[] { "Assets/Scenes/BankGuardTestArena.unity" },
+                scenes = new[] { "Assets/Scenes/kean_scene_Training2.unity" },
                 locationPathName = outPath,
                 target = BuildTarget.StandaloneWindows64,
                 options = BuildOptions.None,
