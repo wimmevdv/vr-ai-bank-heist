@@ -37,6 +37,12 @@ public class GameUI : MonoBehaviour
     [SerializeField] private string loseTitle = "TIJD VOORBIJ";
     [SerializeField] private string currencySymbol = "€";
 
+    [Header("Positionering")]
+    [Tooltip("Bij tonen het Canvas één keer voor de speler plaatsen. Daarna blijft het stilstaan — geen meelopen met het hoofd.")]
+    [SerializeField] private bool snapToPlayerOnShow = true;
+    [Tooltip("Afstand voor de speler in meters.")]
+    [SerializeField] private float distanceFromPlayer = 2f;
+
     private bool subscribed;
 
     private void Awake()
@@ -68,6 +74,8 @@ public class GameUI : MonoBehaviour
 
     private void ShowEndScreen(HeistManager.HeistEndInfo info)
     {
+        if (snapToPlayerOnShow) SnapInFrontOfPlayer();
+
         if (endPanel != null) endPanel.SetActive(true);
 
         if (titleText != null)
@@ -89,5 +97,21 @@ public class GameUI : MonoBehaviour
             HeistManager.Instance.RestartGame();
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /// <summary>
+    /// Plaatst het Canvas eenmaal vóór de hoofdcamera (HMD) en richt het naar
+    /// de speler. Het paneel volgt daarna NIET — geen masker-effect.
+    /// </summary>
+    private void SnapInFrontOfPlayer()
+    {
+        Camera cam = Camera.main;
+        if (cam == null) return;
+
+        transform.position = cam.transform.position + cam.transform.forward * distanceFromPlayer;
+
+        Vector3 lookDir = transform.position - cam.transform.position;
+        if (lookDir.sqrMagnitude > 0.0001f)
+            transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
     }
 }
