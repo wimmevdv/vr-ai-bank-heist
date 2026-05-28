@@ -1,26 +1,47 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Centrally manages the heist gameplay state, tracking the countdown timer,
 /// current monetary score, and progression toward the level's loot objectives.
 /// Implements the Singleton pattern.
+///
+/// FASE 3-flow: 5 minuten timer; speler mag op elk moment escapen via de
+/// SafeZone + ExtractionButton. Vroeger escapen = vanzelf minder geld
+/// (alleen afgeleverde loot telt). Bij game-einde vuurt OnGameEnded met de
+/// eindstats; de end-screen UI (GameUI) abonneert daarop.
 /// </summary>
 public class HeistManager : MonoBehaviour
 {
     public static HeistManager Instance { get; private set; }
 
+    public enum GameResult { Won, LostTimeout }
+
+    public struct HeistEndInfo
+    {
+        public GameResult result;
+        public int totalMoney;
+        public int itemsSecured;
+        public int totalItems;
+        public float timeRemainingAtEnd;
+    }
+
     [Header("Time Management")]
-    [Tooltip("Initial time allowed for the heist in seconds.")]
-    [SerializeField] private float timeRemaining = 180f;
+    [Tooltip("Initial time allowed for the heist in seconds. 300 = 5 minuten.")]
+    [SerializeField] private float timeRemaining = 300f;
 
     [Header("Economy & Objectives")]
     [SerializeField] private int currentScore = 0;
 
-    // Encapsulated properties for secure read-only access from other scripts
+    // Public read-only API — bestaande consumers (watch-HUD) blijven werken.
     public int CurrentScore => currentScore;
     public float TimeRemaining => timeRemaining;
     public bool IsGameActive { get; private set; } = true;
     public bool AllLootSecured => securedLootCount >= totalLootCount;
+
+    /// <summary>Vuurt eenmaal wanneer de heist eindigt (win of verlies).</summary>
+    public event Action<HeistEndInfo> OnGameEnded;
 
     private int totalLootCount = 0;
     private int securedLootCount = 0;
@@ -43,13 +64,12 @@ public class HeistManager : MonoBehaviour
     private void Update()
     {
         if (!IsGameActive) return;
-
         ProcessCountdown();
     }
 
     private void InitializeObjects()
     {
-        LootItem[] itemsInLevel = Object.FindObjectsByType<LootItem>(FindObjectsSortMode.None);
+        LootItem[] itemsInLevel = UnityEngine.Object.FindObjectsByType<LootItem>(FindObjectsSortMode.None);
         totalLootCount = itemsInLevel.Length;
         Debug.Log($"[HEIST MANAGER] Level initialized. Total loot objectives found: {totalLootCount}");
     }
@@ -77,16 +97,13 @@ public class HeistManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Validates all heist objectives and player positioning upon interaction.
-    /// Triggers either the victory sequence or sensory error feedback.
+    /// Validates extraction. Sinds fase 3: GEEN AllLootSecured-eis meer.
+    /// Speler mag op elk moment escapen met wat hij heeft (vroeger = minder geld).
     /// </summary>
-    /// <param name="isPlayerInSafeZone">Context provided by the SafeZone trigger status.</param>
-    /// <param name="errorAudio">The audio emitter to play feedback from if validation fails.</param>
     public void TryExecuteExtraction(bool isPlayerInSafeZone, AudioSource errorAudio)
     {
         if (!IsGameActive) return;
 
-        // Condition 1: Is the player physically standing inside the escape vehicle/zone?
         if (!isPlayerInSafeZone)
         {
             Debug.LogWarning("[HEIST VALIDATION] Extraction denied: Player is outside the Safe Zone.");
@@ -94,15 +111,6 @@ public class HeistManager : MonoBehaviour
             return;
         }
 
-        // Condition 2: Has all loot from the scene been securely deposited into a DropZone?
-        if (!AllLootSecured)
-        {
-            Debug.LogWarning("[HEIST VALIDATION] Extraction denied: Missing required loot objectives.");
-            PlayAudioFeedback(errorAudio);
-            return;
-        }
-
-        // Success: All conditions validated successfully
         WinGame();
     }
 
@@ -116,13 +124,41 @@ public class HeistManager : MonoBehaviour
 
     public void LoseGame(string reason)
     {
+        if (!IsGameActive) return;
         IsGameActive = false;
         Debug.LogWarning($"[GAME OVER] Heist Failed! Reason: {reason}");
+        FireEnded(GameResult.LostTimeout);
     }
 
     public void WinGame()
     {
+        if (!IsGameActive) return;
         IsGameActive = false;
-        Debug.Log($"[VICTORY] Heist Successful! Total take: €{currentScore}. Time left: {Mathf.RoundToInt(timeRemaining)}s");
+        Debug.Log($"[VICTORY] Heist Successful! Total take: €{currentScore}. " +
+                  $"Time left: {Mathf.RoundToInt(timeRemaining)}s");
+        FireEnded(GameResult.Won);
+    }
+
+    private void FireEnded(GameResult result)
+    {
+        var info = new HeistEndInfo
+        {
+            result = result,
+            totalMoney = currentScore,
+            itemsSecured = securedLootCount,
+            totalItems = totalLootCount,
+            timeRemainingAtEnd = timeRemaining
+        };
+        OnGameEnded?.Invoke(info);
+    }
+
+    /// <summary>
+    /// Herlaadt de huidige scene en reset alles. Wordt aangeroepen door de
+    /// Play Again-knop. De scene moet in File > Build Settings staan.
+    /// </summary>
+    public void RestartGame()
+    {
+        Scene s = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(s.buildIndex);
     }
 }

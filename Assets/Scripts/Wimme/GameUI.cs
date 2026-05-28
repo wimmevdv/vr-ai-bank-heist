@@ -1,0 +1,93 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+/// <summary>
+/// End-screen overlay voor de heist. Toont na het einde van het spel een
+/// paneel met de uitslag (gelukt / tijd voorbij), verdiend bedrag, aantal
+/// items en resterende tijd, plus een Play Again-knop.
+///
+/// LIVE HUD (timer + score tijdens spel) zit op de left-controller watch —
+/// dit script doet ENKEL het eind-paneel.
+///
+/// Setup (zie ook de instructies in het Claude-bericht):
+///   1) Maak een Canvas in de scene. Render Mode = World Space.
+///   2) Vervang op de Canvas de standaard GraphicRaycaster door
+///      TrackedDeviceGraphicRaycaster (van XR Interaction Toolkit), zodat
+///      VR-rays de knop kunnen klikken.
+///   3) Onder de Canvas: een EndPanel (Image als achtergrond), in begin uit.
+///      Daaronder TextMeshPro-tekst voor titel en samenvatting, en een
+///      uGUI Button "PlayAgain" met een TextMeshPro-label "Play Again".
+///   4) Hang dit script op de Canvas, sleep de references in de inspector.
+///   5) Zorg dat de huidige scene in File > Build Settings staat (anders
+///      werkt Play Again niet).
+/// </summary>
+public class GameUI : MonoBehaviour
+{
+    [Header("End screen referenties")]
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI summaryText;
+    [SerializeField] private Button playAgainButton;
+
+    [Header("Teksten")]
+    [SerializeField] private string winTitle = "ESCAPE GELUKT";
+    [SerializeField] private string loseTitle = "TIJD VOORBIJ";
+    [SerializeField] private string currencySymbol = "€";
+
+    private bool subscribed;
+
+    private void Awake()
+    {
+        if (endPanel != null) endPanel.SetActive(false);
+        if (playAgainButton != null) playAgainButton.onClick.AddListener(OnPlayAgainClicked);
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(SubscribeWhenReady());
+    }
+
+    private void OnDisable()
+    {
+        if (subscribed && HeistManager.Instance != null)
+            HeistManager.Instance.OnGameEnded -= ShowEndScreen;
+        subscribed = false;
+    }
+
+    private IEnumerator SubscribeWhenReady()
+    {
+        // Wacht tot HeistManager.Instance bestaat — script-volgorde-veilig.
+        while (HeistManager.Instance == null) yield return null;
+
+        HeistManager.Instance.OnGameEnded += ShowEndScreen;
+        subscribed = true;
+    }
+
+    private void ShowEndScreen(HeistManager.HeistEndInfo info)
+    {
+        if (endPanel != null) endPanel.SetActive(true);
+
+        if (titleText != null)
+            titleText.text = info.result == HeistManager.GameResult.Won ? winTitle : loseTitle;
+
+        if (summaryText != null)
+        {
+            string time = Mathf.CeilToInt(Mathf.Max(0f, info.timeRemainingAtEnd)).ToString();
+            summaryText.text =
+                $"Verdiend: {currencySymbol}{info.totalMoney}\n" +
+                $"Buit: {info.itemsSecured} / {info.totalItems}\n" +
+                $"Tijd over: {time}s";
+        }
+    }
+
+    private void OnPlayAgainClicked()
+    {
+        if (HeistManager.Instance != null)
+            HeistManager.Instance.RestartGame();
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
