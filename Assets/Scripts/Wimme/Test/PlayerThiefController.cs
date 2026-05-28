@@ -3,12 +3,7 @@ using UnityEngine.AI;
 
 namespace Wimme.Test
 {
-    /// <summary>
-    /// Drop-in keyboard controller for testing the AI guard from the thief's
-    /// perspective. Add this to the ScriptedThief GameObject, then DISABLE the
-    /// ScriptedThief + NavMeshAgent components. WASD to move, mouse to look.
-    /// The guard AI sees this object the same way (tag "Player", trigger collider).
-    /// </summary>
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerThiefController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 3.5f;
@@ -16,16 +11,23 @@ namespace Wimme.Test
         [SerializeField] private float mouseSensitivity = 2f;
         [SerializeField] private Camera playerCamera;
 
+        private CharacterController cc;
         private float yaw;
+        private float verticalVelocity;
         private bool hasCursor;
 
         void Start()
         {
-            // Disable ALL other cameras so only the thief POV is visible
+            cc = GetComponent<CharacterController>();
+            cc.height = 1.8f;
+            cc.center = new Vector3(0f, 0.9f, 0f);
+            cc.radius = 0.3f;
+            cc.stepOffset = 0.4f;
+            cc.slopeLimit = 50f;
+
             foreach (var cam in FindObjectsByType<Camera>(FindObjectsSortMode.None))
                 cam.gameObject.SetActive(false);
 
-            // Create first-person camera at eye height, looking straight ahead
             if (playerCamera == null)
             {
                 var camGo = new GameObject("ThiefCamera");
@@ -42,7 +44,6 @@ namespace Wimme.Test
             Cursor.visible = false;
             hasCursor = true;
 
-            // Disable the scripted AI + NavMesh on this object
             var scripted = GetComponent<ScriptedThief>();
             if (scripted != null) scripted.enabled = false;
             var nav = GetComponent<NavMeshAgent>();
@@ -51,7 +52,6 @@ namespace Wimme.Test
 
         void Update()
         {
-            // Toggle cursor lock with Escape
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 hasCursor = !hasCursor;
@@ -59,7 +59,6 @@ namespace Wimme.Test
                 Cursor.visible = !hasCursor;
             }
 
-            // Mouse look (yaw only — no pitch needed for top-down-ish testing)
             if (hasCursor)
             {
                 yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -71,12 +70,16 @@ namespace Wimme.Test
             }
             transform.eulerAngles = new Vector3(0f, yaw, 0f);
 
-            // WASD movement
             float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             Vector3 dir = (transform.forward * v + transform.right * h).normalized;
-            transform.position += dir * speed * Time.deltaTime;
+
+            if (cc.isGrounded) verticalVelocity = -1f;
+            else verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
+            Vector3 move = dir * speed + Vector3.up * verticalVelocity;
+            cc.Move(move * Time.deltaTime);
         }
     }
 }

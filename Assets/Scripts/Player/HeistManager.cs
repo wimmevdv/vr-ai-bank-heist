@@ -162,6 +162,20 @@ public class HeistManager : MonoBehaviour
             timeRemainingAtEnd = timeRemaining
         };
         OnGameEnded?.Invoke(info);
+
+        DisableGuard();
+    }
+
+    private void DisableGuard()
+    {
+        var guard = UnityEngine.Object.FindAnyObjectByType<Wimme.Test.BankGuardAgent>();
+        if (guard == null) return;
+        guard.enabled = false;
+        if (guard.TryGetComponent<Rigidbody>(out var rb))
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
     }
 
     /// <summary>
