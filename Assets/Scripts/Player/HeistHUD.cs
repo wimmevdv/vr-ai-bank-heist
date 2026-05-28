@@ -1,24 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-/// <summary>
-/// Polst HeistManager elke frame en toont score + resterende tijd op
-/// twee TextMeshPro velden. Bedoeld voor een World-space Canvas vast op
-/// een controller (polshorloge-stijl).
-///
-/// Horloge-gedrag: het paneel is alleen zichtbaar als de speler met de
-/// pols naar zijn gezicht draait. De zichtbaarheidscheck gebruikt de
-/// oorspronkelijke (in de Inspector ingestelde) localRotation als
-/// referentie voor "waar zou de wijzerplaat-normal staan zonder
-/// billboarding" — zo blijft de check correct ongeacht hoe de hand
-/// kantelt.
-///
-/// Billboarding: de wereldrotatie wordt in LateUpdate overschreven zodat
-/// het Canvas altijd recht naar de hoofd-camera kijkt met Vector3.up als
-/// up-vector. Position erft nog steeds van de parent (de controller),
-/// dus het paneeltje volgt de hand zoals een horloge. Maar de tekst
-/// staat altijd horizontaal leesbaar.
-/// </summary>
 [RequireComponent(typeof(CanvasGroup))]
 public class HeistHUD : MonoBehaviour
 {
@@ -67,10 +49,6 @@ public class HeistHUD : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // start onzichtbaar
 
-        // Onthoud de oriëntatie die in de Inspector is gezet — dit is onze
-        // referentie voor "naar welke kant kijkt de horloge-wijzerplaat
-        // logischerwijs". We gebruiken dit later voor de zichtbaarheidscheck,
-        // omdat na billboarding transform.forward niet meer hand-gerelateerd is.
         originalLocalRotation = transform.localRotation;
         hasOriginalRotation = true;
 
@@ -83,14 +61,6 @@ public class HeistHUD : MonoBehaviour
         UpdateText();
         UpdateVisibility();
     }
-
-    /// <summary>
-    /// Billboarding in LateUpdate i.p.v. Update: in XR wordt de controller-
-    /// transform door het XR-systeem geüpdatet ergens tussen Update en
-    /// LateUpdate. Als we hier eerder zouden schrijven, zou de XR-pose-update
-    /// onze rotatie overschrijven en zou het Canvas opnieuw met de hand
-    /// meekantelen — precies wat we proberen te voorkomen.
-    /// </summary>
     private void LateUpdate()
     {
         if (!billboardToCamera) return;
@@ -99,8 +69,6 @@ public class HeistHUD : MonoBehaviour
         Vector3 fromCamera = transform.position - headCamera.position;
         if (fromCamera.sqrMagnitude < 0.0001f) return; // camera staat op exact dezelfde plek
 
-        // forward = van camera naar canvas → canvas-voorkant kijkt naar camera
-        // up = Vector3.up → tekst staat altijd horizontaal in de wereld
         transform.rotation = Quaternion.LookRotation(fromCamera, Vector3.up);
     }
 
@@ -145,11 +113,6 @@ public class HeistHUD : MonoBehaviour
         }
         else
         {
-            // Bereken wat de canvas-forward ZOU zijn als we niet billboardden.
-            // Dat is de richting waarin de "horloge-wijzerplaat" volgens de
-            // Inspector-instelling kijkt, meegedraaid met de parent (controller).
-            // Op die manier blijft de zichtbaarheidscheck pols-gebaseerd, ook al
-            // is de zichtbare rotatie billboard-gebaseerd.
             Quaternion handBasedRotation = hasOriginalRotation
                 ? (transform.parent != null
                     ? transform.parent.rotation * originalLocalRotation
