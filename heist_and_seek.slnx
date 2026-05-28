@@ -50,9 +50,11 @@
   <Project Path="Unity.UnifiedRayTracing.Runtime.csproj" />
   <Project Path="glTFast.csproj" />
   <Project Path="Unity.InferenceEngine.Editor.csproj" />
+  <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
   <Project Path="Unity.TestTools.CodeCoverage.Editor.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.XR.AndroidOpenXR.csproj" />
+  <Project Path="Unity.Postprocessing.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj" />
   <Project Path="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
@@ -67,15 +69,18 @@
   <Project Path="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.XR.ARFoundation.VisualScripting.csproj" />
+  <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="Unity.XR.ARSubsystems.Editor.csproj" />
   <Project Path="Unity.Performance.Profile-Analyzer.Editor.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
+  <Project Path="Unity.Postprocessing.Runtime.csproj" />
   <Project Path="glTFast.Newtonsoft.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.007.csproj" />
   <Project Path="Unity.XR.Hands.Analytics.Editor.csproj" />
   <Project Path="Unity.ML-Agents.Editor.csproj" />
   <Project Path="Unity.XR.CoreUtils.Editor.csproj" />
+  <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.csproj" />
   <Project Path="Unity.AppUI.MVVM.csproj" />
   <Project Path="Unity.InternalAPIEditorBridge.007.csproj" />
@@ -91,6 +96,7 @@
   <Project Path="Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.csproj" />
   <Project Path="Unity.AppUI.Navigation.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
+  <Project Path="Unity.AI.Navigation.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Analytics.Hooks.Editor.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="glTFast.Editor.csproj" />
@@ -123,6 +129,7 @@
   <Project Path="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.csproj" />
   <Project Path="UnityEngine.XR.LegacyInputHelpers.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
