@@ -35,6 +35,7 @@ public class GameUI : MonoBehaviour
     [Header("Teksten")]
     [SerializeField] private string winTitle = "ESCAPE GELUKT";
     [SerializeField] private string loseTitle = "TIJD VOORBIJ";
+    [SerializeField] private string caughtTitle = "BETRAPT";
     [SerializeField] private string currencySymbol = "€";
 
     [Header("Positionering")]
@@ -79,7 +80,17 @@ public class GameUI : MonoBehaviour
         if (endPanel != null) endPanel.SetActive(true);
 
         if (titleText != null)
-            titleText.text = info.result == HeistManager.GameResult.Won ? winTitle : loseTitle;
+        {
+            string title;
+            switch (info.result)
+            {
+                case HeistManager.GameResult.Won:         title = winTitle; break;
+                case HeistManager.GameResult.LostCaught:  title = caughtTitle; break;
+                case HeistManager.GameResult.LostTimeout:
+                default:                                  title = loseTitle; break;
+            }
+            titleText.text = title;
+        }
 
         if (summaryText != null)
         {

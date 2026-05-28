@@ -16,7 +16,7 @@ public class HeistManager : MonoBehaviour
 {
     public static HeistManager Instance { get; private set; }
 
-    public enum GameResult { Won, LostTimeout }
+    public enum GameResult { Won, LostTimeout, LostCaught }
 
     public struct HeistEndInfo
     {
@@ -128,6 +128,18 @@ public class HeistManager : MonoBehaviour
         IsGameActive = false;
         Debug.LogWarning($"[GAME OVER] Heist Failed! Reason: {reason}");
         FireEnded(GameResult.LostTimeout);
+    }
+
+    /// <summary>
+    /// Roept de bewaker je tot stilstand. Aangeroepen via HeistEndBridge wanneer
+    /// HeistEnvController.EndEpisode(Caught) gedetecteerd wordt.
+    /// </summary>
+    public void LoseCaught()
+    {
+        if (!IsGameActive) return;
+        IsGameActive = false;
+        Debug.LogWarning("[GAME OVER] Heist Failed! Reason: CAUGHT BY GUARD");
+        FireEnded(GameResult.LostCaught);
     }
 
     public void WinGame()
