@@ -25,7 +25,13 @@ public class GameUI : MonoBehaviour
     [Tooltip("Afstand voor de speler in meters.")]
     [SerializeField] private float distanceFromPlayer = 2f;
 
+    [Header("Fail-safe restart")]
+    [Tooltip("Auto-restart na X seconden als VR-button niet klikt. 0 = uit. " +
+             "Aanbevolen 15-30 sec als backup.")]
+    [SerializeField] private float autoRestartSeconds = 0f;
+
     private bool subscribed;
+    private Coroutine autoRestartRoutine;
 
     private void Awake()
     {
@@ -60,6 +66,12 @@ public class GameUI : MonoBehaviour
 
         if (endPanel != null) endPanel.SetActive(true);
 
+        if (autoRestartSeconds > 0f)
+        {
+            if (autoRestartRoutine != null) StopCoroutine(autoRestartRoutine);
+            autoRestartRoutine = StartCoroutine(AutoRestartAfter(autoRestartSeconds));
+        }
+
         if (titleText != null)
         {
             string title;
@@ -91,6 +103,16 @@ public class GameUI : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+
+    private IEnumerator AutoRestartAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (HeistManager.Instance != null)
+            HeistManager.Instance.RestartGame();
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 
     private void SnapInFrontOfPlayer()
     {
