@@ -3,7 +3,9 @@
 Complete referentie voor de hoofd-scene (VR + AI guard + game-loop) en de trainings-scene.
 Geldt voor het getrainde `BankGuard_v7` model (17-dim observations, **3M steps**, mean reward 85).
 
-> **Main scene:** `Assets/Scenes/MAIN-SCENE.unity` (Wim heeft de game-loop al voorbereid). Dit document beschrijft hoe je hem afmaakt, hoe alles in elkaar zit en wat je voor de training-scene moet doen.
+> **Main scene voor jouw VR/AI setup:** `Assets/Scenes/MAIN_SCENE2.unity`
+> **Team-scene (NIET aanraken):** `Assets/Scenes/MAIN-SCENE.unity` (Wim's domein — gemaakt vrij van conflicten)
+> Wim's game-loop scripts (HeistManager, GameUI, HeistEndBridge) gebruik je in MAIN_SCENE2.
 
 ---
 
@@ -92,9 +94,9 @@ Rays detecteren colliders, niet meshes. Voorheen: visuele objecten zonder collid
 | **14** | **(v7) Heeft last-known-pos** | **0/1** | **Onthoudt waar hij speler zag** |
 | **15-16** | **(v7) Lokale last-known-pos** | **[-1, 1]** | **Loopt naar laatst-geziene plek** |
 
-### B. 13 rays in halve cirkel vooraan
+### B. 27 rays in halve cirkel vooraan
 
-- 6 rays per zijkant + 1 centraal = 13 totaal
+- 13 rays per zijkant + 1 centraal = **27 totaal**
 - 120° spreiding, 20m bereik, bolradius 0.3m
 - Vertical offset 0.5m start / 1.0m eind
 - Detecteert tags: `Wall`, `Player`, `Deposit`
@@ -195,9 +197,9 @@ Running.fbx                   ← run clip
 
 ---
 
-## 7. MAIN-SCENE setup — stap voor stap
+## 7. MAIN_SCENE2 setup — stap voor stap
 
-### Status bij start (Wim's MAIN-SCENE.unity heeft al):
+### Status bij start (Wim's MAIN_SCENE2.unity heeft al):
 - `GameManager` (HeistManager singleton, timer 300s)
 - `HeistEnv` (HeistEnvController)
 - `HeistEndBridge`
@@ -208,7 +210,7 @@ Running.fbx                   ← run clip
 ### Wat je nog moet doen:
 
 #### Stap 7.1 — Bank prefab in scene
-1. Open `Assets/Scenes/MAIN-SCENE.unity`
+1. Open `Assets/Scenes/MAIN_SCENE2.unity`
 2. Sleep `Assets/Prefabs/bank_and_XR_kean_prefab.prefab` in Hierarchy root
 3. Reset Transform (0,0,0)
 4. In prefab: vink child `Player` **uit** (wij gebruiken XR Origin)
@@ -236,7 +238,7 @@ Running.fbx                   ← run clip
    - **RayPerceptionSensorComponent3D**:
      - Sensor Name: `ForwardRays`
      - Detectable Tags: `Wall, Player, Deposit` (in deze volgorde)
-     - Rays Per Direction: 6
+     - Rays Per Direction: **13** (= 27 rays totaal, KRITIEK voor model-compat)
      - Max Ray Degrees: 120
      - Sphere Cast Radius: 0.3
      - Ray Length: 20
@@ -321,7 +323,7 @@ Ctrl+S, druk Play, controleer alle drie de uitkomsten.
 AI-rays detecteren ALLE objecten met tag `Deposit`. 73 deposits = AI ziet 73 targets → mismatch met training (~5-6 deposits). Clusteren = AI ziet 8-12 realistische targets.
 
 ### Automatisch (aanbevolen) — Editor-tool
-1. Open `MAIN-SCENE.unity` met bank-prefab erin
+1. Open `MAIN_SCENE2.unity` met bank-prefab erin
 2. Menu: **Tools > Bank Heist > Cluster Deposits**
 3. Pas radius aan (default 3.0m) — alles binnen die afstand wordt 1 groep
 4. Klik "Voorbeeld telling" om aantal clusters te checken
@@ -441,7 +443,7 @@ Deze instellingen moeten matchen met het getrainde model — anders **breekt het
 | BehaviorName | **`BankGuard`** | Behavior Parameters |
 | `enableV7Observations` | **true** | BankGuardAgent |
 | Ray tags | **`Wall, Player, Deposit`** | RaySensor |
-| Rays Per Direction | **6** | RaySensor |
+| Rays Per Direction | **13** | RaySensor (= 27 totaal rays) |
 | Max Ray Degrees | **120** | RaySensor |
 | Start/End Vertical Offset | **0.5 / 1.0** | RaySensor |
 | Sphere Cast Radius | **0.3** | RaySensor |
@@ -481,9 +483,9 @@ In `C:\VR\results\BankGuard_v7\BankGuard\`:
 
 ## 12. Training-scene `kean_scene_Training3` — optioneel fine-tunen
 
-Alleen nodig als AI in MAIN-SCENE zich raar gedraagt door layout-verschillen (multi-floor, andere geometry).
+Alleen nodig als AI in MAIN_SCENE2 zich raar gedraagt door layout-verschillen (multi-floor, andere geometry).
 
-### Verschillen tegenover MAIN-SCENE
+### Verschillen tegenover MAIN_SCENE2
 
 | Onderdeel | MAIN | Training |
 |---|---|---|
@@ -500,7 +502,7 @@ Alleen nodig als AI in MAIN-SCENE zich raar gedraagt door layout-verschillen (mu
 | Deposit-clusters | ja | ja (zelfde) |
 
 ### Setup
-1. **Duplicate MAIN-SCENE** → File > Save As → `kean_scene_Training3.unity`
+1. **Duplicate MAIN_SCENE2** → File > Save As → `kean_scene_Training3.unity`
 2. **Verwijder** uit hiërarchie: XR Origin, HeistEndBridge, GameManager, Canvas, EventSystem
 3. **Voeg `ScriptedThief` toe** als GameObject:
    - NavMeshAgent (radius 0.4, height 1.8)
@@ -558,7 +560,7 @@ http://localhost:6006 → reward-curve, value-loss, policy-loss
 
 ## 13. Quick checklist voor "klaar voor presentatie"
 
-### MAIN-SCENE.unity
+### MAIN_SCENE2.unity
 - [ ] Bank prefab erin, Player-kind inactive
 - [ ] **Deposits geclusterd via Tools > Bank Heist > Cluster Deposits**
 - [ ] Per cluster minimaal 1 LootItem met XRGrabInteractable + Rigidbody
@@ -602,7 +604,7 @@ http://localhost:6006 → reward-curve, value-loss, policy-loss
 
 - [ ] Cluster deposits via Tools-menu (sectie 8)
 - [ ] Per cluster: LootItem-component op grijpbare child
-- [ ] BankGuard GameObject opzetten in MAIN-SCENE (sectie 7.3)
+- [ ] BankGuard GameObject opzetten in MAIN_SCENE2 (sectie 7.3)
 - [ ] Ch18_nonPBR als child onder BankGuard + Animator-controller + GuardAnimator
 - [ ] XR Origin met VRPlayerBridge (sectie 7.4)
 - [ ] HeistEnv velden invullen (sectie 7.5)
@@ -677,7 +679,7 @@ Assets/Scenes/kean_scene.unity       ← oude scene (wordt vervangen)
 Assets/Scenes/kean_scene_AItraining.unity  ← oude training
 Assets/Scenes/kean_scene_Training2.unity   ← oude training (waar v7 op trainde)
 Assets/Scenes/COPY marwan.unity      ← jouw werkkopie
-Assets/Scenes/MAIN-SCENE.unity       ← (laat Wim dit beheren) — NIET wijzigen tot je live setup gedaan hebt
+Assets/Scenes/MAIN_SCENE2.unity       ← (laat Wim dit beheren) — NIET wijzigen tot je live setup gedaan hebt
 Assets/Settings/Project Configuration/*.asset  ← Unity auto-updates
 Assets/URPDefaultResources/*.asset   ← Unity auto-updates
 Assets/XR/AndroidXR/AndroidXRSettingsInitializer ← Unity auto-update
