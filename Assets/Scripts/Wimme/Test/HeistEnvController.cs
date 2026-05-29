@@ -155,6 +155,7 @@ namespace Wimme.Test
                 if (d.t != null && d.t.gameObject.activeSelf) active++;
                 if (d.stolen) stolen++;
             }
+            if (vrPlayer != null) return;
             if (timeLeft <= 0f) EndEpisode(GuardOutcome.TimeUp);
             else if (active > 0 && stolen >= active) EndEpisode(GuardOutcome.AllStolen);
         }

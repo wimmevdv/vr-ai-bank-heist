@@ -21,11 +21,11 @@ namespace Wimme.Test
         [SerializeField] private float w_progress         = 0.03f;
         [SerializeField] private float w_reachDeposit     = 0.1f;
         [SerializeField] private float w_investigateNoise = 0.5f;
-        [SerializeField] private float w_seePlayer        = 0.05f;
+        [SerializeField] private float w_seePlayer        = 0.02f;
         [SerializeField] private float w_catchPlayer      = 100.0f;
-        [SerializeField] private float w_thiefProximity   = 0.05f;
-        [SerializeField] private float w_thiefProxScale   = 5.0f;
-        [SerializeField] private float w_thiefProxDeadZone = 2.0f;
+        [SerializeField] private float w_thiefProximity   = 0.2f;
+        [SerializeField] private float w_thiefProxScale   = 2.0f;
+        [SerializeField] private float w_thiefProxDeadZone = 0.0f;
         [SerializeField] private float w_itemStolen       = 0.0f;
         [SerializeField] private float w_episodeLost      = 0.0f;
         [SerializeField] private float w_wallHit          = 0.0f;
@@ -52,7 +52,8 @@ namespace Wimme.Test
         {
             rb = GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-            MaxStep = maxStepsPerEpisode;
+            bool isLiveGame = env != null && env.vrPlayer != null;
+            MaxStep = isLiveGame ? 0 : maxStepsPerEpisode;
         }
 
         public override void OnEpisodeBegin()
@@ -62,14 +63,16 @@ namespace Wimme.Test
             smoothedTurn = 0f;
             idleSteps = 0;
 
-            if (env != null && env.guardSpawn != null)
+            bool isLiveGame = env != null && env.vrPlayer != null;
+
+            if (!isLiveGame && env != null && env.guardSpawn != null)
             {
                 transform.position = env.guardSpawn.position + Vector3.up;
                 transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
             }
-            if (env != null)
+            if (!isLiveGame && env != null)
                 env.BeginEpisode(
                     Mathf.Clamp((int)numDepositsParam, 1, env.deposits.Count),
                     thiefEnabled > 0.5f, audioEnabled > 0.5f, alarmsEnabled > 0.5f);
@@ -180,6 +183,8 @@ namespace Wimme.Test
                 float dT = Vector3.Distance(transform.position, tt.position);
                 if (dT > w_thiefProxDeadZone)
                     AddReward(w_thiefProximity * Mathf.Exp(-dT / Mathf.Max(w_thiefProxScale, 0.01f)));
+                if (dT < 1.0f && env != null && !env.episodeOver)
+                { AddReward(w_catchPlayer); env.EndEpisode(HeistEnvController.GuardOutcome.Caught); return; }
             }
 
             if (audioEnabled > 0.5f && env != null && env.lastNoise.valid)
@@ -207,7 +212,8 @@ namespace Wimme.Test
         void FixedUpdate()
         {
             if (rb == null) return;
-            float speed = (thiefEnabled > 0.5f && TrySeePlayer(out _, out _)) ? chaseSpeed : patrolSpeed;
+            bool seeingPlayer = thiefEnabled > 0.5f && TrySeePlayer(out _, out _);
+            float speed = seeingPlayer ? chaseSpeed : patrolSpeed;
 
             // Smooth acceleration — prevents robotic instant starts/stops
             smoothedMove = Mathf.Lerp(smoothedMove, pendingMove, moveSmoothing * Time.fixedDeltaTime);
@@ -227,6 +233,11 @@ namespace Wimme.Test
 
             Quaternion turn = Quaternion.Euler(0f, smoothedTurn * rotationSpeed * Time.fixedDeltaTime, 0f);
             rb.MoveRotation(rb.rotation * turn);
+
+            if (seeingPlayer && env != null && env.thiefTarget != null)
+                Debug.DrawLine(transform.position + Vector3.up, env.thiefTarget.position + Vector3.up, Color.red);
+            if (hasLastKnownPos && !seeingPlayer)
+                Debug.DrawLine(transform.position + Vector3.up, lastKnownPlayerPos + Vector3.up, Color.yellow);
         }
 
         private float DistanceToPriorityTarget()
@@ -258,12 +269,16 @@ namespace Wimme.Test
             dist = toThief.magnitude; localPos = transform.InverseTransformDirection(toThief);
             if (dist > 20f) return false;
             if (Vector3.Angle(transform.forward, toThief) > 75f) return false;
-            if (Physics.Raycast(transform.position, toThief.normalized, out RaycastHit hit, dist + 0.1f))
+            if (Physics.Raycast(transform.position, toThief.normalized, out RaycastHit hit, dist, ~0, QueryTriggerInteraction.Ignore))
             {
-                if (hit.transform == tt) return true;
                 if (hit.collider.CompareTag("Wall")) return false;
             }
-            return false;
+            return true;
+        }
+
+        void OnCollisionStay(Collision col)
+        {
+            if (col.collider.CompareTag("Wall")) AddReward(-0.01f);
         }
 
         void OnTriggerEnter(Collider other)
@@ -273,8 +288,16 @@ namespace Wimme.Test
                     if (d.t == other.transform && !d.stolen && d.t.gameObject.activeSelf)
                     { AddReward(w_reachDeposit + (d.alarmed ? 0.5f : 0f)); d.alarmed = false; prevDistanceToTarget = DistanceToPriorityTarget(); break; }
 
-            var tt = env != null ? env.thiefTarget : null;
-            if (tt != null && other.transform == tt)
+            TryCatch(other);
+        }
+
+        void OnTriggerStay(Collider other) { TryCatch(other); }
+
+        private void TryCatch(Collider other)
+        {
+            if (env == null || env.episodeOver) return;
+            var tt = env.thiefTarget;
+            if (tt != null && (other.transform == tt || other.transform.IsChildOf(tt)))
             { AddReward(w_catchPlayer); env.EndEpisode(HeistEnvController.GuardOutcome.Caught); }
         }
 
