@@ -4,6 +4,12 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Attachment;
 
+/// <summary>
+/// Grijpbare keycard met identificatie via <see cref="keyId"/>. Forceert fysica-
+/// en grab-instellingen die in VR voorspelbaar reageren, en klemt de positie
+/// terug binnen <see cref="maxHoldDistance"/> als de kaart abrupt vastloopt
+/// tegen geometrie tijdens het vasthouden.
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
 public class KeyCard : MonoBehaviour

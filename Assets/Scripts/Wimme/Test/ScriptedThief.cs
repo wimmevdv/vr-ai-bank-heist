@@ -3,6 +3,11 @@ using UnityEngine.AI;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// NavMesh-AI die de speler vervangt tijdens training. Doorloopt een state-machine
+    /// (kies-deposit → steel → ren naar drop-off → herhaal) en produceert voetstap-
+    /// noise zodat de bewaker dezelfde audio-signalen krijgt als bij een menselijke speler.
+    /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class ScriptedThief : MonoBehaviour
     {
@@ -20,13 +25,13 @@ namespace Wimme.Test
 
         void Awake() { nav = GetComponent<NavMeshAgent>(); }
 
+        /// <summary>Herstart de dief op de dichtstbijzijnde NavMesh-positie en kiest een nieuw doel.</summary>
         public void ResetAt(Vector3 pos, HeistEnvController controller)
         {
             env = controller;
 
-            // Find the nearest valid point on the NavMesh — prevents the
-            // "Failed to create agent because there is no valid NavMesh"
-            // spam when spawn transforms drift slightly off the mesh.
+            // SamplePosition voorkomt het "Failed to create agent — no valid NavMesh"-
+            // spam wanneer spawn-transforms net naast het mesh liggen.
             Vector3 safePos = pos;
             if (NavMesh.SamplePosition(pos, out var hit, 5.0f, NavMesh.AllAreas))
                 safePos = hit.position;
@@ -40,7 +45,6 @@ namespace Wimme.Test
             else
             {
                 transform.position = safePos;
-                // After moving, try to attach to the NavMesh on next frame
                 if (!nav.Warp(safePos))
                     Debug.LogWarning($"[ScriptedThief] Could not warp onto NavMesh near {safePos}");
             }
@@ -62,7 +66,6 @@ namespace Wimme.Test
                 case State.Dropping: TickDropping(); break;
             }
 
-            // Emit noise from movement
             if (nav.velocity.sqrMagnitude > 0.1f)
             {
                 float loud = nav.velocity.magnitude / Mathf.Max(runMoveSpeed, 0.01f);
@@ -86,7 +89,6 @@ namespace Wimme.Test
             {
                 state = State.Stealing;
                 waitUntil = Time.time + stealSeconds;
-                // Stealing triggers an alarm-like noise
                 env.RegisterNoise(carrying.t.position, 0.6f);
             }
         }
@@ -95,7 +97,9 @@ namespace Wimme.Test
         {
             if (Time.time < waitUntil) return;
             env.MarkStolen(carrying.t);
-            nav.speed = runMoveSpeed;          // panicked retreat after grabbing
+            // Versnel naar runMoveSpeed na de greep: paniek-retreat oogt menselijker
+            // en geeft de bewaker een hoorbaar luider signaal om op te reageren.
+            nav.speed = runMoveSpeed;
             nav.SetDestination(env.dropOffZone.position);
             state = State.GoDrop;
         }

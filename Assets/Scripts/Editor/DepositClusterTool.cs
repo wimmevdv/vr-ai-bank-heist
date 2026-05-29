@@ -5,21 +5,12 @@ using UnityEngine;
 namespace Wimme.EditorTools
 {
     /// <summary>
-    /// Editor-tool om 73+ losse Deposit-objecten te clusteren tot 8-12 logische
-    /// groepen. Per cluster wordt een parent-GameObject aangemaakt met tag
-    /// "Deposit" + trigger-BoxCollider voor AI-detectie. De originele children
-    /// worden under-the-parent gezet en hun tag wordt verwijderd.
+    /// Editor-tool om losse Deposit-objecten te clusteren op nabijheid. Per
+    /// cluster wordt een parent-GameObject aangemaakt met tag "Deposit" en
+    /// een trigger-BoxCollider voor AI-detectie; de oorspronkelijke children
+    /// worden onder de parent gehangen en zelf van hun tag ontdaan.
     ///
-    /// Aanroepen: Tools > Bank Heist > Cluster Deposits
-    ///
-    /// Workflow:
-    ///   1. Open de scene (of prefab) met je nieuwe bank-prefab
-    ///   2. Tools > Bank Heist > Cluster Deposits
-    ///   3. Pas radius aan (default 3.0m) — alles binnen die radius wordt 1 groep
-    ///   4. Druk "Cluster Now"
-    ///   5. Output: X groepen aangemaakt, Y deposits verplaatst
-    ///   6. Daarna handmatig: per groep beslis welke children grijpbaar worden
-    ///      (XRGrabInteractable + Rigidbody + LootItem)
+    /// Menu: <c>Tools → Bank Heist → Cluster Deposits</c>.
     /// </summary>
     public class DepositClusterTool : EditorWindow
     {
@@ -90,7 +81,6 @@ namespace Wimme.EditorTools
             {
                 if (go == null) continue;
                 if (!go.CompareTag("Deposit")) continue;
-                // Skip already-clustered parents
                 if (go.name.StartsWith(parentPrefix)) continue;
                 found.Add(go);
             }
@@ -174,7 +164,10 @@ namespace Wimme.EditorTools
             Debug.Log("[DepositClusterTool] " + lastReport.Replace("\n", " | "));
         }
 
-        /// <summary>Single-pass nearest-neighbor clustering. Niet optimaal voor heel grote datasets, prima voor &lt;500 punten.</summary>
+        /// <summary>
+        /// Greedy nearest-neighbor clustering. O(n²)-worst-case maar prima voor
+        /// realistische deposit-aantallen (&lt;500 punten).
+        /// </summary>
         private List<List<GameObject>> BuildClusters(GameObject[] deposits)
         {
             var clusters = new List<List<GameObject>>();
@@ -187,7 +180,6 @@ namespace Wimme.EditorTools
                 var current = new List<GameObject> { deposits[i] };
                 used[i] = true;
 
-                // Greedy expansion: add anything within radius of ANY current member
                 bool added;
                 do
                 {

@@ -2,14 +2,10 @@ using UnityEngine;
 using Wimme.Test;
 
 /// <summary>
-/// Drop op een GameObject dat geluid moet maken in de game-wereld
-/// (alarmen, kassa, glas, deur, voetstap-eindpunten van NPCs, ...).
-/// Roept HeistEnvController.RegisterNoise aan zodat de AI-bewaker reageert.
-///
-/// Twee gebruiksmodi:
-///  1) Handmatig — call Emit() vanuit een UnityEvent of code-call.
-///  2) Auto — koppel een AudioSource: elke keer dat clip start (isPlaying gaat
-///     van false naar true) wordt eenmalig een noise-event geregistreerd.
+/// Stuurt geluid-events naar de AI-bewaker via <see cref="HeistEnvController.RegisterNoise"/>.
+/// Werkt in twee modi: handmatig (<see cref="Emit()"/> aanroepen via UnityEvent of code)
+/// of automatisch (gekoppelde <see cref="AudioSource"/> triggert één event bij elke
+/// transitie van niet-spelend naar spelend).
 /// </summary>
 public class NoiseEmitter : MonoBehaviour
 {
@@ -39,14 +35,14 @@ public class NoiseEmitter : MonoBehaviour
         wasPlaying = playing;
     }
 
-    /// <summary>Stuurt eenmalig een noise-event naar de AI op deze positie.</summary>
+    /// <summary>Stuurt één noise-event naar de AI op deze positie, met de Inspector-loudness.</summary>
     public void Emit()
     {
         if (env == null) return;
         env.RegisterNoise(transform.position, loudness);
     }
 
-    /// <summary>Variant met override-loudness (bv. voor luidheid afhankelijk van speler-actie).</summary>
+    /// <summary>Stuurt één noise-event met een ge-overschreven loudness (0-1).</summary>
     public void Emit(float overrideLoudness)
     {
         if (env == null) return;

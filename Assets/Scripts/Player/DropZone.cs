@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
+/// <summary>
+/// Trigger-zone waar afgeleverde loot in de score telt. Annuleert eerst een
+/// actieve XR-grab voordat het object wordt vernietigd, zodat de hand niet
+/// een vernietigd item blijft vasthouden.
+/// </summary>
 [RequireComponent(typeof(Collider))]
 public class DropZone : MonoBehaviour
 {

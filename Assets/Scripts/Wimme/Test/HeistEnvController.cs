@@ -4,6 +4,13 @@ using UnityEngine.AI;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// Beheert de trainings- en gameplay-omgeving rond de bewaker: deposit-state,
+    /// episode-timer, audio-events en optionele domain-randomisatie van deposit-
+    /// posities. Bij live-play met een VR-speler wordt de step-limiet uitgeschakeld
+    /// zodat de heist door <see cref="HeistManager"/> wordt afgesloten i.p.v. door
+    /// een max-step.
+    /// </summary>
     public class HeistEnvController : MonoBehaviour
     {
         [Header("Refs")]
@@ -31,9 +38,9 @@ namespace Wimme.Test
         public Transform[] distractorPoints;
 
         [Header("Domain randomization")]
-        [Tooltip("If true, reposition every active deposit to a random NavMesh point inside randomizeBounds each episode. Forces the policy to rely on perception instead of memorizing fixed slot locations.")]
+        [Tooltip("Verplaats actieve deposits naar willekeurige NavMesh-punten bij elk episode-begin, zodat de policy niet op vaste posities kan trainen.")]
         public bool randomizeDepositPositions = true;
-        [Tooltip("World-space bounds within which random NavMesh samples are drawn. Set this to encompass your playable area (e.g. the whole bank interior).")]
+        [Tooltip("World-space bounds waarbinnen NavMesh-samples worden gepakt. Moet ruimer zijn dan de begaanbare ruimte.")]
         public Bounds randomizeBounds = new Bounds(Vector3.zero, new Vector3(80f, 4f, 80f));
 
         // ----- Runtime state -----
@@ -73,7 +80,6 @@ namespace Wimme.Test
             timeLeft = episodeSeconds;
             lastNoise.valid = false;
 
-            // Reset deposits: enable the first N, rest hidden
             for (int i = 0; i < deposits.Count; i++)
             {
                 var d = deposits[i];
@@ -83,10 +89,6 @@ namespace Wimme.Test
                 bool active = i < activeDepositCount;
                 if (d.t != null) d.t.gameObject.SetActive(active);
 
-                // Domain randomization: warp active deposit to a random NavMesh point
-                // each episode so the policy can't memorize fixed positions. Falls
-                // back to keeping the slot's original position if no valid sample
-                // is found in a few tries.
                 if (active && randomizeDepositPositions && d.t != null)
                 {
                     if (TrySampleNavMeshPoint(out var pos))
@@ -94,7 +96,6 @@ namespace Wimme.Test
                 }
             }
 
-            // Random alarm: pick at most one deposit to alarm partway through
             if (alarmsEnabled && activeDepositCount > 0)
             {
                 int idx = Random.Range(0, activeDepositCount);
@@ -103,7 +104,8 @@ namespace Wimme.Test
                 RegisterNoise(deposits[idx].t.position, 1f);
             }
 
-            // Reset thief — skip when a VR player is assigned (real human controls position).
+            // ScriptedThief alleen actief tijdens training; bij live-play bestuurt
+            // de menselijke VR-speler de thiefTarget.
             if (vrPlayer == null && thief != null)
             {
                 thief.gameObject.SetActive(thiefEnabled);
@@ -131,13 +133,11 @@ namespace Wimme.Test
             if (episodeOver) return;
             timeLeft -= Time.deltaTime;
 
-            // Alarm timeout
             foreach (var d in deposits)
             {
                 if (d.alarmed && Time.time > d.alarmEndsAt) d.alarmed = false;
             }
 
-            // Random distractor noises
             if (distractorPoints != null && distractorPoints.Length > 0)
             {
                 if (Random.value < distractorChancePerSec * Time.deltaTime)
@@ -147,7 +147,6 @@ namespace Wimme.Test
                 }
             }
 
-            // Episode end: timer out, or all deposits stolen
             int stolen = 0;
             int active = 0;
             foreach (var d in deposits)
@@ -155,6 +154,7 @@ namespace Wimme.Test
                 if (d.t != null && d.t.gameObject.activeSelf) active++;
                 if (d.stolen) stolen++;
             }
+            // Bij live-play stopt HeistManager de heist; geen step-/TimeUp-einde hier.
             if (vrPlayer != null) return;
             if (timeLeft <= 0f) EndEpisode(GuardOutcome.TimeUp);
             else if (active > 0 && stolen >= active) EndEpisode(GuardOutcome.AllStolen);
@@ -169,6 +169,7 @@ namespace Wimme.Test
             if (guard != null) guard.OnEnvironmentEnded(outcome);
         }
 
+        /// <summary>Registreert één geluid-event dat de bewaker bij zijn volgende observatie meeneemt.</summary>
         public void RegisterNoise(Vector3 worldPos, float loudness)
         {
             lastNoise.position = worldPos;

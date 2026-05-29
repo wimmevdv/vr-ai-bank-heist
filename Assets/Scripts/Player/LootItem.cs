@@ -2,7 +2,12 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-
+/// <summary>
+/// Markeert een 3D-object als grijpbaar buitstuk. Bij hover wisselt het materiaal
+/// naar een emissive highlight zodat de speler weet dat hij het kan grijpen.
+/// De geldwaarde wordt bij aflevering in de <see cref="DropZone"/> aan
+/// <see cref="HeistManager.SecureLootItem"/> doorgegeven.
+/// </summary>
 [RequireComponent(typeof(XRGrabInteractable))]
 [RequireComponent(typeof(Renderer))]
 public class LootItem : MonoBehaviour

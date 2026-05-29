@@ -3,6 +3,12 @@ using UnityEngine.AI;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// Desktop-besturing voor de "dief"-rol tijdens training-debugging zonder VR-headset:
+    /// WASD-movement plus muis-look op een <see cref="CharacterController"/>. Schakelt
+    /// de <see cref="ScriptedThief"/> en <see cref="UnityEngine.AI.NavMeshAgent"/> uit
+    /// zodat de menselijke speler en de scripted AI niet om de besturing concurreren.
+    /// </summary>
     [RequireComponent(typeof(CharacterController))]
     public class PlayerThiefController : MonoBehaviour
     {

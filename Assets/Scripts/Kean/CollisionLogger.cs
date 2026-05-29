@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Debug-helper die elke collision en trigger naar de console schrijft. Plaats op
+/// een object om botsingen of trigger-flow te volgen tijdens testing.
+/// </summary>
 public class CollisionLogger : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)

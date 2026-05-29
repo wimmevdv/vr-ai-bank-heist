@@ -6,6 +6,13 @@ using Unity.MLAgents.Sensors;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// De ML-Agents PPO-bewaker. Combineert ray-perception en vector-observaties
+    /// (eigen yaw/velocity, laatste geluid, speler-detectie, resterende tijd) tot
+    /// twee continue acties: vooruit/achteruit en draaien. Beweegt in
+    /// <see cref="FixedUpdate"/> met smoothing en grondhellings-projectie.
+    /// Schakelt tussen patrol- en chase-snelheid afhankelijk van zicht op de speler.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     public class BankGuardAgent : Agent
     {
@@ -32,7 +39,7 @@ namespace Wimme.Test
         [SerializeField] private float w_timeStep         = -0.001f;
 
         [Header("V7 features (requires retrain)")]
-        [Tooltip("Enable vertical awareness + last-known-position tracking. Adds 4 observations (total 17). Requires retraining — leave OFF to use v5b models.")]
+        [Tooltip("Verticale awareness + last-known-position. Voegt 4 observaties toe (totaal 17). Het model moet exact dezelfde observatie-grootte hebben — uit-laten voor pre-v7-modellen.")]
         [SerializeField] private bool enableV7Observations = false;
         [SerializeField] private float lastKnownMemorySeconds = 10f;
 
@@ -215,10 +222,11 @@ namespace Wimme.Test
             bool seeingPlayer = thiefEnabled > 0.5f && TrySeePlayer(out _, out _);
             float speed = seeingPlayer ? chaseSpeed : patrolSpeed;
 
-            // Smooth acceleration — prevents robotic instant starts/stops
             smoothedMove = Mathf.Lerp(smoothedMove, pendingMove, moveSmoothing * Time.fixedDeltaTime);
             smoothedTurn = Mathf.Lerp(smoothedTurn, pendingTurn, turnSmoothing * Time.fixedDeltaTime);
 
+            // Projecteer de looprichting op de grondhellling, zodat de bewaker niet
+            // bij iedere hobbeltje een stukje verticaal weg-stuitert.
             Vector3 desiredDir = transform.forward;
             Vector3 castOrigin = transform.position + Vector3.up * 0.1f;
             if (Physics.Raycast(castOrigin, Vector3.down, out RaycastHit hit, 2.0f, ~0, QueryTriggerInteraction.Ignore))

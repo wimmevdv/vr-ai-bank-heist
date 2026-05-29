@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// First-person desktop-besturing voor testing buiten VR: WASD-beweging,
+/// muis-look met geklemd pitch, sprint op LeftShift en spring op Space.
+/// Wordt niet gebruikt in de finale VR-build.
+/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
 
-        // Lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -37,12 +41,10 @@ public class PlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Vertical rotation (camera only, clamped)
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 
-        // Horizontal rotation (entire player)
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -50,24 +52,19 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isGrounded = _controller.isGrounded;
 
-        // Reset downward velocity when grounded
         if (isGrounded && _velocity.y < 0f)
             _velocity.y = -2f;
 
-        // WASD input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
 
-        // Sprint with Left Shift
         float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
         _controller.Move(move * speed * Time.deltaTime);
 
-        // Jump
         if (Input.GetButtonDown("Jump") && isGrounded)
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
-        // Apply gravity
         _velocity.y += gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
     }

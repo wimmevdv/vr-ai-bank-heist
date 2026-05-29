@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables; // Required for XRI 3.x
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 /// <summary>
-/// Handles input verification on an XRSimpleInteractable button.
-/// Bridges physical interaction with the global HeistManager state evaluation.
+/// Knop op de muur in de safe-zone. Bij een druk wordt het signaal samen met de
+/// huidige <see cref="SafeZone.IsPlayerInZone"/>-status doorgegeven aan
+/// <see cref="HeistManager.TryExecuteExtraction"/> voor validatie.
 /// </summary>
 [RequireComponent(typeof(XRSimpleInteractable))]
 public class ExtractionButton : MonoBehaviour
@@ -26,27 +27,19 @@ public class ExtractionButton : MonoBehaviour
 
     private void OnEnable()
     {
-        // Subscribe to XRI interaction events (Observer Pattern)
         simpleInteractable.firstSelectEntered.AddListener(OnButtonInteracted);
     }
 
     private void OnDisable()
     {
-        // Unsubscribe to ensure memory safety
         simpleInteractable.firstSelectEntered.RemoveListener(OnButtonInteracted);
     }
 
-    /// <summary>
-    /// Invoked when the player presses the button (Select event triggered).
-    /// </summary>
     private void OnButtonInteracted(SelectEnterEventArgs args)
     {
         if (HeistManager.Instance == null) return;
 
-        // Determine current safe state (safely falls back to false if reference is broken)
         bool isReady = safeZone != null && safeZone.IsPlayerInZone;
-
-        // Forward validation request to the master manager
         HeistManager.Instance.TryExecuteExtraction(isReady, errorAudio);
     }
 }

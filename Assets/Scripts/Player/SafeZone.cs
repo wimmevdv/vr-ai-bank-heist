@@ -1,20 +1,17 @@
 using UnityEngine;
 
 /// <summary>
-/// Monitors physical tracking bounds to verify if the player's capsule 
-/// is currently stationed within the designated safe extraction area.
+/// Trigger-zone die bijhoudt of de speler binnen de extractie-cirkel staat.
+/// <see cref="ExtractionButton"/> leest deze vlag bij elke druk om te valideren.
 /// </summary>
 [RequireComponent(typeof(Collider))]
 public class SafeZone : MonoBehaviour
 {
-    /// <summary>
-    /// Returns true if the player is physically standing inside this trigger zone.
-    /// </summary>
+    /// <summary>True als de speler op dit moment in de zone staat.</summary>
     public bool IsPlayerInZone { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the colliding entity represents the VR Player layer
         if (other.CompareTag("Player"))
         {
             IsPlayerInZone = true;

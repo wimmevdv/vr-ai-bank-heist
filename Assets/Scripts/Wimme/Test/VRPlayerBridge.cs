@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// Maakt van de menselijke VR-speler een geldige <c>thiefTarget</c> voor de bewaker.
+    /// Forceert de "Player"-tag, past de capsule-collider aan op spelergrootte en
+    /// stuurt voetstap-noise naar <see cref="HeistEnvController"/> op basis van
+    /// XR-Origin-beweging, met een cooldown om geen audio-spam te genereren.
+    /// </summary>
     [RequireComponent(typeof(CapsuleCollider))]
     public class VRPlayerBridge : MonoBehaviour
     {

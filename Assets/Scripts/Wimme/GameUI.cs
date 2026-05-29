@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Toont het eindscherm zodra <see cref="HeistManager.OnGameEnded"/> vuurt en
+/// snapt het canvas voor de speler. Heeft een optionele auto-restart-timer als
+/// fail-safe wanneer de VR-knop niet bereikbaar is.
+/// </summary>
 public class GameUI : MonoBehaviour
 {
     [Header("End screen referenties")]
@@ -53,7 +57,8 @@ public class GameUI : MonoBehaviour
 
     private IEnumerator SubscribeWhenReady()
     {
-        // Wacht tot HeistManager.Instance bestaat 
+        // De HeistManager kan een frame later spawnen dan deze UI, dus we
+        // pollen tot de singleton beschikbaar is voordat we abonneren.
         while (HeistManager.Instance == null) yield return null;
 
         HeistManager.Instance.OnGameEnded += ShowEndScreen;

@@ -6,12 +6,15 @@ using UnityEngine;
 namespace Wimme.EditorTools
 {
     /// <summary>
-    /// Headless Windows standalone build for ML-Agents training.
-    /// Invoke via Unity command line:
-    /// "C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe"
-    ///     -batchmode -quit -nographics
-    ///     -projectPath C:\VR
+    /// CLI-entrypoint voor een headless Windows standalone-build van de
+    /// trainings-scène. Exit-code 0 bij succes, 1 bij fout, zodat de aanroepende
+    /// shell het resultaat kan controleren.
+    ///
+    /// <code>
+    /// Unity.exe -batchmode -quit -nographics ^
+    ///     -projectPath C:\VR ^
     ///     -executeMethod Wimme.EditorTools.HeadlessBuild.BuildTraining
+    /// </code>
     /// </summary>
     public static class HeadlessBuild
     {
@@ -33,7 +36,6 @@ namespace Wimme.EditorTools
             BuildSummary s = report.summary;
             Debug.Log($"[HeadlessBuild] result={s.result} totalSize={s.totalSize} duration={s.totalTime} errors={s.totalErrors}");
 
-            // Exit code is what Unity returns to the calling shell.
             EditorApplication.Exit(s.result == BuildResult.Succeeded ? 0 : 1);
         }
     }

@@ -2,15 +2,10 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Speelt voetstap-audio op basis van beweging van de XR Origin.
-/// Geeft per voetstap een noise-event aan de AI-bewaker (via NoiseEmitter).
-///
-/// Drop dit script op XR Origin. Vul de footstepClips array met 1-4 wav/mp3-bestanden.
-///
-/// Voor LANGE clips (bv. een opname van 5 stappen achter elkaar):
-///   - Zet clipPlayDuration op 0.4-0.5 (1 stap duur)
-///   - Zet useRandomClipOffset op true (variatie per stap)
-///   → Het script speelt elke stap een korte slice af, niet de hele clip.
+/// Speelt voetstap-audio op basis van XR Origin-beweging en pusht per stap een
+/// noise-event naar de AI-bewaker (luidheid schaalt met snelheid). Bij gebruik
+/// van een lange multi-step clip kan <c>clipPlayDuration</c> + random offset
+/// per stap een korte slice afspelen in plaats van de hele clip.
 /// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class PlayerFootsteps : MonoBehaviour
@@ -59,13 +54,13 @@ public class PlayerFootsteps : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.loop = false;
-        audioSource.spatialBlend = 1f; // 3D — anders is positioning weird
+        audioSource.spatialBlend = 1f;
         lastPosition = transform.position;
     }
 
     private void Update()
     {
-        // Horizontal-only delta: hoogteveranderingen (springen/duiken) tellen niet als stap.
+        // Y-as wordt genegeerd zodat bukken/springen niet als een voetstap telt.
         Vector3 delta = transform.position - lastPosition;
         delta.y = 0f;
         float distMoved = delta.magnitude;
@@ -83,7 +78,6 @@ public class PlayerFootsteps : MonoBehaviour
 
     private void PlayFootstep(float speed)
     {
-        // Audio
         if (footstepClips != null && footstepClips.Length > 0 && audioSource != null)
         {
             var clip = footstepClips[Random.Range(0, footstepClips.Length)];
@@ -92,12 +86,12 @@ public class PlayerFootsteps : MonoBehaviour
 
             if (clipPlayDuration <= 0f || clipPlayDuration >= clip.length)
             {
-                // Hele clip — gewoon PlayOneShot (kan overlappen, prima voor korte clips)
                 audioSource.PlayOneShot(clip, volume);
             }
             else
             {
-                // Slice van clip — gebruikt audioSource zelf zodat we kunnen Stop()
+                // Slice-mode: gebruik Play() i.p.v. PlayOneShot zodat StopAfter de
+                // clip op tijd kan afkappen voor de volgende stap.
                 if (stopRoutine != null) StopCoroutine(stopRoutine);
                 audioSource.Stop();
                 audioSource.clip = clip;
@@ -113,7 +107,6 @@ public class PlayerFootsteps : MonoBehaviour
             }
         }
 
-        // AI noise
         if (noiseEmitter != null)
         {
             float loudness = Mathf.Lerp(quietLoudness, loudLoudness, Mathf.Clamp01((speed - 1f) / 2.5f));
@@ -142,7 +135,7 @@ public class PlayerFootsteps : MonoBehaviour
             if (audioSource != null)
             {
                 audioSource.Stop();
-                audioSource.volume = originalVolume; // reset voor volgende stap
+                audioSource.volume = originalVolume;
             }
         }
         stopRoutine = null;

@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Kluisdeur met aanpasbaar lokaal scharnier. Bij <see cref="OpenAutomatically"/>
+/// roteert de deur rond een lokale as via <see cref="Transform.RotateAround"/>
+/// met een instelbare snelheid en optionele vertraging.
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class VaultDoorController : MonoBehaviour
 {

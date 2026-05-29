@@ -1,6 +1,11 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Polsband-HUD die geld en resterende tijd toont. Fadet alleen in wanneer de
+/// speler er recht naar kijkt en het canvas dichtbij genoeg is, zodat de tekst
+/// niet stoort tijdens normaal spelen.
+/// </summary>
 [RequireComponent(typeof(CanvasGroup))]
 public class HeistHUD : MonoBehaviour
 {
@@ -47,7 +52,7 @@ public class HeistHUD : MonoBehaviour
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 0f; // start onzichtbaar
+        canvasGroup.alpha = 0f;
 
         originalLocalRotation = transform.localRotation;
         hasOriginalRotation = true;
@@ -67,7 +72,7 @@ public class HeistHUD : MonoBehaviour
         if (headCamera == null) return;
 
         Vector3 fromCamera = transform.position - headCamera.position;
-        if (fromCamera.sqrMagnitude < 0.0001f) return; // camera staat op exact dezelfde plek
+        if (fromCamera.sqrMagnitude < 0.0001f) return;
 
         transform.rotation = Quaternion.LookRotation(fromCamera, Vector3.up);
     }

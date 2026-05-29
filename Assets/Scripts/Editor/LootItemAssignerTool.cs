@@ -6,16 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 namespace Wimme.EditorTools
 {
     /// <summary>
-    /// Bulk-assigner voor LootItem-componenten. Voor elke kandidaat (object met
-    /// Renderer op zichzelf):
-    ///   1. Add BoxCollider (size = mesh.bounds) als geen collider bestaat
-    ///   2. Convert non-convex MeshCollider naar convex (anders Rigidbody-warning)
-    ///   3. Add Rigidbody (mass + useGravity)
-    ///   4. Add XRGrabInteractable
-    ///   5. Add LootItem met naam + waarde
-    /// Slaat objecten zonder Renderer of met bestaande LootItem over.
+    /// Bulk-tool die per kandidaat-object een BoxCollider (uit mesh-bounds),
+    /// Rigidbody, XRGrabInteractable en LootItem toevoegt. Drie targeting-modi
+    /// en drie waarde-strategieën (random, op grootte, of op trefwoorden in de
+    /// naam). Veilig om meermaals te runnen — bestaande componenten worden niet
+    /// overschreven.
     ///
-    /// Aanroepen: Tools > Bank Heist > Assign LootItems
+    /// Menu: <c>Tools → Bank Heist → Assign LootItems</c>.
     /// </summary>
     public class LootItemAssignerTool : EditorWindow
     {
@@ -209,7 +206,6 @@ namespace Wimme.EditorTools
             {
                 if (go == null) continue;
 
-                // 1. Collider — handle 3 cases
                 var existingCol = go.GetComponent<Collider>();
                 if (existingCol == null)
                 {
@@ -218,13 +214,12 @@ namespace Wimme.EditorTools
                 }
                 else if (existingCol is MeshCollider mc && !mc.convex)
                 {
-                    // Non-convex MeshCollider + Rigidbody is verboden → fix
+                    // Non-convex MeshCollider + Rigidbody is niet toegestaan in Unity.
                     Undo.RecordObject(mc, "Make MeshCollider convex");
                     mc.convex = true;
                     meshColliderFixed++;
                 }
 
-                // 2. Rigidbody
                 if (!go.TryGetComponent<Rigidbody>(out var rb))
                 {
                     rb = Undo.AddComponent<Rigidbody>(go);
@@ -232,13 +227,11 @@ namespace Wimme.EditorTools
                     rb.useGravity = true;
                 }
 
-                // 3. XRGrabInteractable
                 if (!go.TryGetComponent<XRGrabInteractable>(out var _))
                 {
                     Undo.AddComponent<XRGrabInteractable>(go);
                 }
 
-                // 4. LootItem
                 var loot = Undo.AddComponent<LootItem>(go);
                 int value = ComputeValue(go);
                 loot.itemName = PrettifyName(go.name);
@@ -275,7 +268,7 @@ namespace Wimme.EditorTools
         {
             col = Undo.AddComponent<BoxCollider>(go);
 
-            // Voorkeur: gebruik MeshFilter.sharedMesh.bounds (lokale ruimte, exact)
+            // MeshFilter.sharedMesh.bounds geeft de lokale bounding-box exact terug.
             var mf = go.GetComponent<MeshFilter>();
             if (mf != null && mf.sharedMesh != null)
             {
@@ -284,7 +277,8 @@ namespace Wimme.EditorTools
                 return;
             }
 
-            // Fallback: gebruik Renderer.bounds (wereld) en converteer naar lokaal
+            // Fallback voor objecten zonder MeshFilter: Renderer.bounds is in
+            // world-space, dus we delen door lossy-scale om naar lokaal te komen.
             var rend = go.GetComponent<Renderer>();
             if (rend != null)
             {

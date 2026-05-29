@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace Wimme.Test
 {
+    /// <summary>
+    /// Driver voor de Animator op het visuele bewaker-model. Leest de horizontale
+    /// snelheid van de parent-<see cref="Rigidbody"/> en zet die op de
+    /// "Speed"-parameter, waar de Animator tussen idle, walk en run blendt.
+    /// </summary>
     [RequireComponent(typeof(Animator))]
     public class GuardAnimator : MonoBehaviour
     {

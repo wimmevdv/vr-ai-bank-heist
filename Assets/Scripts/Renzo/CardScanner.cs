@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Trigger-zone die luistert op een <see cref="KeyCard"/>. Vergelijkt het
+/// <c>keyId</c> met <c>acceptedKeyId</c>; bij match opent de gekoppelde deur en
+/// vuurt het <see cref="onAccepted"/>-event, anders <see cref="onRejected"/>.
+/// </summary>
 [RequireComponent(typeof(Collider))]
 public class CardScanner : MonoBehaviour
 {

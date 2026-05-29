@@ -3,14 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Centrally manages the heist gameplay state, tracking the countdown timer,
-/// current monetary score, and progression toward the level's loot objectives.
-/// Implements the Singleton pattern.
-///
-/// FASE 3-flow: 5 minuten timer; speler mag op elk moment escapen via de
-/// SafeZone + ExtractionButton. Vroeger escapen = vanzelf minder geld
-/// (alleen afgeleverde loot telt). Bij game-einde vuurt OnGameEnded met de
-/// eindstats; de end-screen UI (GameUI) abonneert daarop.
+/// Singleton die de heist-state beheert: countdown-timer, score, en win/verlies-events.
+/// De speler kan op elk moment extracten via SafeZone + ExtractionButton — alleen
+/// afgeleverde loot telt mee in de eindscore. Vuurt <see cref="OnGameEnded"/> bij
+/// elk eind-pad (win, timeout, of gevangen door bewaker).
 /// </summary>
 public class HeistManager : MonoBehaviour
 {
@@ -34,13 +30,12 @@ public class HeistManager : MonoBehaviour
     [Header("Economy & Objectives")]
     [SerializeField] private int currentScore = 0;
 
-    // Public read-only API — bestaande consumers (watch-HUD) blijven werken.
     public int CurrentScore => currentScore;
     public float TimeRemaining => timeRemaining;
     public bool IsGameActive { get; private set; } = true;
     public bool AllLootSecured => securedLootCount >= totalLootCount;
 
-    /// <summary>Vuurt eenmaal wanneer de heist eindigt (win of verlies).</summary>
+    /// <summary>Vuurt eenmaal per spel, op elk eind-pad (win of verlies).</summary>
     public event Action<HeistEndInfo> OnGameEnded;
 
     private int totalLootCount = 0;
@@ -87,6 +82,7 @@ public class HeistManager : MonoBehaviour
         }
     }
 
+    /// <summary>Registreert een afgeleverde loot-item. Aangeroepen door <see cref="DropZone"/>.</summary>
     public void SecureLootItem(int value)
     {
         if (!IsGameActive) return;
@@ -97,8 +93,8 @@ public class HeistManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Validates extraction. Sinds fase 3: GEEN AllLootSecured-eis meer.
-    /// Speler mag op elk moment escapen met wat hij heeft (vroeger = minder geld).
+    /// Valideert een extractie-poging. De speler moet binnen de SafeZone staan;
+    /// anders speelt het error-geluid af en blijft de heist actief.
     /// </summary>
     public void TryExecuteExtraction(bool isPlayerInSafeZone, AudioSource errorAudio)
     {
@@ -122,6 +118,7 @@ public class HeistManager : MonoBehaviour
         }
     }
 
+    /// <summary>Eindigt de heist met resultaat TIJD-VOORBIJ.</summary>
     public void LoseGame(string reason)
     {
         if (!IsGameActive) return;
@@ -130,10 +127,7 @@ public class HeistManager : MonoBehaviour
         FireEnded(GameResult.LostTimeout);
     }
 
-    /// <summary>
-    /// Roept de bewaker je tot stilstand. Aangeroepen via HeistEndBridge wanneer
-    /// HeistEnvController.EndEpisode(Caught) gedetecteerd wordt.
-    /// </summary>
+    /// <summary>Eindigt de heist met resultaat BETRAPT.</summary>
     public void LoseCaught()
     {
         if (!IsGameActive) return;
@@ -142,6 +136,7 @@ public class HeistManager : MonoBehaviour
         FireEnded(GameResult.LostCaught);
     }
 
+    /// <summary>Eindigt de heist met resultaat ESCAPE GELUKT.</summary>
     public void WinGame()
     {
         if (!IsGameActive) return;
@@ -178,10 +173,7 @@ public class HeistManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Herlaadt de huidige scene en reset alles. Wordt aangeroepen door de
-    /// Play Again-knop. De scene moet in File > Build Settings staan.
-    /// </summary>
+    /// <summary>Herlaadt de huidige scene; vereist dat die in Build Settings staat.</summary>
     public void RestartGame()
     {
         Scene s = SceneManager.GetActiveScene();

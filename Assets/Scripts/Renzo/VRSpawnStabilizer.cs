@@ -2,15 +2,16 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Wacht actief totdat de speler de VR-headset daadwerkelijk opzet.
-/// Zodra de headset-tracking een realistische hoogte doorgeeft,
-/// worden de physics veilig geactiveerd om te voorkomen dat de speler door de vloer valt.
+/// Wacht tot de speler de VR-headset daadwerkelijk opzet voordat de
+/// <see cref="CharacterController"/>-fysica wordt geactiveerd. Voorkomt dat de
+/// speler door de vloer valt wanneer de scène start vóór de headset-tracking
+/// een geldige hoogte rapporteert.
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class VRSpawnStabilizer : MonoBehaviour
 {
     [Header("Tracking Reference")]
-    [Tooltip("Sleep hier de Main Camera (jouw headset) in vanuit de Hierarchy.")]
+    [Tooltip("Main Camera onder XR Origin — wordt gebruikt om te detecteren of de headset is opgezet.")]
     public Transform mainCamera;
 
     private CharacterController characterController;
@@ -19,31 +20,30 @@ public class VRSpawnStabilizer : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
 
-        // CRUCIAAL: Zet de fysieke botsingen uit op frame 1.
+        // Schakel fysica uit op frame 1; pas her-activeren als de headset
+        // een realistische hoogte rapporteert.
         characterController.enabled = false;
     }
 
     private IEnumerator Start()
     {
-        // Fail-safe: als je de camera vergeet te koppelen, waarschuw dan.
         if (mainCamera == null)
         {
             Debug.LogError("[VR STABILIZER] Main Camera mist! Koppel deze in de Inspector.");
             yield break;
         }
 
-        // SLIMME WACHTRIJ: Blijf oneindig wachten totdat de headset fysiek wordt opgetild.
-        // (Wanneer de headset op je bureau ligt of in slaapstand staat, is de localPosition rond de 0).
+        // Zolang de headset op het bureau ligt of in slaapstand staat, blijft
+        // de lokale Y rond 0. Wachten tot hij echt wordt opgetild.
         while (mainCamera.localPosition.y < 0.5f)
         {
-            yield return null; // Wacht 1 frame en check opnieuw
+            yield return null;
         }
 
-        // De headset is opgezet! Geef de Character Controller nog een kwart seconde 
-        // om de capsule netjes uit te rekken naar jouw exacte lichaamslengte.
+        // Korte buffer zodat de capsule kan uitrekken naar de spelergrootte
+        // voordat de fysica botsingen gaat detecteren.
         yield return new WaitForSeconds(0.25f);
 
-        // Zet de zwaartekracht en botsingen weer aan.
         characterController.enabled = true;
         Debug.Log("[VR STABILIZER] Speler heeft de headset opgezet. Physics veilig geactiveerd.");
     }
