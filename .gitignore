@@ -54,11 +54,17 @@ desktop.ini
 /build.log
 Assets/ML-Agents/Timers/
 
-# --- Marwan's local-only result dirs (BankGuard_Curr_v*) ---
+# --- Marwan's local-only result dirs ---
 /results/BankGuard_Curr_v1/
 /results/BankGuard_Curr_v2/
 /results/BankGuard_Curr_v3/
 /results/BankGuard_Curr_v4/
+/results/BankGuard_v5_kean/
+/results/BankGuard_v7/
+
+# --- Loose v* training logs in root ---
+/training_v*.log
+/training_v*.err
 
 # --- Debug / scratch prefab backups ---
 Assets/Prefabs/Training/EnvRoot.prefab.may21_broken
