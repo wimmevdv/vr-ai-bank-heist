@@ -66,6 +66,10 @@ Assets/ML-Agents/Timers/
 /training_v*.log
 /training_v*.err
 
+# --- Lokale werk-docs (niet voor remote) ---
+/CODE_OVERZICHT.md
+/KEAN_SCENE_SETUP.md
+
 # --- Debug / scratch prefab backups ---
 Assets/Prefabs/Training/EnvRoot.prefab.may21_broken
 Assets/Prefabs/Training/EnvRoot.prefab.may21_broken.meta
