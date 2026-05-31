@@ -165,6 +165,39 @@ De one-pager (README) legt de basis vast:
 
 ## Resultaten
 
+Er zijn meerdere training geweest, die allemaal meerdere fases, aanpassingen etc zijn ondergaan. Maar er zijn 2 "hoofd" trainingen, die verschillen, de 1e zijn we van afgestapt en die bespreken we eerst, daarna bespreken we de 2e, die verder gebouwd is op de 1e, en hoe deze dan geevolueerd is.
+
+### 1e training 
+
+**Opzet.** `BewakerAgent` had 1 continue-actie-paar (move, turn), acht vector-observaties (eigen positie, oriëntatie, vector naar dichtstbijzijnde deposit, discovery-ratio) en een Ray Perception Sensor (detectable tags: Wall, Player, Deposit). Het reward systeem was uitgebreid: tien gelijktijdige signalen probeerden patrouille-gedrag te induceren, `newCellReward`, `newRoomReward`, `firstDepositVisitReward`, `depositPatrolReward`, `depositVisionReward`, `idlePenalty`, `wallHitPenalty`, `allDepositsFoundBonus`, `campingPenalty` en de standaard `timeStepPenalty`. Daarbij een rotation-queue met cooldown om camperen bij één deposit te ontmoedigen.
+<img width="1916" height="936" alt="image" src="https://github.com/user-attachments/assets/88078623-7082-4f4d-8ba0-17cc40713298" />
+
+**Geplande fasering**. Het oorspronkelijke plan had 4 fases: (1) bewaker leren patrouilleren en deposits ontdekken, (2) reageren op geluiden, (3) een aparte thief-agent leren stelen, (4) beide modellen samenbrengen in de finale VR-scene. Dit is niet verder gegaan dan fase 1.
+
+**Trainingsscene apart van de hoofdscene**. De training liep niet in de uiteindelijke VR-bank maar in een sterk versimpelde scene (kale plattegrond, vier kamers, zes deposit-cubes, geen meubilair, geen XR-rig, simpele cubes). Dit was zodat ik meerdere trainingen tegelijk kon runnen, we de AI ook niet overweldigde met de gehele bank, en aanpassingen aan de bank map geen effect hadden op de AI. 
+
+**v1–v3 — do-nothing-plateau.** De agent stagneerde rond mean cumulative reward −5.0 en bewoog nauwelijks. Dit kwam volgens ons door de `idlePenalty` van −0.005, per stap creëerde het een diepe negatieve put die zelfs willekeurig bewegingen (door extra muur-tikken) erger maakte. Stilstaan werd het minst slechte gedrag.
+<img width="1163" height="592" alt="image" src="https://github.com/user-attachments/assets/fd13d54c-193e-46d3-8893-4c473bd78672" />
+
+**v4–v8 — exploits.** Na meerdere reward-bijstellingen kroop de mean reward naar −4.4 en uiteindelijk lichtjes positief, maar de agent vond exploits: in v7–v8 cashte hij de `depositVisionReward` van 0,0005 per frame in door bij één deposit te wiebelen binnen de zichtkegel, en ook de patrouile bonjus die iedere 10s te cliamen viel binnen te halen, dit was dus geen patrouille gedrag.
+<img width="1193" height="650" alt="image" src="https://github.com/user-attachments/assets/87becbaf-9f37-42fc-8688-bbec5a31ae62" />
+
+**Hervormen.** Op basis van die observaties, hebben we de rewards vereenvoudigd: vier reward-signalen (+1 bij bereiken van een opgedragen doel, kleine tijdstraf, kleine muurstraf, potential-based afstand-shaping `(prevDist − newDist) × 0,05`), vijf observaties (lokale richting + afstand tot huidig doel, eigen snelheid), en de doel-selectie verschoof naar de omgeving (random deposit als "huidig doel", bij aankomst meteen een ander). Tegelijk werden de oversized `GuardingZone`-trigger-spheres in de scene gekrompen omdat ze door muren staken en één positie meerdere deposits liet triggeren.
+
+**Wall-hugging.** De agent ging nu wel bewegen, maar bleef tegen muren duwen wanneer het doel aan de andere kant lag, de huidige shaping beloonde rechte-lijn-progressie, en "om de hoek lopen" betekent eerst tijdelijk verder weg van het doel (negatieve shaping per stap). Een eerste poging om dat te dichten met een line-of-sight-gate (shaping uit bij muur tussen agent en doel) bleek te breed: zonder shaping achter muren had de agent geen leersignaal meer en zakte de curve terug naar het oude plateau.
+
+**Doorbraak v15–v20.** De finale aanpassing van fase 1 was klein, shaping uit *alleen* zolang de agent fysiek tegen een muur duwt (via een `OnCollisionEnter`/`OnCollisionExit`-teller), plus een continue muurstraf per stap (`OnCollisionStay`, −0,01). Daarmee verdween het wall-hugging. De cumulative reward klom binnen ~200 K extra steps van ongeveer −4,5 naar gemiddeld 5–10 (std ~5–8), en de agent patrouilleerde betrouwbaar tussen alle deposits.
+<img width="1179" height="586" alt="image" src="https://github.com/user-attachments/assets/bc7fc6ee-2bfe-44b4-966d-b9f7dc39525d" />
+
+**Overstap naar andere training.** Vanaf dat plateau was `BewakerAgent` voldoende voor fase 1 (patrouilleren + deposits aandoen), maar miste de sensorische rijkdom voor fase 2–4: geen geluidsonderzoek, geen vision-cone, geen catch-detectie, geen last-known-position. Aangezien tot hier geraken heel moeilijk , en we nog ver af van de uiteindelijke AI waren, zijn we met 2 aan de AI beginnen werken, op dit punt stond de andere versie verder dus zijn we met dit systeem gestopt. 
+
+**Leerpunten.**
+- Reward-soep escaleert: elk signaal toegevoegd om een exploit te dichten kan een nieuwe creëren.
+- Structurele problemen (zoals wall-hugging) los je niet op met reward-tuning. Een lokaal probleem dat door de reward zélf wordt gecreëerd, verdwijnt pas als de mechaniek verandert.
+- Niet alle straf is gelijk: een eenmalige `OnCollisionEnter`-tik verliest het van een continue shaping-trekker; een per-stap `OnCollisionStay`-straf wint.
+
+---
+
 ### Trainingsoverzicht
 
 De finale run (`BankGuard_v7`) draaide met PPO + LSTM + curiosity op
