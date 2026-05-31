@@ -67,10 +67,3 @@ Acties die AI kan doen:
 
 ---
 
-## TODO
-### Omgeving bouwen
-### AI Trainen
-### Scripten van interactable objects
-- Kluis
-- Objecten die je kan oppaken
-- 
