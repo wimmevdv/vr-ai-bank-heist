@@ -314,4 +314,48 @@ en exploratie.
   [PowerPoint-presentatie]. Digitap, vak VR Experience.
 - AP Hogeschool. (2025). *Toelichting hyperparameters ML-Agents*
   [Tekstdocument]. Digitap, vak VR Experience.
-- Sketchfab. (n.d.). The Bank Hall - Download Free 3D model by Veterock (@windofglass). https://sketchfab.com/3d-models/the-bank-hall-7ff86c154ac843c48c4b0ec0149d4321
+- Sketchfab. (2025, April 5). The Bank Hall - Download Free 3D model by Veterock (@windofglass). https://sketchfab.com/3d-models/the-bank-hall-7ff86c154ac843c48c4b0ec0149d4321
+- Sketchfab. (2021, July 14). Cofre (Bank) - Download Free 3D model by Caio de Oliveira (@caiodeoliveira). https://sketchfab.com/3d-models/cofre-bank-36087f1db6004167acebb20be35de2f8
+- Sketchfab. (2024, July 14). Cafeteria Modular Einst Buck - Download Free 3D model by danielrodriguezcarmona. https://sketchfab.com/3d-models/cafeteria-modular-einst-buck-34711cceda374a4b8b1f7a3b99467552
+- Sketchfab. (2024, August 29). Fnaf SB Arcade Security Room - Download Free 3D model by skylajade69. https://sketchfab.com/3d-models/fnaf-sb-arcade-security-room-1a1c396bd929420984a488686e04c7fe
+- Sketchfab. (2014, March 9). Microwave Rigged (Free - NonCommercial) - Download Free 3D model by 3DHaupt (@dennish2010). https://sketchfab.com/3d-models/microwave-rigged-free-noncommercial-951cea7c961541d6a27a9d1abca27ee9
+- Sketchfab. (2023, November 14). Dart Board with Three Darts 🎯 - Download Free 3D model by Glowbox 3D (@glowbox3d). https://sketchfab.com/3d-models/dart-board-with-three-darts-e066e32310af4765b8f115742eeb1bc4
+- Sketchfab. (2026, April 13). Scary Baboon Lunch Table - OreoDev - Download Free 3D model by OreoDev. https://sketchfab.com/3d-models/scary-baboon-lunch-table-oreodev-c4cfd3345a6a46b8b1da8e207cc35be1
+- Sketchfab. (2022, April). Vending Machine Coca Cola - Download Free 3D model by Shivansh Singh (@ShivanshSingh). https://sketchfab.com/3d-models/vending-machine-coca-cola-bf0b77b88ece4400965bcbde346a1c7c
+- Sketchfab. (2019, November 23). Vending Machine - Download Free 3D model by Emanuel Silva (@Emanuel.Silva). https://sketchfab.com/3d-models/vending-machine-4bfb493631f84f8a9adc00bb69831000
+- Sketchfab. (2023, August 7). Security Camera (with Animations & Textures) - Download Free 3D model by TampaJoey. https://sketchfab.com/3d-models/security-camera-with-animations-textures-631834aba23f43a482e4de7120d68d19
+- Sketchfab. (2021, November 14). Ceiling Lamp / Fluorescent Tube - Baked - Download Free 3D model by Vince_Crusty (@vince.trust). https://sketchfab.com/3d-models/ceiling-lamp-fluorescent-tube-baked-b6f971b820df47f0b239d3f94bfb1773
+- Sketchfab. (2020, June 18). Low rise wall to wall office building - Download Free 3D model by aitortilla01. https://sketchfab.com/3d-models/low-rise-wall-to-wall-office-building-1f341f8261af4fb6a0dc910c2aae37a6
+- Sketchfab. (2022, July 23). Chicago buildings - Download Free 3D model by 99.Miles. https://sketchfab.com/3d-models/chicago-buildings-950b3d8a998c41ecb06e6ba85da3e1f6
+- Sketchfab. (2022, September 27). Realistic chicago buildings - Download Free 3D model by 99.Miles. https://sketchfab.com/3d-models/realistic-chicago-buildings-c4a3993ef1e84e6d9d5a15c78da88aae
+- Sketchfab. (2016, April 25). Building Set - Download Free 3D model by nermin. https://sketchfab.com/3d-models/building-set-6ab39c80de944a6cac9ef7a0e43314e6
+- Sketchfab. (2021, June 11). Building 02 - Download Free 3D model by Shalmon (@nashalanandas). https://sketchfab.com/3d-models/building-02-e22ece3fd35c4bd4a3d90321c1b2a806
+- Sketchfab. (2026, January 16). Office Room - Download Free 3D model by golukumar (@mortalityrexotable). https://sketchfab.com/3d-models/office-room-921ea95b8d8b414e85fd3a67332994b7
+- Sketchfab. (2024, May 14). Cafe - Download Free 3D model by LogarajMuthiah (@p91036867). https://sketchfab.com/3d-models/cafe-feb74ce83e44455e964e3a63a379fa9c
+- Sketchfab. (2019, March 25). Carpet - Download Free 3D model by pampi2703 (@pampi2703). https://sketchfab.com/3d-models/carpet-4c069ceb02fe41d59dab9e5eb1b9f982
+- Sketchfab. (2024, April 5). Ceiling lamp - Download Free 3D model by Jimmy Johansson (@Jimmy_Johansson). https://sketchfab.com/3d-models/ceiling-lamp-15881eb78cc743d482a462478fba0e0b
+- Sketchfab. (2025, November 25). Corner Sofa - Download Free 3D model by trystyrobot. https://sketchfab.com/3d-models/corner-sofa-f22ab377c8eb434dbe99a1206a49129d
+- Sketchfab. (2019, February 12). Desert Archway - Download Free 3D model by Nick.Amalin. https://sketchfab.com/3d-models/desert-archway-fc351480d81f4f6bb289b16923e8ce7f
+- Sketchfab. (2024, December 16). Fence_retaining_wall - Download Free 3D model by Mehdi Shahsavan (@ahmagh2e). https://sketchfab.com/3d-models/fence-retaining-wall-b26ac6fb2f5441e09cc1d66594816bec
+- Sketchfab. (2021, July 12). House plant - Download Free 3D model by Lahcen.el. https://sketchfab.com/3d-models/house-plant-ff00360145c444ef9b63ec27644e9a58
+- Sketchfab. (2020, June 18). Low rise wall to wall office building - Download Free 3D model by aitortilla01. https://sketchfab.com/3d-models/low-rise-wall-to-wall-office-building-dcf171dca9174000a0fa8d44660253d0
+- Sketchfab. (2023, September 28). Modern Fridge - Download Free 3D model by dylanheyes. https://sketchfab.com/3d-models/modern-fridge-366f7dfa18744ccf8cee119f26446022
+- Sketchfab. (2024, June 7). Office Sofa -25MB - Download Free 3D model by Mehdi Shahsavan (@ahmagh2e). https://sketchfab.com/3d-models/office-sofa-25mb-43f927c7b2b2449ab924f4358a5e4340
+- Sketchfab. (2023, September 26). Big painting - Download Free 3D model by amapola.r. https://sketchfab.com/3d-models/big-painting-a0dc9e4a84e646feae76545a54bb6c0f
+- Sketchfab. (2024, February 25). Framed Painting - Download Free 3D model by Seth Santos (@Seth7Santos). https://sketchfab.com/3d-models/framed-painting-e1076991cf694fcdabec76119730e70b
+- Sketchfab. (2015, December 18). KingFisherSplash Wip Painting - Download Free 3D model by Guido Salimbeni (@3dsmithery). https://sketchfab.com/3d-models/kingfishersplash-wip-painting-4146dbb12a7a45dfb08b78eafc6bc2f5
+- Sketchfab. (2020, January 2). Painting by Zdzislaw Beksinski (4) - Download Free 3D model by SebastianSosnowski. https://sketchfab.com/3d-models/painting-by-zdzislaw-beksinski-4-b41db1a76558483da7386c752aaf237f
+- Sketchfab. (2023, February 12). Victorian Framed Painting - PBR Game Ready - Download Free 3D model by Matthew Collings (@mtcollings). https://sketchfab.com/3d-models/victorian-framed-painting-pbr-game-ready-b2895c1c3b42401a949deac049e0051d
+- Sketchfab. (2026, January 12). Ping Pong Table - Download Free 3D model by tonielpro520. https://sketchfab.com/3d-models/ping-pong-table-8dddbdb18e4f4e1e96aa3d75356a9f87
+- Sketchfab. (2022, August 26). Monstera Deliciosa Potted Mid-Century plant - Download Free 3D model by Giora. https://sketchfab.com/3d-models/monstera-deliciosa-potted-mid-century-plant-1ab9bf841df04c07b1819be596327629
+- Sketchfab. (2020, September 27). Palm Plant - Download Free 3D model by SomeKevin. https://sketchfab.com/3d-models/palm-plant-fc5680053bb54ff6bacae64be12200ad
+- Sketchfab. (2021, December 11). Raqueta de ping pong - Download Free 3D model by GIYWBY. https://sketchfab.com/3d-models/raqueta-de-ping-pong-2531d5a1d03f46e0a0dbc5d9fd1e416f
+- Sketchfab. (2024, May 31). Road_ Block - Download Free 3D model by bikravnis. https://sketchfab.com/3d-models/road--block-97291aaabdc74d2fb24b79c878fe4bff
+- Sketchfab. (2022, September 27). Security Camera - Vladyslav Holhanov - Download Free 3D model by Vladyslav Holhanov. https://sketchfab.com/3d-models/security-camera-03aa77b6c6864f3e93fc3deecbd79309
+- Sketchfab. (2023, May 16). SM_chair_table - Download Free 3D model by rickmaolly. https://sketchfab.com/3d-models/sm-chair-table-b139954433f34ad7b75314d59721949f
+- Sketchfab. (2024, September 16). Wall Clock_6MB - Download Free 3D model by Mehdi Shahsavan (@ahmagh2e). https://sketchfab.com/3d-models/wall-clock-6mb-b11becc7e2e24f679f8c68be8de06be4
+- Sketchfab. (2017, September 4). Wall fragment - Download Free 3D model by Cubovich (@cube931). https://sketchfab.com/3d-models/wall-fragment-0643beca4df74633a36b10914314d78d
+- Sketchfab. (2018, December 28). Wall Lamp - Download Free 3D model by bryanthealy. https://sketchfab.com/3d-models/wall-lamp-2594d3763c9043929c2e3143a2141f3c
+- Sketchfab. (2022, August 28). Water Bottles - Download Free 3D model by HGowl (@hgowl22). https://sketchfab.com/3d-models/water-bottles-300baac43615474c8fa3e4da94c78ce1
+- Sketchfab. (2024, July 18). Water Cooler_8MB - Download Free 3D model by Mehdi Shahsavan (@Mehdi Shahsavan). https://sketchfab.com/3d-models/water-cooler-8mb-9aef3e2a5d00481eb2864550bc781e7c
+- Sketchfab. (2022, November 24). XList Vault - Download Free 3D model by XList. https://sketchfab.com/3d-models/xlist-vault-a3be7371c5694c3b9f5d85184472c005
