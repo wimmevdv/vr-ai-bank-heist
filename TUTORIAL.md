@@ -199,20 +199,20 @@ naar ≈ 85.
 
 ### Beschrijving van de grafieken
 
-- **Cumulative Reward** (figuur 1) — toont drie fases: een vlakke
+- **Cumulative Reward** (figuur 1): toont drie fases: een vlakke
   verkenningsfase (0-1,2 M, reward ≈ 5-15), een opbouwfase
   (1,2-2,3 M, reward ≈ 15-35) en een doorbraak (2,3 M,
   reward ≈ 35 -> 85). Na de doorbraak schommelt de reward tussen 49 en 91.
-- **Episode Length** (figuur 2) — neemt af naarmate de bewaker leert
+- **Episode Length** (figuur 2): neemt af naarmate de bewaker leert
   sneller te vangen: van rond 3 000 stappen (max) naar gemiddeld
   1 200-1 800 in de laatste 500 K steps.
-- **Policy Loss** (figuur 3) — daalt geleidelijk tot een laag niveau
+- **Policy Loss** (figuur 3): daalt geleidelijk tot een laag niveau
   en blijft daar stabiel.
-- **Value Loss** (figuur 4) — piekt rond 2,3 M (de doorbraak) en
+- **Value Loss** (figuur 4): piekt rond 2,3 M (de doorbraak) en
   vlakt vervolgens af.
-- **Entropy** (figuur 5) — daalt monotoon, conform een policy die
+- **Entropy** (figuur 5): daalt monotoon, conform een policy die
   steeds zekerder kiest.
-- **Curiosity Reward** (figuur 6) — toont een sterke daling tijdens de
+- **Curiosity Reward** (figuur 6): toont een sterke daling tijdens de
   eerste 500 K steps en stabiliseert daarna, wat aangeeft dat de agent
   zijn omgeving grotendeels heeft afgedekt.
 
@@ -220,15 +220,8 @@ naar ≈ 85.
 
 - De doorbraak rond 2,3 M steps is sterk, maar gepaard met hoge
   ruis (waarden tussen 49 en 91 in opeenvolgende evaluaties).
-- Eerdere curriculum-runs (`BankGuard_Curr_v1`-`v3`) bleven steken op
-  stage 1; pas een single-stage-aanpak (`v4`) gaf een positieve curve.
-- Een eerdere `v5_kean`-run werd onderbroken door een trainer-crash op
-  19 mei. Door checkpoints uit een Git-stash terug te halen kon de
-  volgende run starten van een laatste-bekende staat.
-- De ray-perception was tijdens een eerdere fase per ongeluk teruggezet
-  van 13 naar 6 rays per richting; dit werd ontdekt bij de overstap naar
-  `MAIN_SCENE2` en gecorrigeerd vóór inference om observatie-mismatch
-  met het getrainde model te vermijden.
+- Eerdere stap voor stap runs (`BankGuard_Curr_v1`-`v3`) bleven steken op
+  stage 1, pas een single-stage-aanpak (`v4`) gaf een positieve curve.
 
 ## Conclusie
 
@@ -289,4 +282,3 @@ en exploratie.
 - AP Hogeschool. (2025). *Toelichting hyperparameters ML-Agents*
   [Tekstdocument]. Digitap, vak VR Experience.
 - Sketchfab. (n.d.). The Bank Hall - Download Free 3D model by Veterock (@windofglass). https://sketchfab.com/3d-models/the-bank-hall-7ff86c154ac843c48c4b0ec0149d4321
-- 
